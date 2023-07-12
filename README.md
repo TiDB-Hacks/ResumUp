@@ -1,6 +1,6 @@
-# resumup
+# ResumUp
 
-A new Flutter project.
+A SaaS providing resume/portfolio building via predefined widgets along with individual user deployments using Vercel.
 
 ## Getting Started
 
