@@ -243,11 +243,11 @@ class _MyHomePageState extends State<MyHomePage> {
                             child: Ink(
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
-                                  gradient: LinearGradient(colors: [
+                                  gradient: const LinearGradient(colors: [
                                     Color.fromARGB(255, 213, 134, 15),
                                     Color.fromARGB(255, 225, 158, 58)
                                   ])),
-                              child: SizedBox(
+                              child: const SizedBox(
                                 height: 30,
                                 width: 80,
                                 child: Center(
@@ -261,18 +261,18 @@ class _MyHomePageState extends State<MyHomePage> {
                           )
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
                       DottedBorder(
                         borderType: BorderType.RRect,
-                        radius: Radius.circular(12),
+                        radius: const Radius.circular(12),
                         dashPattern: [6, 3, 6, 3],
                         color: Colors.amber,
-                        padding: EdgeInsets.all(6),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.all(Radius.circular(12)),
-                          child: Container(
+                        padding: const EdgeInsets.all(6),
+                        child: const ClipRRect(
+                          borderRadius:  BorderRadius.all(Radius.circular(12)),
+                          child:  SizedBox(
                             height: 720,
                             width: 1100,
                           ),
