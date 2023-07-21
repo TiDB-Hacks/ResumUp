@@ -537,7 +537,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Align(
                                             alignment: Alignment.topCenter,
                                             child: Text(
-                                              "Contact Me",
+                                              "Let's Connect",
                                               style: TextStyle(
                                                   fontFamily: 'Nunito',
                                                   color: Colors.white),
