@@ -1,7 +1,12 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:resumup/controller/resume_build_controller.dart';
+
+import 'bindings/resume_build_bindings.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -10,7 +15,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      initialBinding: Resume_Build_Bindings(),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -28,6 +34,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var controller = Get.find<ResumeBuildController>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,163 +58,234 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: SafeArea(
                     child: Padding(
                       padding: EdgeInsets.all(10),
-                      child: Column(
-                        children: <Widget>[
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          const Card(
-                            color: Colors.black,
-                            child: SizedBox(
-                              width: double.infinity,
-                              height: 30,
-                              child: Center(
-                                  child: Text(
-                                "Pick your Widgets",
-                                style: TextStyle(color: Colors.white),
-                              )),
+                      child: Obx(
+                        () => Column(
+                          children: <Widget>[
+                            const SizedBox(
+                              height: 5,
                             ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const Divider(
-                            indent: 15,
-                            endIndent: 15,
-                            thickness: 2,
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              SizedBox(
-                                height: 222,
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      color: null,
-                                      child: Card(
-                                        child: InkWell(
-                                          highlightColor: const Color.fromARGB(
-                                              206, 226, 97, 4),
-                                          splashColor: Colors.red,
-                                          onTap: () {},
-                                          child: const SizedBox(
-                                              height: 95,
-                                              width: 100,
-                                              child: Center(
-                                                  child: Text(
-                                                'Vercel',
-                                                style: TextStyle(fontSize: 11),
-                                              ))),
+                            const Card(
+                              color: Colors.black,
+                              child: SizedBox(
+                                width: double.infinity,
+                                height: 30,
+                                child: Center(
+                                    child: Text(
+                                  "Pick your Widgets",
+                                  style: TextStyle(color: Colors.white),
+                                )),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            const Divider(
+                              indent: 15,
+                              endIndent: 15,
+                              thickness: 2,
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  height: 222,
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: controller
+                                                    .Vercel_isPressed.value
+                                                ? Color.fromARGB(
+                                                    57, 249, 245, 245)
+                                                : Colors.transparent,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10))),
+                                        child: Card(
+                                          child: InkWell(
+                                            highlightColor: Color.fromARGB(
+                                                206, 235, 145, 81),
+                                            splashColor:
+                                                Color.fromRGBO(244, 93, 7, 1),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10)),
+                                            onTap: () {
+                                              controller
+                                                      .Vercel_isPressed.value =
+                                                  !controller
+                                                      .Vercel_isPressed.value;
+                                            },
+                                            child: const SizedBox(
+                                                height: 95,
+                                                width: 100,
+                                                child: Center(
+                                                    child: Text(
+                                                  'Vercel',
+                                                  style:
+                                                      TextStyle(fontSize: 11),
+                                                ))),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    const SizedBox(
-                                      height: 8,
-                                    ),
-                                    Material(
-                                      borderRadius: BorderRadius.circular(90),
-                                      color: Color.fromARGB(33, 255, 255, 255),
-                                      child: InkWell(
-                                        splashColor: Colors.orange,
-                                        borderRadius: BorderRadius.circular(80),
-                                        highlightColor:
-                                            Color.fromARGB(255, 222, 140, 16),
-                                        onTap: () {},
-                                        child: Padding(
-                                          padding: EdgeInsets.all(5),
-                                          child: Ink(
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(70),
-                                                gradient: const LinearGradient(
-                                                    colors: [
+                                      const SizedBox(
+                                        height: 8,
+                                      ),
+                                      Material(
+                                        borderRadius: BorderRadius.circular(90),
+                                        color: controller
+                                                .profile_isPressed.value
+                                            ? Color.fromARGB(57, 249, 245, 245)
+                                            : Colors.transparent,
+                                        child: InkWell(
+                                          highlightColor:
+                                              Color.fromARGB(206, 235, 145, 81),
+                                          splashColor:
+                                              Color.fromARGB(212, 230, 98, 22),
+                                          borderRadius:
+                                              BorderRadius.circular(80),
+                                          onTap: () {
+                                            controller.profile_isPressed.value =
+                                                !controller
+                                                    .profile_isPressed.value;
+                                          },
+                                          child: Padding(
+                                            padding: EdgeInsets.all(5),
+                                            child: Ink(
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(70),
+                                                  gradient:
+                                                      const LinearGradient(
+                                                          colors: [
+                                                        Color.fromARGB(
+                                                            255, 237, 20, 92),
+                                                        Color.fromARGB(
+                                                            255, 235, 66, 122)
+                                                      ])),
+                                              child: const Padding(
+                                                padding: EdgeInsets.all(5),
+                                                child: CircleAvatar(
+                                                  backgroundColor:
                                                       Color.fromARGB(
-                                                          255, 237, 20, 92),
-                                                      Color.fromARGB(
-                                                          255, 235, 66, 122)
-                                                    ])),
-                                            child: const Padding(
-                                              padding: EdgeInsets.all(5),
-                                              child: CircleAvatar(
-                                                backgroundColor: Color.fromARGB(
-                                                    170, 150, 3, 163),
-                                                radius: 45,
-                                                child: SizedBox(
-                                                    height: 95,
-                                                    width: 100,
-                                                    child: Center(
-                                                        child: Text(
-                                                      "Image Icon",
-                                                      style: TextStyle(
-                                                          fontSize: 12,
-                                                          color: Colors.white),
-                                                    ))),
+                                                          170, 150, 3, 163),
+                                                  radius: 45,
+                                                  child: SizedBox(
+                                                      height: 95,
+                                                      width: 100,
+                                                      child: Center(
+                                                          child: Text(
+                                                        "Image Icon",
+                                                        style: TextStyle(
+                                                            fontSize: 12,
+                                                            color:
+                                                                Colors.white),
+                                                      ))),
+                                                ),
                                               ),
                                             ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(width: 10),
-                              Card(
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      gradient: const LinearGradient(
-                                          begin: Alignment.topCenter,
-                                          end: Alignment.bottomCenter,
-                                          colors: [
-                                            Color.fromARGB(255, 68, 199, 72),
-                                            Color.fromARGB(255, 17, 135, 21)
-                                          ])),
-                                  child: const SizedBox(
-                                      height: 210,
-                                      width: 150,
-                                      child: Center(
-                                        child: Text(
-                                          "Github Issues",
-                                          style: TextStyle(color: Colors.white),
-                                        ),
-                                      )),
-                                ),
-                              )
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 50,
-                          ),
-                          Material(
-                            color: const Color.fromARGB(0, 255, 193, 7),
-                            child: InkWell(
-                              child: Ink(
-                                decoration: const BoxDecoration(
+                                const SizedBox(width: 10),
+                                Material(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color:
+                                      controller.github_issues_isPressed.value
+                                          ? Color.fromARGB(57, 249, 245, 245)
+                                          : Colors.transparent,
+                                  child: InkWell(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10)),
-                                    gradient: LinearGradient(
-                                        begin: Alignment.topLeft,
-                                        end: Alignment.bottomRight,
-                                        colors: [
-                                          Color.fromARGB(255, 57, 158, 60),
-                                          Color.fromARGB(255, 12, 91, 15)
-                                        ])),
-                                height: 140,
-                                width: 270,
-                                child: const Center(
-                                  child: Text(
-                                    'GitHub Chart',
-                                    style: TextStyle(color: Colors.white),
+                                    highlightColor:
+                                        Color.fromARGB(206, 235, 145, 81),
+                                    splashColor: Color.fromRGBO(244, 93, 7, 1),
+                                    onTap: () {
+                                      controller.github_issues_isPressed.value =
+                                          !controller
+                                              .github_issues_isPressed.value;
+                                    },
+                                    child: Padding(
+                                      padding: EdgeInsets.all(6),
+                                      child: Ink(
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            gradient: const LinearGradient(
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                                colors: [
+                                                  Color.fromARGB(
+                                                      255, 68, 199, 72),
+                                                  Color.fromARGB(
+                                                      255, 17, 135, 21)
+                                                ])),
+                                        child: const SizedBox(
+                                            height: 210,
+                                            width: 140,
+                                            child: Center(
+                                              child: Text(
+                                                "Github Issues",
+                                                style: TextStyle(
+                                                    color: Colors.white),
+                                              ),
+                                            )),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 50,
+                            ),
+                            Material(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              color: controller.github_chart_isPressed.value
+                                  ? Color.fromARGB(57, 249, 245, 245)
+                                  : Colors.transparent,
+                              child: InkWell(
+                                highlightColor:
+                                    Color.fromARGB(206, 235, 145, 81),
+                                splashColor: Color.fromRGBO(244, 93, 7, 1),
+                                onTap: () {
+                                  controller.github_chart_isPressed.value =
+                                      !controller.github_chart_isPressed.value;
+                                },
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                child: Padding(
+                                  padding: EdgeInsets.all(8),
+                                  child: Ink(
+                                    decoration: const BoxDecoration(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10)),
+                                        gradient: LinearGradient(
+                                            begin: Alignment.topLeft,
+                                            end: Alignment.bottomRight,
+                                            colors: [
+                                              Color.fromARGB(255, 57, 158, 60),
+                                              Color.fromARGB(255, 12, 91, 15)
+                                            ])),
+                                    height: 140,
+                                    width: 270,
+                                    child: const Center(
+                                      child: Text(
+                                        'GitHub Chart',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          )
-                        ],
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -271,8 +350,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.amber,
                         padding: const EdgeInsets.all(6),
                         child: const ClipRRect(
-                          borderRadius:  BorderRadius.all(Radius.circular(12)),
-                          child:  SizedBox(
+                          borderRadius: BorderRadius.all(Radius.circular(12)),
+                          child: SizedBox(
                             height: 720,
                             width: 1100,
                           ),
