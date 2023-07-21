@@ -349,11 +349,219 @@ class _MyHomePageState extends State<MyHomePage> {
                         dashPattern: [6, 3, 6, 3],
                         color: Colors.amber,
                         padding: const EdgeInsets.all(6),
-                        child: const ClipRRect(
+                        child: ClipRRect(
                           borderRadius: BorderRadius.all(Radius.circular(12)),
-                          child: SizedBox(
+                          child: Container(
                             height: 720,
                             width: 1100,
+                            child: Padding(
+                              padding: EdgeInsets.all(20),
+                              child: Column(children: [
+                                SizedBox(
+                                  height: 40,
+                                ),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 100,
+                                    ),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(90),
+                                          gradient:
+                                              const LinearGradient(colors: [
+                                            Color.fromARGB(255, 26, 153, 182),
+                                            Color.fromARGB(255, 81, 215, 245),
+                                          ])),
+                                      child: const Padding(
+                                        padding: EdgeInsets.all(5),
+                                        child: CircleAvatar(
+                                          backgroundColor: Colors.black,
+                                          radius: 70,
+                                          child: SizedBox(
+                                              height: 95,
+                                              width: 100,
+                                              child: Center(
+                                                  child: Text(
+                                                "Image",
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Colors.white),
+                                              ))),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 20,
+                                    ),
+                                    Container(
+                                      width: 500,
+                                      height: 130,
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                              style: BorderStyle.solid,
+                                              color: const Color.fromARGB(
+                                                  151, 123, 121, 95)),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(20))),
+                                      child: const Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 15, vertical: 10),
+                                          child: Column(children: [
+                                            TextField(
+                                              style: TextStyle(
+                                                  fontSize: 23,
+                                                  color: Colors.white),
+                                              decoration: InputDecoration(
+                                                  hintText: "What's Your Name",
+                                                  hintStyle: TextStyle(
+                                                      fontSize: 23,
+                                                      color: Color.fromARGB(
+                                                          146, 150, 137, 137)),
+                                                  border: InputBorder.none),
+                                              cursorOpacityAnimates: true,
+                                              cursorWidth: 2,
+                                              cursorHeight: 22,
+                                              cursorRadius: Radius.circular(20),
+                                              cursorColor: Color.fromARGB(
+                                                  0, 195, 187, 187),
+                                            ),
+                                            TextField(
+                                              maxLines: 2,
+                                              style: TextStyle(
+                                                  fontSize: 16,
+                                                  color: Color.fromARGB(
+                                                      171, 217, 213, 213)),
+                                              decoration: InputDecoration(
+                                                  hintText: "More about ya",
+                                                  hintStyle: TextStyle(
+                                                      fontSize: 16,
+                                                      color: Color.fromARGB(
+                                                          109, 150, 137, 137)),
+                                                  isDense: true,
+                                                  border: InputBorder.none),
+                                              cursorOpacityAnimates: true,
+                                              cursorWidth: 2,
+                                              cursorHeight: 16,
+                                              cursorRadius: Radius.circular(20),
+                                              cursorColor: Color.fromARGB(
+                                                  0, 195, 187, 187),
+                                            ),
+                                          ])),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 40,
+                                ),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Container(
+                                      height: 210,
+                                      width: 320,
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: Color.fromARGB(
+                                                255, 151, 239, 11),
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          gradient: LinearGradient(colors: [
+                                            Color.fromARGB(255, 146, 221, 25),
+                                            Color.fromARGB(233, 78, 172, 24),
+                                          ])),
+                                      child: Padding(
+                                        padding: EdgeInsets.all(10),
+                                        child: Align(
+                                            alignment: Alignment.topCenter,
+                                            child: Text(
+                                              "Github Issues",
+                                              style: TextStyle(
+                                                  fontFamily: 'Nunito',
+                                                  color: Colors.white),
+                                            )),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 30,
+                                    ),
+                                    Container(
+                                      height: 210,
+                                      width: 320,
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: Color.fromARGB(
+                                                255, 5, 252, 190),
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          gradient: LinearGradient(colors: [
+                                            Color.fromARGB(255, 24, 247, 192),
+                                            Color.fromARGB(255, 43, 187, 151),
+                                          ])),
+                                      child: Padding(
+                                        padding: EdgeInsets.all(10),
+                                        child: Align(
+                                            alignment: Alignment.topCenter,
+                                            child: Text(
+                                              "Vercel",
+                                              style: TextStyle(
+                                                  fontFamily: 'Nunito',
+                                                  color: Colors.white),
+                                            )),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 30,
+                                    ),
+                                    Container(
+                                      height: 210,
+                                      width: 320,
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: Color.fromARGB(
+                                                255, 251, 9, 251),
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          gradient: LinearGradient(colors: [
+                                            Color.fromARGB(223, 184, 22, 202),
+                                            Color.fromARGB(255, 242, 67, 242),
+                                          ])),
+                                      child: Padding(
+                                        padding: EdgeInsets.all(10),
+                                        child: Align(
+                                            alignment: Alignment.topCenter,
+                                            child: Text(
+                                              "Contact Me",
+                                              style: TextStyle(
+                                                  fontFamily: 'Nunito',
+                                                  color: Colors.white),
+                                            )),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 40,
+                                ),
+                                Container(
+                                  height: 200,
+                                  width: 1200,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      gradient: LinearGradient(colors: [
+                                        Color.fromARGB(92, 98, 96, 96),
+                                        Color.fromARGB(54, 77, 74, 74),
+                                        Color.fromARGB(92, 98, 96, 96),
+                                      ])),
+                                ),
+                              ]),
+                            ),
                           ),
                         ),
                       )
