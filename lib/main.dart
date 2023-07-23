@@ -384,7 +384,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                               padding: EdgeInsets.all(5),
                                               child: CircleAvatar(
                                                 backgroundColor: Colors.black,
-                                                radius: 70,
+                                                radius: 2.36.w + 4.14.h,
                                                 child: ClipRRect(
                                                   borderRadius:
                                                       BorderRadius.circular(
@@ -772,7 +772,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ],
                               ),
                               SizedBox(
-                                height: 4.872.h,
+                                height: 4.8.h,
                               ),
                               Obx(
                                 () => controller.github_chart_isPressed.value
