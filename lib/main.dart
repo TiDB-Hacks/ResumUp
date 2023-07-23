@@ -298,9 +298,9 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 20),
+            padding: EdgeInsets.symmetric(vertical: 2.43.h),
             child: SizedBox(
-              width: 75.2.w,
+              width: 75.4.w,
               child: Align(
                 alignment: Alignment.topCenter,
                 child: Column(
@@ -357,7 +357,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           height: 87.2.h,
                           width: 76.388888.w,
                           child: Padding(
-                            padding: EdgeInsets.all(20),
+                            padding: EdgeInsets.symmetric(
+                                vertical: 2.43.h, horizontal: 1.38.w),
                             child: Column(children: [
                               SizedBox(
                                 height: 4.87.h,
