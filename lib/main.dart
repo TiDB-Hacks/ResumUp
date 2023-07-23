@@ -1,33 +1,29 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:resumup/controller/resume_build_controller.dart';
-
+import 'package:sizer/sizer.dart';
 import 'bindings/resume_build_bindings.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
+  // WidgetsFlutterBinding.ensureInitialized();
+  runApp(Sizer(builder: (context, orientation, deviceType) {
     return GetMaterialApp(
       initialBinding: Resume_Build_Bindings(),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(),
+      home: MyHomePage(),
     );
-  }
+  }));
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+  MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -45,11 +41,12 @@ class _MyHomePageState extends State<MyHomePage> {
           Align(
             alignment: Alignment.topLeft,
             child: Padding(
-              padding: const EdgeInsets.all(20),
+              padding:
+                  EdgeInsets.symmetric(horizontal: 1.38.w, vertical: 2.43.h),
               child: ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(30)),
+                borderRadius: BorderRadius.all(Radius.circular(30)),
                 child: Container(
-                  width: 300,
+                  width: 20.83.w,
                   decoration: const BoxDecoration(
                       gradient: LinearGradient(colors: [
                     Color.fromARGB(207, 216, 134, 11),
@@ -57,18 +54,19 @@ class _MyHomePageState extends State<MyHomePage> {
                   ])),
                   child: SafeArea(
                     child: Padding(
-                      padding: EdgeInsets.all(10),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 0.69.w, vertical: 1.21.h),
                       child: Obx(
                         () => Column(
                           children: <Widget>[
-                            const SizedBox(
-                              height: 5,
+                            SizedBox(
+                              height: 0.6.h,
                             ),
-                            const Card(
+                            Card(
                               color: Colors.black,
                               child: SizedBox(
                                 width: double.infinity,
-                                height: 30,
+                                height: 3.65.h,
                                 child: Center(
                                     child: Text(
                                   "Pick your Widgets",
@@ -76,21 +74,21 @@ class _MyHomePageState extends State<MyHomePage> {
                                 )),
                               ),
                             ),
-                            const SizedBox(
-                              height: 10,
+                            SizedBox(
+                              height: 1.21.h,
                             ),
-                            const Divider(
-                              indent: 15,
-                              endIndent: 15,
-                              thickness: 2,
+                            Divider(
+                              indent: 1.041.w,
+                              endIndent: 1.041.w,
+                              thickness: 0.24.h,
                             ),
-                            const SizedBox(
-                              height: 10,
+                            SizedBox(
+                              height: 1.21.h,
                             ),
                             Row(
                               children: [
                                 SizedBox(
-                                  height: 222,
+                                  height: 27.04.h,
                                   child: Column(
                                     children: [
                                       Container(
@@ -116,20 +114,20 @@ class _MyHomePageState extends State<MyHomePage> {
                                                   !controller
                                                       .Vercel_isPressed.value;
                                             },
-                                            child: const SizedBox(
-                                                height: 95,
-                                                width: 100,
+                                            child: SizedBox(
+                                                height: 11.57.h,
+                                                width: 6.94.w,
                                                 child: Center(
                                                     child: Text(
                                                   'Vercel',
-                                                  style:
-                                                      TextStyle(fontSize: 11),
+                                                  style: TextStyle(
+                                                      fontSize: 1.33.h),
                                                 ))),
                                           ),
                                         ),
                                       ),
-                                      const SizedBox(
-                                        height: 8,
+                                      SizedBox(
+                                        height: 0.97.h,
                                       ),
                                       Material(
                                         borderRadius: BorderRadius.circular(90),
@@ -150,7 +148,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     .profile_isPressed.value;
                                           },
                                           child: Padding(
-                                            padding: EdgeInsets.all(5),
+                                            padding: EdgeInsets.symmetric(
+                                                vertical: 0.3.h,
+                                                horizontal: 0.347.w),
                                             child: Ink(
                                               decoration: BoxDecoration(
                                                   borderRadius:
@@ -163,21 +163,23 @@ class _MyHomePageState extends State<MyHomePage> {
                                                         Color.fromARGB(
                                                             255, 235, 66, 122)
                                                       ])),
-                                              child: const Padding(
-                                                padding: EdgeInsets.all(5),
+                                              child: Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 0.347.w,
+                                                    vertical: 0.6.h),
                                                 child: CircleAvatar(
                                                   backgroundColor:
                                                       Color.fromARGB(
                                                           170, 150, 3, 163),
-                                                  radius: 45,
+                                                  radius: 2.74.h + 1.5.w,
                                                   child: SizedBox(
-                                                      height: 95,
-                                                      width: 100,
+                                                      height: 11.57.h,
+                                                      width: 6.94.w,
                                                       child: Center(
                                                           child: Text(
                                                         "Image Icon",
                                                         style: TextStyle(
-                                                            fontSize: 12,
+                                                            fontSize: 1.46.h,
                                                             color:
                                                                 Colors.white),
                                                       ))),
@@ -190,7 +192,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ],
                                   ),
                                 ),
-                                const SizedBox(width: 10),
+                                SizedBox(width: 0.69.w),
                                 Material(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
@@ -210,7 +212,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                               .github_issues_isPressed.value;
                                     },
                                     child: Padding(
-                                      padding: EdgeInsets.all(6),
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 0.41.w, vertical: 0.73.h),
                                       child: Ink(
                                         decoration: BoxDecoration(
                                             borderRadius:
@@ -224,9 +227,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                                   Color.fromARGB(
                                                       255, 17, 135, 21)
                                                 ])),
-                                        child: const SizedBox(
-                                            height: 210,
-                                            width: 140,
+                                        child: SizedBox(
+                                            height: 25.57.h,
+                                            width: 9.72.w,
                                             child: Center(
                                               child: Text(
                                                 "Github Issues",
@@ -240,8 +243,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                 )
                               ],
                             ),
-                            const SizedBox(
-                              height: 50,
+                            SizedBox(
+                              height: 6.09.h,
                             ),
                             Material(
                               borderRadius:
@@ -260,21 +263,22 @@ class _MyHomePageState extends State<MyHomePage> {
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
                                 child: Padding(
-                                  padding: EdgeInsets.all(8),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 0.55.w, vertical: 0.97.h),
                                   child: Ink(
-                                    decoration: const BoxDecoration(
+                                    decoration: BoxDecoration(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(10)),
                                         gradient: LinearGradient(
                                             begin: Alignment.topLeft,
                                             end: Alignment.bottomRight,
-                                            colors: [
+                                            colors: const [
                                               Color.fromARGB(255, 57, 158, 60),
                                               Color.fromARGB(255, 12, 91, 15)
                                             ])),
-                                    height: 140,
-                                    width: 270,
-                                    child: const Center(
+                                    height: 17.05.h,
+                                    width: 18.75.w,
+                                    child: Center(
                                       child: Text(
                                         'GitHub Chart',
                                         style: TextStyle(color: Colors.white),
@@ -293,280 +297,505 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-          AspectRatio(
-            aspectRatio: 33 / 25,
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 20),
-              child: SizedBox(
-                // color: const Color.fromARGB(255, 9, 63, 11),
-                width: double.infinity,
-                child: Align(
-                  alignment: Alignment.topCenter,
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text("Portfolio Preview",
-                              style: TextStyle(
-                                  color: Colors.grey,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 20,
-                                  fontStyle: FontStyle.italic,
-                                  fontWeight: FontWeight.w100)),
-                          InkWell(
-                            borderRadius: BorderRadius.circular(20),
-                            highlightColor: Colors.orange,
-                            splashColor: Colors.amber,
-                            onTap: () {},
-                            child: Ink(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  gradient: const LinearGradient(colors: [
-                                    Color.fromARGB(255, 213, 134, 15),
-                                    Color.fromARGB(255, 225, 158, 58)
-                                  ])),
-                              child: const SizedBox(
-                                height: 30,
-                                width: 80,
-                                child: Center(
-                                  child: Text(
-                                    "Deploy",
-                                    style: TextStyle(color: Colors.white),
-                                  ),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 20),
+            child: SizedBox(
+              width: 75.2.w,
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Portfolio Preview",
+                            style: TextStyle(
+                                color: Colors.grey,
+                                fontFamily: 'Nunito',
+                                fontSize: 2.43.h,
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.w100)),
+                        InkWell(
+                          borderRadius: BorderRadius.circular(20),
+                          highlightColor: Colors.orange,
+                          splashColor: Colors.amber,
+                          onTap: () {},
+                          child: Ink(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                gradient: const LinearGradient(colors: [
+                                  Color.fromARGB(255, 213, 134, 15),
+                                  Color.fromARGB(255, 225, 158, 58)
+                                ])),
+                            child: SizedBox(
+                              height: 3.65.h,
+                              width: 5.55.w,
+                              child: Center(
+                                child: Text(
+                                  "Deploy",
+                                  style: TextStyle(color: Colors.white),
                                 ),
                               ),
                             ),
-                          )
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      DottedBorder(
-                        borderType: BorderType.RRect,
-                        radius: const Radius.circular(12),
-                        dashPattern: [6, 3, 6, 3],
-                        color: Colors.amber,
-                        padding: const EdgeInsets.all(6),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.all(Radius.circular(12)),
-                          child: Container(
-                            height: 720,
-                            width: 1100,
-                            child: Padding(
-                              padding: EdgeInsets.all(20),
-                              child: Column(children: [
-                                SizedBox(
-                                  height: 40,
-                                ),
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 100,
-                                    ),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(90),
-                                          gradient:
-                                              const LinearGradient(colors: [
-                                            Color.fromARGB(255, 26, 153, 182),
-                                            Color.fromARGB(255, 81, 215, 245),
-                                          ])),
-                                      child: const Padding(
-                                        padding: EdgeInsets.all(5),
-                                        child: CircleAvatar(
-                                          backgroundColor: Colors.black,
-                                          radius: 70,
-                                          child: SizedBox(
-                                              height: 95,
-                                              width: 100,
-                                              child: Center(
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 1.827.h,
+                    ),
+                    DottedBorder(
+                      borderType: BorderType.RRect,
+                      radius: Radius.circular(12),
+                      dashPattern: [6, 3, 6, 3],
+                      color: Colors.amber,
+                      padding: EdgeInsets.symmetric(
+                          vertical: 0.73.h, horizontal: 0.4166.w),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(12)),
+                        child: Container(
+                          height: 87.2.h,
+                          width: 76.388888.w,
+                          child: Padding(
+                            padding: EdgeInsets.all(20),
+                            child: Column(children: [
+                              SizedBox(
+                                height: 4.87.h,
+                              ),
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: 12.18.h,
+                                  ),
+                                  Obx(
+                                    () => controller.profile_isPressed.value
+                                        ? Container(
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(90),
+                                                gradient: const LinearGradient(
+                                                    colors: [
+                                                      Color.fromARGB(
+                                                          255, 26, 153, 182),
+                                                      Color.fromARGB(
+                                                          255, 81, 215, 245),
+                                                    ])),
+                                            child: Padding(
+                                              padding: EdgeInsets.all(5),
+                                              child: CircleAvatar(
+                                                backgroundColor: Colors.black,
+                                                radius: 70,
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          12.18.h + 6.94.w),
+                                                  child: Expanded(
+                                                      child: Image.network(
+                                                          'https://static.vecteezy.com/system/resources/previews/021/548/095/original/default-profile-picture-avatar-user-avatar-icon-person-icon-head-icon-profile-picture-icons-default-anonymous-user-male-and-female-businessman-photo-placeholder-social-network-avatar-portrait-free-vector.jpg')),
+                                                ),
+                                              ),
+                                            ),
+                                          )
+                                        : SizedBox(),
+                                  ),
+                                  SizedBox(
+                                    width: 1.38.w,
+                                  ),
+                                  Container(
+                                    width: 34.72.w,
+                                    height: 15.83.h,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            style: BorderStyle.solid,
+                                            color: const Color.fromARGB(
+                                                151, 123, 121, 95)),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(20))),
+                                    child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 1.0416666.w,
+                                            vertical: 1.218.h),
+                                        child: Column(children: [
+                                          TextField(
+                                            style: TextStyle(
+                                                fontSize: 1.43.h + 0.83.w,
+                                                color: Colors.white),
+                                            decoration: InputDecoration(
+                                                hintText: "What's Your Name",
+                                                hintStyle: TextStyle(
+                                                    fontSize: 1.43.h + 0.83.w,
+                                                    color: Color.fromARGB(
+                                                        146, 150, 137, 137)),
+                                                border: InputBorder.none),
+                                            cursorOpacityAnimates: true,
+                                            cursorWidth: 0.138.w,
+                                            cursorHeight: 2.679.h,
+                                            cursorRadius: Radius.circular(20),
+                                            cursorColor: Color.fromARGB(
+                                                0, 195, 187, 187),
+                                          ),
+                                          TextField(
+                                            maxLines: 2,
+                                            style: TextStyle(
+                                                fontSize: 1.8.h,
+                                                color: Color.fromARGB(
+                                                    171, 217, 213, 213)),
+                                            decoration: InputDecoration(
+                                                hintText: "More about ya",
+                                                hintStyle: TextStyle(
+                                                    fontSize: 1.8.h,
+                                                    color: Color.fromARGB(
+                                                        109, 150, 137, 137)),
+                                                isDense: true,
+                                                border: InputBorder.none),
+                                            cursorOpacityAnimates: true,
+                                            cursorWidth: 0.138.w,
+                                            cursorHeight: 1.948.h,
+                                            cursorRadius: Radius.circular(20),
+                                            cursorColor: Color.fromARGB(
+                                                0, 195, 187, 187),
+                                          ),
+                                        ])),
+                                  )
+                                ],
+                              ),
+                              SizedBox(
+                                height: 4.872.h,
+                              ),
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: 0.347.w,
+                                  ),
+                                  Obx(
+                                    () => controller
+                                            .github_issues_isPressed.value
+                                        ? Container(
+                                            height: 25.57.h,
+                                            width: 22.22.w,
+                                            decoration: BoxDecoration(
+                                                border: Border.all(
+                                                  color: const Color.fromARGB(
+                                                      255, 151, 239, 11),
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                                gradient: const LinearGradient(
+                                                    colors: [
+                                                      Color.fromARGB(
+                                                          255, 146, 221, 25),
+                                                      Color.fromARGB(
+                                                          233, 78, 172, 24),
+                                                    ])),
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 0.694.w,
+                                                  vertical: 1.21.h),
+                                              child: Align(
+                                                  alignment:
+                                                      Alignment.topCenter,
                                                   child: Text(
-                                                "Image",
-                                                style: TextStyle(
-                                                    fontSize: 12,
-                                                    color: Colors.white),
-                                              ))),
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      width: 20,
-                                    ),
-                                    Container(
-                                      width: 500,
-                                      height: 130,
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              style: BorderStyle.solid,
-                                              color: const Color.fromARGB(
-                                                  151, 123, 121, 95)),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(20))),
-                                      child: const Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 15, vertical: 10),
-                                          child: Column(children: [
-                                            TextField(
-                                              style: TextStyle(
-                                                  fontSize: 23,
-                                                  color: Colors.white),
-                                              decoration: InputDecoration(
-                                                  hintText: "What's Your Name",
-                                                  hintStyle: TextStyle(
-                                                      fontSize: 23,
-                                                      color: Color.fromARGB(
-                                                          146, 150, 137, 137)),
-                                                  border: InputBorder.none),
-                                              cursorOpacityAnimates: true,
-                                              cursorWidth: 2,
-                                              cursorHeight: 22,
-                                              cursorRadius: Radius.circular(20),
-                                              cursorColor: Color.fromARGB(
-                                                  0, 195, 187, 187),
+                                                    "Github Issues",
+                                                    style: TextStyle(
+                                                        fontFamily: 'Nunito',
+                                                        color: Colors.white),
+                                                  )),
                                             ),
-                                            TextField(
-                                              maxLines: 2,
-                                              style: TextStyle(
-                                                  fontSize: 16,
+                                          )
+                                        : SizedBox(),
+                                  ),
+                                  SizedBox(
+                                    width: 2.083.w,
+                                  ),
+                                  Obx(
+                                    () => controller.Vercel_isPressed.value
+                                        ? Container(
+                                            height: 25.57.h,
+                                            width: 22.22.w,
+                                            decoration: BoxDecoration(
+                                                border: Border.all(
                                                   color: Color.fromARGB(
-                                                      171, 217, 213, 213)),
-                                              decoration: InputDecoration(
-                                                  hintText: "More about ya",
-                                                  hintStyle: TextStyle(
-                                                      fontSize: 16,
-                                                      color: Color.fromARGB(
-                                                          109, 150, 137, 137)),
-                                                  isDense: true,
-                                                  border: InputBorder.none),
-                                              cursorOpacityAnimates: true,
-                                              cursorWidth: 2,
-                                              cursorHeight: 16,
-                                              cursorRadius: Radius.circular(20),
-                                              cursorColor: Color.fromARGB(
-                                                  0, 195, 187, 187),
+                                                      255, 5, 252, 190),
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                                gradient: const LinearGradient(
+                                                    colors: [
+                                                      Color.fromARGB(
+                                                          255, 17, 244, 187),
+                                                      Color.fromARGB(
+                                                          255, 30, 167, 133),
+                                                    ])),
+                                            child: Padding(
+                                              padding: EdgeInsets.all(10),
+                                              child: Align(
+                                                  alignment:
+                                                      Alignment.topCenter,
+                                                  child: Text(
+                                                    "Vercel",
+                                                    style: TextStyle(
+                                                        fontFamily: 'Nunito',
+                                                        color: Colors.white),
+                                                  )),
                                             ),
-                                          ])),
-                                    )
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 40,
-                                ),
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Container(
-                                      height: 210,
-                                      width: 320,
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Color.fromARGB(
-                                                255, 151, 239, 11),
+                                          )
+                                        : SizedBox(),
+                                  ),
+                                  SizedBox(
+                                    width: 2.083.w,
+                                  ),
+                                  Container(
+                                    height: 25.57.h,
+                                    width: 22.22.w,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color:
+                                              Color.fromARGB(255, 251, 9, 251),
+                                        ),
+                                        borderRadius: BorderRadius.circular(20),
+                                        gradient: const LinearGradient(colors: [
+                                          Color.fromARGB(223, 184, 22, 202),
+                                          Color.fromARGB(255, 242, 67, 242),
+                                        ])),
+                                    child: Padding(
+                                      padding: EdgeInsets.all(10),
+                                      child: Column(
+                                        children: [
+                                          Align(
+                                              alignment: Alignment.topCenter,
+                                              child: Text(
+                                                "Let's Connect",
+                                                style: TextStyle(
+                                                    fontFamily: 'Nunito',
+                                                    color: Colors.white),
+                                              )),
+                                          SizedBox(
+                                            height: 1.46.h,
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          gradient: LinearGradient(colors: [
-                                            Color.fromARGB(255, 146, 221, 25),
-                                            Color.fromARGB(233, 78, 172, 24),
-                                          ])),
-                                      child: Padding(
-                                        padding: EdgeInsets.all(10),
-                                        child: Align(
-                                            alignment: Alignment.topCenter,
-                                            child: Text(
-                                              "Github Issues",
-                                              style: TextStyle(
-                                                  fontFamily: 'Nunito',
-                                                  color: Colors.white),
-                                            )),
+                                          Row(
+                                            children: [
+                                              SizedBox(
+                                                width: 2.43.w,
+                                              ),
+                                              Icon(
+                                                Icons.email_rounded,
+                                                color: Color.fromARGB(
+                                                    140, 255, 255, 255),
+                                                size: 2.1924.h,
+                                              ),
+                                              SizedBox(
+                                                width: 0.55.w,
+                                              ),
+                                              SizedBox(
+                                                width: 15.97.w,
+                                                child: TextField(
+                                                  style: TextStyle(
+                                                      fontFamily: 'Poppins',
+                                                      fontWeight:
+                                                          FontWeight.w200,
+                                                      fontSize: 1.584.h,
+                                                      color: Color.fromARGB(
+                                                          223, 237, 232, 232)),
+                                                  decoration: InputDecoration(
+                                                      hintText: "Email",
+                                                      hintStyle: TextStyle(
+                                                          fontSize: 1.584.h,
+                                                          color: Color.fromARGB(
+                                                              167,
+                                                              199,
+                                                              193,
+                                                              193)),
+                                                      isDense: true,
+                                                      border: InputBorder.none),
+                                                  cursorOpacityAnimates: true,
+                                                  cursorWidth: 0.138.w,
+                                                  cursorHeight: 1.58.h,
+                                                  cursorRadius:
+                                                      Radius.circular(20),
+                                                  cursorColor: Color.fromARGB(
+                                                      0, 195, 187, 187),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: 0.73.h,
+                                          ),
+                                          Row(
+                                            children: [
+                                              SizedBox(
+                                                width: 2.43.w,
+                                              ),
+                                              Icon(
+                                                FontAwesomeIcons.github,
+                                                color: Color.fromARGB(
+                                                    140, 255, 255, 255),
+                                                size: 2.1924.h,
+                                              ),
+                                              SizedBox(
+                                                width: 0.55.w,
+                                              ),
+                                              SizedBox(
+                                                width: 15.97.w,
+                                                child: TextField(
+                                                  style: TextStyle(
+                                                      fontFamily: 'Poppins',
+                                                      fontWeight:
+                                                          FontWeight.w200,
+                                                      fontSize: 1.584.h,
+                                                      color: Color.fromARGB(
+                                                          223, 237, 232, 232)),
+                                                  decoration: InputDecoration(
+                                                      hintText: "Github",
+                                                      hintStyle: TextStyle(
+                                                          fontSize: 1.584.h,
+                                                          color: Color.fromARGB(
+                                                              167,
+                                                              199,
+                                                              193,
+                                                              193)),
+                                                      isDense: true,
+                                                      border: InputBorder.none),
+                                                  cursorOpacityAnimates: true,
+                                                  cursorWidth: 0.138.w,
+                                                  cursorHeight: 1.58.h,
+                                                  cursorRadius:
+                                                      Radius.circular(20),
+                                                  cursorColor: Color.fromARGB(
+                                                      0, 195, 187, 187),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: 0.73.h,
+                                          ),
+                                          Row(
+                                            children: [
+                                              SizedBox(
+                                                width: 2.43.w,
+                                              ),
+                                              Icon(
+                                                FontAwesomeIcons.twitter,
+                                                color: Color.fromARGB(
+                                                    140, 255, 255, 255),
+                                                size: 2.1924.h,
+                                              ),
+                                              SizedBox(
+                                                width: 0.55.w,
+                                              ),
+                                              SizedBox(
+                                                width: 15.97.w,
+                                                child: TextField(
+                                                  style: TextStyle(
+                                                      fontFamily: 'Poppins',
+                                                      fontWeight:
+                                                          FontWeight.w200,
+                                                      fontSize: 1.584.h,
+                                                      color: Color.fromARGB(
+                                                          223, 237, 232, 232)),
+                                                  decoration: InputDecoration(
+                                                      hintText: "Twitter",
+                                                      hintStyle: TextStyle(
+                                                          fontSize: 1.584.h,
+                                                          color: Color.fromARGB(
+                                                              167,
+                                                              199,
+                                                              193,
+                                                              193)),
+                                                      isDense: true,
+                                                      border: InputBorder.none),
+                                                  cursorOpacityAnimates: true,
+                                                  cursorWidth: 0.138.w,
+                                                  cursorHeight: 1.58.h,
+                                                  cursorRadius:
+                                                      Radius.circular(20),
+                                                  cursorColor: Color.fromARGB(
+                                                      0, 195, 187, 187),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: 0.73.h,
+                                          ),
+                                          Row(
+                                            children: [
+                                              SizedBox(
+                                                width: 2.43.w,
+                                              ),
+                                              Icon(
+                                                FontAwesomeIcons.linkedin,
+                                                color: Color.fromARGB(
+                                                    140, 255, 255, 255),
+                                                size: 2.1924.h,
+                                              ),
+                                              SizedBox(
+                                                width: 0.55.w,
+                                              ),
+                                              SizedBox(
+                                                width: 15.97.w,
+                                                child: TextField(
+                                                  style: TextStyle(
+                                                      fontFamily: 'Poppins',
+                                                      fontWeight:
+                                                          FontWeight.w200,
+                                                      fontSize: 1.584.h,
+                                                      color: Color.fromARGB(
+                                                          223, 237, 232, 232)),
+                                                  decoration: InputDecoration(
+                                                      hintText: "Linkedin",
+                                                      hintStyle: TextStyle(
+                                                          fontSize: 1.584.h,
+                                                          color: Color.fromARGB(
+                                                              167,
+                                                              199,
+                                                              193,
+                                                              193)),
+                                                      isDense: true,
+                                                      border: InputBorder.none),
+                                                  cursorOpacityAnimates: true,
+                                                  cursorWidth: 0.138.w,
+                                                  cursorHeight: 1.58.h,
+                                                  cursorRadius:
+                                                      Radius.circular(20),
+                                                  cursorColor: Color.fromARGB(
+                                                      0, 195, 187, 187),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                    SizedBox(
-                                      width: 30,
-                                    ),
-                                    Container(
-                                      height: 210,
-                                      width: 320,
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Color.fromARGB(
-                                                255, 5, 252, 190),
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          gradient: LinearGradient(colors: [
-                                            Color.fromARGB(255, 24, 247, 192),
-                                            Color.fromARGB(255, 43, 187, 151),
-                                          ])),
-                                      child: Padding(
-                                        padding: EdgeInsets.all(10),
-                                        child: Align(
-                                            alignment: Alignment.topCenter,
-                                            child: Text(
-                                              "Vercel",
-                                              style: TextStyle(
-                                                  fontFamily: 'Nunito',
-                                                  color: Colors.white),
-                                            )),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 30,
-                                    ),
-                                    Container(
-                                      height: 210,
-                                      width: 320,
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Color.fromARGB(
-                                                255, 251, 9, 251),
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          gradient: LinearGradient(colors: [
-                                            Color.fromARGB(223, 184, 22, 202),
-                                            Color.fromARGB(255, 242, 67, 242),
-                                          ])),
-                                      child: Padding(
-                                        padding: EdgeInsets.all(10),
-                                        child: Align(
-                                            alignment: Alignment.topCenter,
-                                            child: Text(
-                                              "Let's Connect",
-                                              style: TextStyle(
-                                                  fontFamily: 'Nunito',
-                                                  color: Colors.white),
-                                            )),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 40,
-                                ),
-                                Container(
-                                  height: 200,
-                                  width: 1200,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      gradient: LinearGradient(colors: [
-                                        Color.fromARGB(92, 98, 96, 96),
-                                        Color.fromARGB(54, 77, 74, 74),
-                                        Color.fromARGB(92, 98, 96, 96),
-                                      ])),
-                                ),
-                              ]),
-                            ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 4.872.h,
+                              ),
+                              Obx(
+                                () => controller.github_chart_isPressed.value
+                                    ? Container(
+                                        height: 24.36.h,
+                                        width: 83.33.w,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            gradient: LinearGradient(colors: [
+                                              Color.fromARGB(92, 98, 96, 96),
+                                              Color.fromARGB(54, 77, 74, 74),
+                                              Color.fromARGB(92, 98, 96, 96),
+                                            ])),
+                                      )
+                                    : SizedBox(),
+                              ),
+                            ]),
                           ),
                         ),
-                      )
-                    ],
-                  ),
+                      ),
+                    )
+                  ],
                 ),
               ),
             ),
