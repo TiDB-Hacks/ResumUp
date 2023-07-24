@@ -1,5 +1,7 @@
 import 'package:appwrite/appwrite.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:window_location_href/window_location_href.dart';
 
 class ResumeBuildController extends GetxController {
   late Client client;
@@ -8,6 +10,7 @@ class ResumeBuildController extends GetxController {
   var profile_isPressed = false.obs;
   var github_issues_isPressed = false.obs;
   var github_chart_isPressed = false.obs;
+  final Uri? location = href == null ? null : Uri.parse(href!);
   late Account account;
   @override
   void onInit() async {
@@ -35,7 +38,7 @@ class ResumeBuildController extends GetxController {
 
   Future<void> gitSignIn() async {
     await account.createOAuth2Session(
-        provider: 'github', success: "https://resum-up.vercel.app/auth.html");
+        provider: 'github', success: kIsWeb ? '${location?.origin}/auth.html' : null,);
     await checkStep();
   }
 }

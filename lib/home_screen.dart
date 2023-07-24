@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:progress_bar_steppers/steppers.dart';
 import 'controller/resume_build_controller.dart';
 
+
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -22,33 +24,35 @@ class HomeScreenState extends State<HomeScreen> {
         label: 'Step 1',
         child: Padding(
           padding: EdgeInsets.all(15),
-          child: ElevatedButton(
-            child: Row(
-              children: [
-                Icon(
-                  FontAwesomeIcons.github,
-                  color: Colors.black,
-                  size: 20,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  'Sign In to Github',
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 66, 66, 66),
-                      fontFamily: 'Ubuntu'),
-                ),
-              ],
+          child: Obx(
+            ()=> ElevatedButton(
+              child: Row(
+                children: [
+                  Icon(
+                    FontAwesomeIcons.github,
+                    color: Colors.black,
+                    size: 20,
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    'Sign In to Github',
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 66, 66, 66),
+                        fontFamily: 'Ubuntu'),
+                  ),
+                ],
+              ),
+              style: ElevatedButton.styleFrom(
+                  fixedSize: Size(200, 32),
+                  backgroundColor: (controller.currentStep.value == 1)
+                      ? Color.fromARGB(255, 26, 235, 235)
+                      : Color.fromARGB(255, 20, 160, 160)),
+              onPressed: () async {
+                await controller.gitSignIn();
+              },
             ),
-            style: ElevatedButton.styleFrom(
-                fixedSize: Size(200, 32),
-                backgroundColor: (controller.currentStep.value == 1)
-                    ? Color.fromARGB(255, 26, 235, 235)
-                    : Color.fromARGB(255, 20, 160, 160)),
-            onPressed: () async {
-              await controller.gitSignIn();
-            },
           ),
         ),
       ),
@@ -56,18 +60,20 @@ class HomeScreenState extends State<HomeScreen> {
         label: 'Step 2',
         child: Padding(
           padding: EdgeInsets.all(15),
-          child: ElevatedButton(
-            child: Text(
-              'Sign In to Vercel',
-              style: TextStyle(
-                  color: Color.fromARGB(255, 66, 66, 66), fontFamily: 'Ubuntu'),
+          child: Obx(
+           ()=> ElevatedButton(
+              child: Text(
+                'Sign In to Vercel',
+                style: TextStyle(
+                    color: Color.fromARGB(255, 66, 66, 66), fontFamily: 'Ubuntu'),
+              ),
+              style: ElevatedButton.styleFrom(
+                  fixedSize: Size(200, 32),
+                  backgroundColor: (controller.currentStep.value == 1)
+                      ? Color.fromARGB(255, 20, 160, 160)
+                      : Color.fromARGB(255, 26, 235, 235)),
+              onPressed: () {},
             ),
-            style: ElevatedButton.styleFrom(
-                fixedSize: Size(200, 32),
-                backgroundColor: (controller.currentStep.value == 1)
-                    ? Color.fromARGB(255, 20, 160, 160)
-                    : Color.fromARGB(255, 26, 235, 235)),
-            onPressed: () {},
           ),
         ),
       ),

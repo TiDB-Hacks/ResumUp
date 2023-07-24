@@ -43,6 +43,7 @@ dependencies:
   icons_plus: ^4.0.0
   appwrite: ^9.0.1
   mysql1: ^0.20.0
+  window_location_href: ^1.0.1+2
 
 dev_dependencies:
   flutter_test:
