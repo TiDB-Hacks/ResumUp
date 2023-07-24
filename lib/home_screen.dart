@@ -55,9 +55,13 @@ class HomeScreenState extends State<HomeScreen> {
                 fixedSize: Size(200, 32),
                 backgroundColor: Color.fromARGB(255, 26, 235, 235)),
             onPressed: () async {
-              await account.createOAuth2Session(
+              await account
+                  .createOAuth2Session(
                 provider: 'github',
-              );
+              )
+                  .catchError((error) {
+                print(error);
+              });
             },
           ),
         ),
