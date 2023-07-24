@@ -16,14 +16,17 @@ class HomeScreenState extends State<HomeScreen> {
   var currentStep = 1;
   var totalSteps = 2;
   late List<StepperData> stepsData;
-
+  late Client client;
+  late Account account;
   @override
   void initState() {
-    Client client = Client();
-client
-    .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('64bda5974a3168ff237a')
-    .setSelfSigned(status: true); 
+    client = Client();
+    client
+        .setEndpoint('https://cloud.appwrite.io/v1')
+        .setProject('64bda5974a3168ff237a')
+        .setSelfSigned(status: true);
+    account = Account(client);
+
     stepsData = [
       StepperData(
         label: 'Step 1',
@@ -51,7 +54,20 @@ client
             style: ElevatedButton.styleFrom(
                 fixedSize: Size(200, 32),
                 backgroundColor: Color.fromARGB(255, 26, 235, 235)),
-            onPressed: () {},
+            onPressed: () async {
+              await account
+                  .createOAuth2Session(
+                    provider: 'github',
+                  )
+                  .then((value) => {
+                        setState(() {
+                          currentStep = 2;
+                        })
+                      })
+                  .catchError((error) {
+                print(error.response);
+              });
+            },
           ),
         ),
       ),
@@ -118,13 +134,14 @@ client
                     boxShadow: [
                       BoxShadow(color: Color.fromARGB(198, 56, 55, 55))
                     ],
+                    backgroundBlendMode: BlendMode.difference,
                     color: Color.fromARGB(255, 50, 49, 49),
                     borderRadius: BorderRadius.all(Radius.circular(20))),
                 child: Padding(
                   padding: EdgeInsets.all(15),
                   child: Column(
                     children: [
-                      Align(
+                      const Align(
                         alignment: Alignment.topCenter,
                         child: Padding(
                           padding: EdgeInsets.all(10),
@@ -138,10 +155,10 @@ client
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
-                      Text(
+                      const Text(
                         "Lets Get ya Started",
                         style: TextStyle(
                             color: Color.fromARGB(208, 255, 255, 255),
@@ -149,7 +166,7 @@ client
                             fontFamily: 'RobotoMono',
                             fontWeight: FontWeight.w200),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 35,
                       ),
                       Padding(
