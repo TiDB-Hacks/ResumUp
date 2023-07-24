@@ -43,7 +43,9 @@ class HomeScreenState extends State<HomeScreen> {
             ),
             style: ElevatedButton.styleFrom(
                 fixedSize: Size(200, 32),
-                backgroundColor: Color.fromARGB(255, 26, 235, 235)),
+                backgroundColor: (controller.currentStep.value == 1)
+                    ? Color.fromARGB(255, 26, 235, 235)
+                    : Color.fromARGB(255, 20, 160, 160)),
             onPressed: () async {
               await controller.gitSignIn();
             },
@@ -62,7 +64,9 @@ class HomeScreenState extends State<HomeScreen> {
             ),
             style: ElevatedButton.styleFrom(
                 fixedSize: Size(200, 32),
-                backgroundColor: Color.fromARGB(255, 20, 160, 160)),
+                backgroundColor: (controller.currentStep.value == 1)
+                    ? Color.fromARGB(255, 20, 160, 160)
+                    : Color.fromARGB(255, 26, 235, 235)),
             onPressed: () {},
           ),
         ),
@@ -151,7 +155,7 @@ class HomeScreenState extends State<HomeScreen> {
                       Padding(
                         padding: EdgeInsets.only(left: 20),
                         child: Obx(
-                          ()=> Steppers(
+                          () => Steppers(
                             direction: StepperDirection.vertical,
                             labels: stepsData,
                             currentStep: controller.currentStep.value,
