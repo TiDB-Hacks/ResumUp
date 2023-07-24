@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:resumup/controller/resume_build_controller.dart';
 import 'package:sizer/sizer.dart';
 import 'bindings/resume_build_bindings.dart';
+import 'home_screen.dart';
 
 void main() {
   // WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +18,7 @@ void main() {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MyHomePage(),
+      home: HomeScreen(),
     );
   }));
 }
@@ -361,7 +362,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 vertical: 2.43.h, horizontal: 1.38.w),
                             child: Column(children: [
                               SizedBox(
-                                height: 4.87.h,
+                                height: 4.85.h,
                               ),
                               Row(
                                 children: [
@@ -420,6 +421,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           TextField(
                                             style: TextStyle(
                                                 fontSize: 1.43.h + 0.83.w,
+                                                fontWeight: FontWeight.w200,
                                                 color: Colors.white),
                                             decoration: InputDecoration(
                                                 hintText: "What's Your Name",
@@ -461,7 +463,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ],
                               ),
                               SizedBox(
-                                height: 4.872.h,
+                                height: 4.85.h,
                               ),
                               Row(
                                 children: [
@@ -773,17 +775,18 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ],
                               ),
                               SizedBox(
-                                height: 4.8.h,
+                                height: 4.5.h,
                               ),
                               Obx(
                                 () => controller.github_chart_isPressed.value
                                     ? Container(
-                                        height: 24.36.h,
+                                        height: 24.h,
                                         width: 83.33.w,
                                         decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(20),
-                                            gradient: LinearGradient(colors: [
+                                            gradient:
+                                                LinearGradient(colors: const [
                                               Color.fromARGB(92, 98, 96, 96),
                                               Color.fromARGB(54, 77, 74, 74),
                                               Color.fromARGB(92, 98, 96, 96),

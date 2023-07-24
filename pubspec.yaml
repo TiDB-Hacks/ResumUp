@@ -39,6 +39,9 @@ dependencies:
   get: ^4.6.5
   font_awesome_flutter: ^10.5.0
   sizer: ^2.0.15
+  progress_bar_steppers: ^0.0.2+2
+  icons_plus: ^4.0.0
+  appwrite: ^9.0.1
 
 dev_dependencies:
   flutter_test:
@@ -113,6 +116,13 @@ flutter:
       fonts:   
         - asset: assets/fonts/Rubik-Regular.ttf
           weight: 100
+
+    - family: Space
+      fonts:   
+        - asset: assets/fonts/SpaceGrotesk-Light.ttf
+          weight: 100
+        - asset: assets/fonts/SpaceGrotesk-Regular.ttf
+          weight: 200
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
