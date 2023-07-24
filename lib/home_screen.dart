@@ -57,7 +57,7 @@ class HomeScreenState extends State<HomeScreen> {
             onPressed: () async {
               await account
                   .createOAuth2Session(
-                      provider: 'github', success: "resum-up.vercel.app")
+                      provider: 'github')
                   .catchError((error) {
                 print(error);
               });
