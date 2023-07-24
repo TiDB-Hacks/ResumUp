@@ -42,6 +42,7 @@ dependencies:
   progress_bar_steppers: ^0.0.2+2
   icons_plus: ^4.0.0
   appwrite: ^9.0.1
+  mysql1: ^0.20.0
 
 dev_dependencies:
   flutter_test:

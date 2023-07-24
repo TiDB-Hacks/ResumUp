@@ -1,8 +1,41 @@
+import 'package:appwrite/appwrite.dart';
 import 'package:get/get.dart';
 
 class ResumeBuildController extends GetxController {
+  late Client client;
+  var currentStep = 1.obs;
   var Vercel_isPressed = false.obs;
   var profile_isPressed = false.obs;
   var github_issues_isPressed = false.obs;
   var github_chart_isPressed = false.obs;
+  late Account account;
+  @override
+  void onInit() async {
+    client = Client();
+    client
+        .setEndpoint('https://cloud.appwrite.io/v1')
+        .setProject('64bda5974a3168ff237a')
+        .setSelfSigned(status: true);
+    account = Account(client);
+    super.onInit();
+    await checkStep();
+  }
+
+  Future<void> checkStep() async {
+    await account
+        .getSession(
+      sessionId: 'current',
+    )
+        .then((result) {
+      if (result.current == true) {
+        currentStep.value = 2;
+      }
+    });
+  }
+
+  Future<void> gitSignIn() async {
+    await account.createOAuth2Session(
+        provider: 'github', success: "https://resum-up.vercel.app/auth.html");
+    await checkStep();
+  }
 }

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:progress_bar_steppers/steppers.dart';
-import 'package:icons_plus/icons_plus.dart';
-import 'package:appwrite/appwrite.dart';
+import 'controller/resume_build_controller.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,20 +12,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class HomeScreenState extends State<HomeScreen> {
-  var currentStep = 1;
   var totalSteps = 2;
   late List<StepperData> stepsData;
-  late Client client;
-  late Account account;
+  var controller = Get.find<ResumeBuildController>();
   @override
   void initState() {
-    client = Client();
-    client
-        .setEndpoint('https://cloud.appwrite.io/v1')
-        .setProject('64bda5974a3168ff237a')
-        .setSelfSigned(status: true);
-    account = Account(client);
-
     stepsData = [
       StepperData(
         label: 'Step 1',
@@ -55,13 +45,7 @@ class HomeScreenState extends State<HomeScreen> {
                 fixedSize: Size(200, 32),
                 backgroundColor: Color.fromARGB(255, 26, 235, 235)),
             onPressed: () async {
-              await account
-                  .createOAuth2Session(
-                      provider: 'github',
-                      success: "https://resum-up.vercel.app/auth.html")
-                  .catchError((error) {
-                print(error);
-              });
+              await controller.gitSignIn();
             },
           ),
         ),
@@ -103,14 +87,14 @@ class HomeScreenState extends State<HomeScreen> {
                         "Resume",
                         style: TextStyle(
                             fontSize: 55,
-                            color: Color.fromARGB(200, 255, 255, 255),
+                            color: Color.fromARGB(228, 255, 255, 255),
                             fontFamily: 'Poppins'),
                       ),
                       Text(
                         "Up.",
                         style: TextStyle(
                             fontSize: 55,
-                            color: Color.fromARGB(197, 252, 160, 21),
+                            color: Color.fromARGB(224, 252, 160, 21),
                             fontFamily: 'Poppins'),
                       )
                     ],
@@ -166,14 +150,16 @@ class HomeScreenState extends State<HomeScreen> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 20),
-                        child: Steppers(
-                          direction: StepperDirection.vertical,
-                          labels: stepsData,
-                          currentStep: currentStep,
-                          stepBarStyle: StepperStyle(
-                            activeColor: Colors.orange,
-                            maxLineLabel: 2,
-                            inactiveColor: Colors.blue,
+                        child: Obx(
+                          ()=> Steppers(
+                            direction: StepperDirection.vertical,
+                            labels: stepsData,
+                            currentStep: controller.currentStep.value,
+                            stepBarStyle: StepperStyle(
+                              activeColor: Colors.orange,
+                              maxLineLabel: 2,
+                              inactiveColor: Colors.blue,
+                            ),
                           ),
                         ),
                       )
