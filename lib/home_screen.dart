@@ -57,7 +57,8 @@ class HomeScreenState extends State<HomeScreen> {
             onPressed: () async {
               await account
                   .createOAuth2Session(
-                      provider: 'github', success: "https://resum-up.vercel.app/")
+                      provider: 'github',
+                      success: "https://resum-up.vercel.app/auth.html")
                   .catchError((error) {
                 print(error);
               });
@@ -93,7 +94,7 @@ class HomeScreenState extends State<HomeScreen> {
         body: Stack(children: [
           const Positioned(
             child: Padding(
-              padding: EdgeInsets.only(left: 200, top: 260),
+              padding: EdgeInsets.only(left: 200, top: 300),
               child: Column(
                 children: [
                   Row(
@@ -102,14 +103,14 @@ class HomeScreenState extends State<HomeScreen> {
                         "Resume",
                         style: TextStyle(
                             fontSize: 55,
-                            color: Color.fromARGB(145, 255, 255, 255),
+                            color: Color.fromARGB(200, 255, 255, 255),
                             fontFamily: 'Poppins'),
                       ),
                       Text(
                         "Up.",
                         style: TextStyle(
                             fontSize: 55,
-                            color: Color.fromARGB(157, 252, 160, 21),
+                            color: Color.fromARGB(197, 252, 160, 21),
                             fontFamily: 'Poppins'),
                       )
                     ],
@@ -120,10 +121,10 @@ class HomeScreenState extends State<HomeScreen> {
           ),
           Positioned(
             child: Padding(
-              padding: const EdgeInsets.only(left: 670, top: 130),
+              padding: const EdgeInsets.only(left: 670, top: 145),
               child: Container(
-                height: 400,
-                width: 350,
+                height: 500,
+                width: 450,
                 decoration: const BoxDecoration(
                     boxShadow: [
                       BoxShadow(color: Color.fromARGB(198, 56, 55, 55))
@@ -150,7 +151,7 @@ class HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       const SizedBox(
-                        height: 15,
+                        height: 30,
                       ),
                       const Text(
                         "Lets Get ya Started",
