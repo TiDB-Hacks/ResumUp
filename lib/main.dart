@@ -13,6 +13,9 @@ void main() {
   // WidgetsFlutterBinding.ensureInitialized();
   runApp(Sizer(builder: (context, orientation, deviceType) {
     return GetMaterialApp(
+       routes: {
+    '/potfolioBuild': (context) => MyHomePage(),
+  },
       initialBinding: Resume_Build_Bindings(),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

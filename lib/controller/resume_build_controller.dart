@@ -35,10 +35,11 @@ class ResumeBuildController extends GetxController {
       }
     });
   }
-
   Future<void> gitSignIn() async {
     await account.createOAuth2Session(
-        provider: 'github', success: kIsWeb ? '${location?.origin}/auth.html' : null,);
+      provider: 'github',
+      success: kIsWeb ? '${location?.origin}/auth.html' : null,
+    );
     await checkStep();
   }
 }
