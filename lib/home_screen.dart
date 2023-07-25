@@ -125,6 +125,11 @@ class HomeScreenState extends State<HomeScreen> {
                                 cursorRadius: Radius.circular(20),
                                 cursorColor: Color.fromARGB(95, 88, 87, 87),
                                 decoration: InputDecoration(
+                                    
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Color.fromARGB(
+                                                135, 50, 49, 49))),
                                     border: OutlineInputBorder(
                                         borderSide: BorderSide(
                                             color: Color.fromARGB(
