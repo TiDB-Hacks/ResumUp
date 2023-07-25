@@ -119,6 +119,7 @@ class HomeScreenState extends State<HomeScreen> {
                                 height: 40,
                               ),
                               TextField(
+                                controller: controller.auth_token_feild_controller,
                                 style: TextStyle(
                                     color: Color.fromARGB(255, 72, 68, 68)),
                                 cursorRadius: Radius.circular(20),
@@ -145,7 +146,10 @@ class HomeScreenState extends State<HomeScreen> {
                                   onPressed: () {
                                     controller.currentStep.value = 3;
                                     Navigator.pop(context);
-                                    Navigator.pushNamed(context, '/potfolioBuild');
+                                    controller.auth_token =
+                                        controller.auth_token_feild_controller.text;
+                                    Navigator.pushNamed(
+                                        context, '/potfolioBuild');
                                   },
                                   child: Text('Submit'))
                             ],

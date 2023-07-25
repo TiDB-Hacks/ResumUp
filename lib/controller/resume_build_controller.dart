@@ -1,5 +1,6 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:window_location_href/window_location_href.dart';
 
@@ -10,6 +11,8 @@ class ResumeBuildController extends GetxController {
   var profile_isPressed = false.obs;
   var github_issues_isPressed = false.obs;
   var github_chart_isPressed = false.obs;
+  var auth_token;
+  TextEditingController auth_token_feild_controller = TextEditingController();
   final Uri? location = href == null ? null : Uri.parse(href!);
   late Account account;
   @override
@@ -35,6 +38,7 @@ class ResumeBuildController extends GetxController {
       }
     });
   }
+
   Future<void> gitSignIn() async {
     await account.createOAuth2Session(
       provider: 'github',
