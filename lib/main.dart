@@ -13,9 +13,9 @@ void main() {
   // WidgetsFlutterBinding.ensureInitialized();
   runApp(Sizer(builder: (context, orientation, deviceType) {
     return GetMaterialApp(
-       routes: {
-    '/potfolioBuild': (context) => MyHomePage(),
-  },
+      routes: {
+        '/potfolioBuild': (context) => MyHomePage(),
+      },
       initialBinding: Resume_Build_Bindings(),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -323,7 +323,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           borderRadius: BorderRadius.circular(20),
                           highlightColor: Colors.orange,
                           splashColor: Colors.amber,
-                          onTap: () {},
+                          onTap: () {
+                            controller.setstatus();
+                          },
                           child: Ink(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
@@ -396,7 +398,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                                           12.18.h + 6.94.w),
                                                   child: Expanded(
                                                       child: Image.network(
-                                                          'https://static.vecteezy.com/system/resources/previews/021/548/095/original/default-profile-picture-avatar-user-avatar-icon-person-icon-head-icon-profile-picture-icons-default-anonymous-user-male-and-female-businessman-photo-placeholder-social-network-avatar-portrait-free-vector.jpg')),
+                                                          controller
+                                                              .profile_url)),
                                                 ),
                                               ),
                                             ),
@@ -422,6 +425,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                             vertical: 1.218.h),
                                         child: Column(children: [
                                           TextField(
+                                            controller: controller.name_feild,
                                             style: TextStyle(
                                                 fontSize: 1.43.h + 0.83.w,
                                                 fontWeight: FontWeight.w200,
@@ -441,6 +445,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                                 0, 195, 187, 187),
                                           ),
                                           TextField(
+                                            controller:
+                                                controller.description_feild,
                                             maxLines: 2,
                                             style: TextStyle(
                                                 fontSize: 1.8.h,
@@ -595,6 +601,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                               SizedBox(
                                                 width: 15.97.w,
                                                 child: TextField(
+                                                  controller:
+                                                      controller.email_feild,
                                                   style: TextStyle(
                                                       fontFamily: 'Poppins',
                                                       fontWeight:
@@ -644,6 +652,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                               SizedBox(
                                                 width: 15.97.w,
                                                 child: TextField(
+                                                  controller: controller
+                                                      .github_unme_feild,
                                                   style: TextStyle(
                                                       fontFamily: 'Poppins',
                                                       fontWeight:
@@ -693,6 +703,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                               SizedBox(
                                                 width: 15.97.w,
                                                 child: TextField(
+                                                  controller:
+                                                      controller.twitter_unme,
                                                   style: TextStyle(
                                                       fontFamily: 'Poppins',
                                                       fontWeight:
@@ -742,6 +754,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                               SizedBox(
                                                 width: 15.97.w,
                                                 child: TextField(
+                                                  controller:
+                                                      controller.linkedIn_unme,
                                                   style: TextStyle(
                                                       fontFamily: 'Poppins',
                                                       fontWeight:

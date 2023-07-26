@@ -22,7 +22,7 @@ class HomeScreenState extends State<HomeScreen> {
       StepperData(
         label: 'Step 1',
         child: Padding(
-          padding: EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
           child: Obx(
             () => ElevatedButton(
               child: Row(
