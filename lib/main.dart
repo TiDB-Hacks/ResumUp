@@ -399,7 +399,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                   child: Expanded(
                                                       child: Image.network(
                                                           controller
-                                                              .profile_url)),
+                                                              .profile_url.toString())),
                                                 ),
                                               ),
                                             ),
