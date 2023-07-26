@@ -10,7 +10,7 @@ import 'bindings/resume_build_bindings.dart';
 import 'home_screen.dart';
 
 void main() {
-  // WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(Sizer(builder: (context, orientation, deviceType) {
     return GetMaterialApp(
       routes: {

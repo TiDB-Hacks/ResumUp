@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:mysql1/mysql1.dart';
 import 'package:window_location_href/window_location_href.dart';
 
 class ResumeBuildController extends GetxController {
@@ -73,6 +74,13 @@ class ResumeBuildController extends GetxController {
         .setProject('64bda5974a3168ff237a')
         .setSelfSigned(status: true);
     account = Account(client);
+    // var settings = new ConnectionSettings(
+    //     host: 'gateway01.eu-central-1.prod.aws.tidbcloud.com',
+    //     port: 4000,
+    //     user: 'Pd5yfUT23Tzbine.root',
+    //     password: '8fIdoyXs7zyI7bjL',
+    //     db: 'ResumeUp');
+    // conn = await MySqlConnection.connect(settings);
     super.onInit();
     await checkStep();
   }
@@ -85,6 +93,11 @@ class ResumeBuildController extends GetxController {
         .then((result) async {
       if (result.current == true) {
         currentStep.value = 2;
+        // auth_token = await conn.query(
+        //     'select VercelAuthToken from VercelAuthTokens where Uid = ?', [
+        //   result.userId
+        // ]).then(navigatorKey.currentState!.pushNamed('/potfolioBuild')).catchError((e) => print(e));
+
         print(result.providerAccessToken);
         var headers = {
           'Accept': 'application/vnd.github+json',
@@ -99,15 +112,15 @@ class ResumeBuildController extends GetxController {
         if (response.statusCode == 200) {
           UserInfo = await response.stream.bytesToString();
           UserInfo = jsonDecode(UserInfo);
-          profile_url = UserInfo['avatar_url'];
+          profile_url = UserInfo['avatar_url'].toString();
           name_feild.text = UserInfo['name'];
           github_unme_feild.text = UserInfo['login'];
           description_feild.text = UserInfo['bio'];
         } else {
           print(response.reasonPhrase);
         }
-        var request_email =
-            http.Request('GET', Uri.parse('https://api.github.com/user/emails'));
+        var request_email = http.Request(
+            'GET', Uri.parse('https://api.github.com/user/emails'));
         request_email.headers.addAll(headers);
         http.StreamedResponse response_emails = await request_email.send();
         if (response_emails.statusCode == 200) {
