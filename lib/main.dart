@@ -396,10 +396,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           12.18.h + 6.94.w),
-                                                  child: Expanded(
-                                                      child: Image.network(
-                                                          controller
-                                                              .profile_url.toString())),
+                                                  child: Image.network(
+                                                      controller.profile_url
+                                                          .toString()),
                                                 ),
                                               ),
                                             ),
