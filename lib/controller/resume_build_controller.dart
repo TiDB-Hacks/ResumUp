@@ -36,6 +36,7 @@ class ResumeBuildController extends GetxController {
   var conn;
   var settings;
   var pr_issue;
+  var headers;
   TextEditingController auth_token_feild_controller = TextEditingController();
   TextEditingController name_feild = TextEditingController();
   TextEditingController description_feild = TextEditingController();
@@ -143,7 +144,7 @@ class ResumeBuildController extends GetxController {
         print(response_get.reasonPhrase);
       }
 
-      var headers = {
+      headers = {
         'Accept': 'application/vnd.github+json',
         'Authorization': 'Bearer ${session.providerAccessToken}',
         'X-GitHub-Api-Version': '2022-11-28'
@@ -185,14 +186,10 @@ class ResumeBuildController extends GetxController {
   }
 
   Future<void> getGithubActivity() async {
-    var headers = {
-      'Accept': 'application/vnd.github+json',
-      'Authorization': 'Bearer ${session.providerAccessToken}',
-      'X-GitHub-Api-Version': '2022-11-28'
-    };
-
-    var request = http.Request('GET',
-        Uri.parse('https://api.github.com/users/${UserInfo['login']}/events?q=per_page:100'));
+    var request = http.Request(
+        'GET',
+        Uri.parse(
+            'https://api.github.com/users/${UserInfo['login']}/events?q=per_page:100'));
 
     request.headers.addAll(headers);
 
@@ -228,17 +225,12 @@ class ResumeBuildController extends GetxController {
         commits += record_push[k] as int;
       });
       CreateRepos = CreateRepos.toSet().toList();
-      var headers_pr_issues = {
-        'Accept': 'application/vnd.github+json',
-        'Authorization': 'Bearer ${session.providerAccessToken}',
-        'X-GitHub-Api-Version': '2022-11-28'
-      };
       var request_pr_issue = http.Request(
           'GET',
           Uri.parse(
               'https://api.github.com/search/issues?q=author:Aarush-Acharya&type:issue&state:open&is:open'));
 
-      request_pr_issue.headers.addAll(headers_pr_issues);
+      request_pr_issue.headers.addAll(headers);
 
       http.StreamedResponse response_pr_issue = await request_pr_issue.send();
 
