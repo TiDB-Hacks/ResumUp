@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:progress_bar_steppers/steppers.dart';
+import 'package:resumup/routes/app_routes.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'controller/resume_build_controller.dart';
 
@@ -119,13 +120,13 @@ class HomeScreenState extends State<HomeScreen> {
                                 height: 40,
                               ),
                               TextField(
-                                controller: controller.auth_token_feild_controller,
+                                controller:
+                                    controller.auth_token_feild_controller,
                                 style: TextStyle(
                                     color: Color.fromARGB(255, 72, 68, 68)),
                                 cursorRadius: Radius.circular(20),
                                 cursorColor: Color.fromARGB(95, 88, 87, 87),
                                 decoration: InputDecoration(
-                                    
                                     enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
                                             color: Color.fromARGB(
@@ -144,13 +145,13 @@ class HomeScreenState extends State<HomeScreen> {
                                 height: 40,
                               ),
                               ElevatedButton(
-                                  onPressed: () {
+                                  onPressed: () async {
                                     controller.currentStep.value = 3;
                                     Navigator.pop(context);
-                                    controller.auth_token =
-                                        controller.auth_token_feild_controller.text;
-                                    Navigator.pushNamed(
-                                        context, '/potfolioBuild');
+                                    controller.auth_token = controller
+                                        .auth_token_feild_controller.text;
+                                    await controller.putToken();
+                                    Get.toNamed(AppRoutes.profileBuild);
                                   },
                                   child: Text('Submit'))
                             ],

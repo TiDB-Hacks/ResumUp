@@ -1,10 +1,14 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:html';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:icons_plus/icons_plus.dart';
 import 'package:resumup/controller/resume_build_controller.dart';
+import 'package:resumup/routes/app_pages.dart';
 import 'package:sizer/sizer.dart';
 import 'bindings/resume_build_bindings.dart';
 import 'home_screen.dart';
@@ -13,9 +17,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(Sizer(builder: (context, orientation, deviceType) {
     return GetMaterialApp(
-      routes: {
-        '/potfolioBuild': (context) => MyHomePage(),
-      },
+      getPages: AppPages.pages,
       initialBinding: Resume_Build_Bindings(),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -236,8 +238,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                             width: 9.72.w,
                                             child: Center(
                                               child: Text(
-                                                "Github Issues",
+                                                "Github Activity",
                                                 style: TextStyle(
+                                                    fontSize: 12,
+                                                    fontFamily: 'Poppins',
                                                     color: Colors.white),
                                               ),
                                             )),
@@ -285,7 +289,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                     child: Center(
                                       child: Text(
                                         'GitHub Chart',
-                                        style: TextStyle(color: Colors.white),
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontFamily: 'Poppins'),
                                       ),
                                     ),
                                   ),
@@ -479,41 +485,245 @@ class _MyHomePageState extends State<MyHomePage> {
                                     width: 0.347.w,
                                   ),
                                   Obx(
-                                    () => controller
-                                            .github_issues_isPressed.value
-                                        ? Container(
-                                            height: 25.57.h,
-                                            width: 22.22.w,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                  color: const Color.fromARGB(
-                                                      255, 151, 239, 11),
+                                    () =>
+                                        controller.github_issues_isPressed.value
+                                            ? Container(
+                                                height: 25.57.h,
+                                                width: 22.22.w,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                      color:
+                                                          const Color.fromARGB(
+                                                              255,
+                                                              151,
+                                                              239,
+                                                              11),
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20),
+                                                    gradient:
+                                                        const LinearGradient(
+                                                            colors: [
+                                                          Color.fromARGB(
+                                                              233, 87, 191, 27),
+                                                          Color.fromARGB(255,
+                                                              141, 211, 28),
+                                                        ])),
+                                                child: Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 0.694.w,
+                                                      vertical: 1.21.h),
+                                                  child: Column(
+                                                    children: [
+                                                      Align(
+                                                          alignment: Alignment
+                                                              .topCenter,
+                                                          child: Text(
+                                                            "Github Activity",
+                                                            style: TextStyle(
+                                                                fontFamily:
+                                                                    'Nunito',
+                                                                color: Colors
+                                                                    .white),
+                                                          )),
+                                                      SizedBox(
+                                                        height: 8,
+                                                      ),
+                                                      Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                  left: 10),
+                                                          child: Row(
+                                                            children: [
+                                                              CircleAvatar(
+                                                                  backgroundColor:
+                                                                      Color.fromARGB(
+                                                                          88,
+                                                                          249,
+                                                                          245,
+                                                                          245),
+                                                                  radius: 10,
+                                                                  child: Icon(
+                                                                    EvaIcons
+                                                                        .upload_outline,
+                                                                    size: 11,
+                                                                  )),
+                                                              SizedBox(
+                                                                width: 5,
+                                                              ),
+                                                              Text(
+                                                                  'Created ${controller.commits} commits in ${controller.record_push.length} Public ${(controller.record_push.length == 1) ? "Repo" : "Repos"}',
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontFamily:
+                                                                          'Rubik',
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w200,
+                                                                      fontSize:
+                                                                          12)),
+                                                            ],
+                                                          )),
+                                                      SizedBox(height: 2),
+                                                      Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                  left: 40),
+                                                          child: Container(
+                                                            height: 30,
+                                                            child: ListView
+                                                                .builder(
+                                                              itemCount:
+                                                                  controller
+                                                                      .record_push
+                                                                      .length,
+                                                              shrinkWrap: true,
+                                                              itemBuilder:
+                                                                  (context,
+                                                                      index) {
+                                                                return Column(
+                                                                  children: [
+                                                                    Align(
+                                                                      alignment:
+                                                                          Alignment
+                                                                              .centerLeft,
+                                                                      child: Text(
+                                                                          '- ${controller.push_repo_names[index]} (${controller.record_push[controller.push_repo_names[index]]})',
+                                                                          style: TextStyle(
+                                                                              color: Color.fromARGB(228, 244, 241, 241),
+                                                                              fontFamily: 'Space',
+                                                                              fontWeight: FontWeight.w200,
+                                                                              fontSize: 10)),
+                                                                    ),
+                                                                    SizedBox(
+                                                                      height: 3,
+                                                                    )
+                                                                  ],
+                                                                );
+                                                              },
+                                                            ),
+                                                          )),
+                                                      SizedBox(
+                                                        height: 12,
+                                                      ),
+                                                      Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                  left: 10),
+                                                          child: Row(
+                                                            children: [
+                                                              CircleAvatar(
+                                                                  backgroundColor:
+                                                                      Color.fromARGB(
+                                                                          88,
+                                                                          249,
+                                                                          245,
+                                                                          245),
+                                                                  radius: 10,
+                                                                  child: Icon(
+                                                                    EvaIcons
+                                                                        .book_outline,
+                                                                    size: 11,
+                                                                  )),
+                                                              SizedBox(
+                                                                width: 5,
+                                                              ),
+                                                              Text(
+                                                                  'Created ${controller.CreateRepos.length} new Public ${(controller.CreateRepos.length == 1) ? "Repo" : "Repos"}',
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontFamily:
+                                                                          'Rubik',
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w200,
+                                                                      fontSize:
+                                                                          12)),
+                                                            ],
+                                                          )),
+                                                      SizedBox(height: 2),
+                                                      Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                  left: 40),
+                                                          child: Container(
+                                                            height: 25,
+                                                            child: ListView
+                                                                .builder(
+                                                              itemCount:
+                                                                  controller
+                                                                      .CreateRepos
+                                                                      .length,
+                                                              shrinkWrap: true,
+                                                              itemBuilder:
+                                                                  (context,
+                                                                      index) {
+                                                                return Column(
+                                                                  children: [
+                                                                    Align(
+                                                                      alignment:
+                                                                          Alignment
+                                                                              .centerLeft,
+                                                                      child: Text(
+                                                                          '- ${controller.CreateRepos[index]}',
+                                                                          style: TextStyle(
+                                                                              color: Color.fromARGB(228, 244, 241, 241),
+                                                                              fontFamily: 'Space',
+                                                                              fontWeight: FontWeight.w200,
+                                                                              fontSize: 10)),
+                                                                    ),
+                                                                    SizedBox(
+                                                                      height: 3,
+                                                                    )
+                                                                  ],
+                                                                );
+                                                              },
+                                                            ),
+                                                          )),
+                                                      Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                  left: 10),
+                                                          child: Row(
+                                                            children: [
+                                                              CircleAvatar(
+                                                                  backgroundColor:
+                                                                      Color.fromARGB(
+                                                                          88,
+                                                                          249,
+                                                                          245,
+                                                                          245),
+                                                                  radius: 10,
+                                                                  child: Icon(
+                                                                    Icons
+                                                                        .merge_outlined,
+                                                                    size: 11,
+                                                                  )),
+                                                              SizedBox(
+                                                                width: 5,
+                                                              ),
+                                                              Text(
+                                                                  'Interacted with ${controller.pr_issue_num} Issues/PRs',
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontFamily:
+                                                                          'Rubik',
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w200,
+                                                                      fontSize:
+                                                                          12)),
+                                                            ],
+                                                          )),
+                                                    ],
+                                                  ),
                                                 ),
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                gradient: const LinearGradient(
-                                                    colors: [
-                                                      Color.fromARGB(
-                                                          255, 146, 221, 25),
-                                                      Color.fromARGB(
-                                                          233, 78, 172, 24),
-                                                    ])),
-                                            child: Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: 0.694.w,
-                                                  vertical: 1.21.h),
-                                              child: Align(
-                                                  alignment:
-                                                      Alignment.topCenter,
-                                                  child: Text(
-                                                    "Github Issues",
-                                                    style: TextStyle(
-                                                        fontFamily: 'Nunito',
-                                                        color: Colors.white),
-                                                  )),
-                                            ),
-                                          )
-                                        : SizedBox(),
+                                              )
+                                            : SizedBox(),
                                   ),
                                   SizedBox(
                                     width: 2.083.w,
