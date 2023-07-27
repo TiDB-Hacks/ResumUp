@@ -187,7 +187,7 @@ class ResumeBuildController extends GetxController {
   Future<void> getGithubActivity() async {
     var headers = {
       'Accept': 'application/vnd.github+json',
-      'Authorization': 'Bearer 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',
+      'Authorization': 'Bearer ${session.providerAccessToken}',
       'X-GitHub-Api-Version': '2022-11-28'
     };
 
@@ -230,7 +230,7 @@ class ResumeBuildController extends GetxController {
       CreateRepos = CreateRepos.toSet().toList();
       var headers_pr_issues = {
         'Accept': 'application/vnd.github+json',
-        'Authorization': 'Bearer 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',
+        'Authorization': 'Bearer ${session.providerAccessToken}',
         'X-GitHub-Api-Version': '2022-11-28'
       };
       var request_pr_issue = http.Request(
