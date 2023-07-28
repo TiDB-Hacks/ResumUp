@@ -147,11 +147,11 @@ class HomeScreenState extends State<HomeScreen> {
                               ElevatedButton(
                                   onPressed: () async {
                                     controller.currentStep.value = 3;
-                                    Navigator.pop(context);
                                     controller.auth_token = controller
                                         .auth_token_feild_controller.text;
+                                    print(controller.auth_token);
+                                    Navigator.pop(context);
                                     await controller.putToken();
-                                    Get.toNamed(AppRoutes.profileBuild);
                                   },
                                   child: Text('Submit'))
                             ],

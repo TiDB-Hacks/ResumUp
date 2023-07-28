@@ -100,6 +100,7 @@ class ResumeBuildController extends GetxController {
     var headers_put = {'Content-Type': 'application/json'};
     var request_put = http.Request(
         'POST', Uri.parse('https://resumeup-server.onrender.com/putToken'));
+    print(auth_token);
     request_put.headers.addAll(headers_put);
     request_put.body =
         json.encode({"Uid": session.userId, "VercelToken": auth_token});
@@ -121,6 +122,9 @@ class ResumeBuildController extends GetxController {
       if (response_projects.statusCode == 200) {
         projects = await response_projects.stream.bytesToString();
         projects = jsonDecode(projects);
+        projects = projects["projects"];
+        print(projects);
+        Get.toNamed(AppRoutes.profileBuild);
       } else {
         print(response_projects.reasonPhrase);
       }
