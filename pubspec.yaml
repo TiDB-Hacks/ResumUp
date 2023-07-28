@@ -46,6 +46,8 @@ dependencies:
   window_location_href: ^1.0.1+2
   url_launcher: ^6.1.12
   http: ^1.0.0
+  flutter_heatmap_calendar: ^1.0.5
+  graphql_flutter: ^5.2.0-beta.5
 
 dev_dependencies:
   flutter_test:

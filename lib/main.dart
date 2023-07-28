@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'dart:html';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:flutter_heatmap_calendar/flutter_heatmap_calendar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -37,7 +37,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var controller = Get.find<ResumeBuildController>();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -769,7 +768,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                           top: 8),
                                                       child: Align(
                                                         child: Container(
-                                                          height: 120,
+                                                          height: 130,
                                                           child:
                                                               ListView.builder(
                                                             itemCount:
@@ -1132,7 +1131,31 @@ class _MyHomePageState extends State<MyHomePage> {
                                               Color.fromARGB(54, 77, 74, 74),
                                               Color.fromARGB(92, 98, 96, 96),
                                             ])),
-                                      )
+                                        child: Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 10, right: 20, bottom: 6),
+                                          child: HeatMap(
+                                            colorMode: ColorMode.opacity,
+                                            colorsets: {
+                                              1: const Color.fromARGB(
+                                                  255, 255, 153, 0)
+                                            },
+                                            size: 16,
+                                            startDate: DateTime(
+                                                DateTime.now().year,
+                                                DateTime.now().month - 10,
+                                                DateTime.now().day - 7),
+                                            showColorTip: false,
+                                            datasets: controller.impressions,
+                                            onClick: (value) {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(SnackBar(
+                                                      content: Text(
+                                                          value.toString())));
+                                            },
+                                            scrollable: true,
+                                          ),
+                                        ))
                                     : SizedBox(),
                               ),
                             ]),

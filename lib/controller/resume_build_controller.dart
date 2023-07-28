@@ -6,7 +6,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:mysql1/mysql1.dart';
 import 'package:resumup/routes/app_routes.dart';
 import 'package:window_location_href/window_location_href.dart';
 
@@ -15,16 +14,19 @@ class ResumeBuildController extends GetxController {
   var currentStep = 1.obs;
   var Vercel_isPressed = false.obs;
   var commits = 0;
+  var totalCount;
   var profile_isPressed = false.obs;
   var github_issues_isPressed = false.obs;
   var github_chart_isPressed = false.obs;
   late Session session;
+  var contridata;
   var pr_issue_num;
   List PushEvents = [];
   final Map record_push = {};
   List CreateEvents = [];
   List PushRepos = [];
   List CreateRepos = [];
+  Map<DateTime, int> impressions = {};
   var auth_token;
   var push_repo_names = [];
   var git_access_token;
@@ -100,7 +102,6 @@ class ResumeBuildController extends GetxController {
     var headers_put = {'Content-Type': 'application/json'};
     var request_put = http.Request(
         'POST', Uri.parse('https://resumeup-server.onrender.com/putToken'));
-    print(auth_token);
     request_put.headers.addAll(headers_put);
     request_put.body =
         json.encode({"Uid": session.userId, "VercelToken": auth_token});
@@ -123,7 +124,6 @@ class ResumeBuildController extends GetxController {
         projects = await response_projects.stream.bytesToString();
         projects = jsonDecode(projects);
         projects = projects["projects"];
-        print(projects);
         Get.toNamed(AppRoutes.profileBuild);
       } else {
         print(response_projects.reasonPhrase);
@@ -144,6 +144,7 @@ class ResumeBuildController extends GetxController {
 
       var request_get = http.Request(
           'POST', Uri.parse('https://resumeup-server.onrender.com/getToken'));
+      print(session.userId);
       request_get.body = json.encode({"Uid": session.userId});
 
       var headers_get = {'Content-Type': 'application/json'};
@@ -154,7 +155,6 @@ class ResumeBuildController extends GetxController {
 
       if (response_get.statusCode == 200) {
         print("hi");
-
         res_get = await response_get.stream.bytesToString();
         res_get = jsonDecode(res_get);
         auth_token = res_get['VercelToken'];
@@ -170,7 +170,6 @@ class ResumeBuildController extends GetxController {
           projects = await response_projects.stream.bytesToString();
           projects = jsonDecode(projects);
           projects = projects["projects"];
-          print(projects);
           print("Hoya");
         } else {
           print(response_projects.reasonPhrase);
@@ -217,8 +216,8 @@ class ResumeBuildController extends GetxController {
       } else {
         print(response_emails.reasonPhrase);
       }
-
-      getGithubActivity();
+      await getGithubActivity();
+      await getGithubMap();
     }
   }
 
@@ -278,6 +277,41 @@ class ResumeBuildController extends GetxController {
       } else {
         print(response_pr_issue.reasonPhrase);
       }
+    } else {
+      print(response.reasonPhrase);
+    }
+  }
+
+  Future<void> getGithubMap() async {
+    var headers = {
+      'Authorization': 'bearer ${session.providerAccessToken}',
+      'Content-Type': 'text/plain'
+    };
+    var request =
+        http.Request('POST', Uri.parse('https://api.github.com/graphql'));
+    request.body =
+        '''{"query":"query {\\n  user(login: \\"${UserInfo['login']}\\") {\\n    name\\n    contributionsCollection {\\n      contributionCalendar {\\n        colors\\n        totalContributions\\n        weeks {\\n          contributionDays {\\n            color\\n            contributionCount\\n            date\\n            weekday\\n          }\\n          firstDay\\n        }\\n      }\\n    }\\n  }\\n}"}''';
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      contridata = await response.stream.bytesToString();
+      contridata = jsonDecode(contridata);
+      contridata = contridata["data"]["user"]["contributionsCollection"]
+          ["contributionCalendar"];
+      totalCount = contridata["totalContributions"];
+      contridata = contridata["weeks"];
+      for (int i = 0; i < contridata.length; i++) {
+        for (int j = 0; j < contridata[i]["contributionDays"].length; j++) {
+          if (contridata[i]["contributionDays"][j]["contributionCount"] != 0) {
+            impressions[DateTime.parse(
+                    contridata[i]["contributionDays"][j]["date"])] =
+                contridata[i]["contributionDays"][j]["contributionCount"];
+          }
+        }
+      }
+      print("flag check");
     } else {
       print(response.reasonPhrase);
     }
