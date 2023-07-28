@@ -102,6 +102,8 @@ flutter:
           weight: 100
         - asset: assets/fonts/RobotoMono-Regular.ttf
           weight: 200
+        - asset: assets/fonts/RobotoMono-Bold.ttf
+          weight: 300
 
 
     - family: Poppins
@@ -109,6 +111,13 @@ flutter:
         - asset: assets/fonts/Poppins-LightItalic.ttf
           weight: 100
         - asset: assets/fonts/Poppins-Regular.ttf
+          weight: 200
+
+    - family: Inter
+      fonts:   
+        - asset: assets/fonts/Inter-SemiBold.ttf
+          weight: 100
+        - asset: assets/fonts/Inter-Bold.ttf
           weight: 200
 
     - family: Ubuntu

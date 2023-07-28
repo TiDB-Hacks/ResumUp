@@ -33,10 +33,11 @@ class ResumeBuildController extends GetxController {
   var res_get;
   var profile_url;
   var EmailInfo;
-  var conn;
   var settings;
   var pr_issue;
+  var projects;
   var headers;
+  var headers_projects;
   TextEditingController auth_token_feild_controller = TextEditingController();
   TextEditingController name_feild = TextEditingController();
   TextEditingController description_feild = TextEditingController();
@@ -105,9 +106,24 @@ class ResumeBuildController extends GetxController {
 
     http.StreamedResponse response = await request_put.send();
     print("Hello");
+
     if (response.statusCode == 200) {
       print("i ran");
-      print(await response.stream.bytesToString());
+
+      headers_projects = {'Authorization': 'Bearer ${auth_token}'};
+
+      var request_projects =
+          http.Request('GET', Uri.parse('https://api.vercel.com/v9/projects'));
+      request_projects.headers.addAll(headers_projects);
+
+      http.StreamedResponse response_projects = await request_projects.send();
+
+      if (response_projects.statusCode == 200) {
+        projects = await response_projects.stream.bytesToString();
+        projects = jsonDecode(projects);
+      } else {
+        print(response_projects.reasonPhrase);
+      }
     } else {
       print("i fail");
       print(response.reasonPhrase);
@@ -138,9 +154,26 @@ class ResumeBuildController extends GetxController {
         res_get = await response_get.stream.bytesToString();
         res_get = jsonDecode(res_get);
         auth_token = res_get['VercelToken'];
+        headers_projects = {'Authorization': 'Bearer ${auth_token}'};
+
+        var request_projects = http.Request(
+            'GET', Uri.parse('https://api.vercel.com/v9/projects'));
+        request_projects.headers.addAll(headers_projects);
+
+        http.StreamedResponse response_projects = await request_projects.send();
+
+        if (response_projects.statusCode == 200) {
+          projects = await response_projects.stream.bytesToString();
+          projects = jsonDecode(projects);
+          projects = projects["projects"];
+          print(projects);
+          print("Hoya");
+        } else {
+          print(response_projects.reasonPhrase);
+        }
+
         Get.offNamed(AppRoutes.profileBuild);
       } else {
-        print('here');
         print(response_get.reasonPhrase);
       }
 

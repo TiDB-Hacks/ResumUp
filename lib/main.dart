@@ -9,6 +9,7 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:resumup/controller/resume_build_controller.dart';
 import 'package:resumup/routes/app_pages.dart';
 import 'package:sizer/sizer.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'bindings/resume_build_bindings.dart';
 import 'home_screen.dart';
 
@@ -748,15 +749,130 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     ])),
                                             child: Padding(
                                               padding: EdgeInsets.all(10),
-                                              child: Align(
-                                                  alignment:
-                                                      Alignment.topCenter,
-                                                  child: Text(
-                                                    "Vercel",
-                                                    style: TextStyle(
-                                                        fontFamily: 'Nunito',
-                                                        color: Colors.white),
-                                                  )),
+                                              child: Column(
+                                                children: [
+                                                  Align(
+                                                      alignment:
+                                                          Alignment.topCenter,
+                                                      child: Text(
+                                                        "Vercel",
+                                                        style: TextStyle(
+                                                            fontFamily:
+                                                                'Nunito',
+                                                            color:
+                                                                Colors.white),
+                                                      )),
+                                                  Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: 5,
+                                                          right: 5,
+                                                          top: 8),
+                                                      child: Align(
+                                                        child: Container(
+                                                          height: 120,
+                                                          child:
+                                                              ListView.builder(
+                                                            itemCount:
+                                                                controller
+                                                                    .projects
+                                                                    .length,
+                                                            shrinkWrap: true,
+                                                            itemBuilder:
+                                                                (context,
+                                                                    index) {
+                                                              return Padding(
+                                                                padding: EdgeInsets
+                                                                    .symmetric(
+                                                                        horizontal:
+                                                                            10),
+                                                                child: Column(
+                                                                  children: [
+                                                                    Column(
+                                                                      children: [
+                                                                        Container(
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            borderRadius:
+                                                                                BorderRadius.all(Radius.circular(10)),
+                                                                            color: Color.fromARGB(
+                                                                                88,
+                                                                                249,
+                                                                                245,
+                                                                                245),
+                                                                          ),
+                                                                          child:
+                                                                              Padding(
+                                                                            padding:
+                                                                                EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                                                                            child:
+                                                                                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                                                                              Text(
+                                                                                controller.projects[index]['name'],
+                                                                                style: TextStyle(color: Colors.white, fontFamily: 'RobotoMono', fontSize: 13, fontWeight: FontWeight.w300),
+                                                                              ),
+                                                                              Row(
+                                                                                children: [
+                                                                                  InkWell(
+                                                                                    borderRadius: BorderRadius.circular(20),
+                                                                                    onTap: () {
+                                                                                      print("uuuuuuuuuuuuuuuu");
+                                                                                      var uri = 'https://${controller.projects[index]['link']['type']}.com/${controller.projects[index]['link']['org']}/${controller.projects[index]['link']['repo']}';
+                                                                                      print(uri);
+                                                                                      launchUrl(Uri.parse(uri));
+                                                                                    },
+                                                                                    child: CircleAvatar(
+                                                                                      backgroundColor: Color.fromARGB(56, 238, 235, 235),
+                                                                                      child: Icon(
+                                                                                        EvaIcons.github,
+                                                                                        size: 16,
+                                                                                        color: Color.fromARGB(210, 242, 242, 242),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  SizedBox(width: 1),
+                                                                                  InkWell(
+                                                                                    borderRadius: BorderRadius.circular(20),
+                                                                                    onTap: () {
+                                                                                      print("yo");
+                                                                                      var uri = 'https://${controller.projects[index]['latestDeployments'][0]['alias'][0]}';
+                                                                                      print(uri);
+                                                                                      launchUrl(Uri.parse(uri));
+                                                                                    },
+                                                                                    child: CircleAvatar(
+                                                                                      backgroundColor: Color.fromARGB(56, 238, 235, 235),
+                                                                                      child: Icon(
+                                                                                        EvaIcons.globe,
+                                                                                        size: 16,
+                                                                                        color: Color.fromARGB(203, 255, 254, 254),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ],
+                                                                              )
+                                                                            ]),
+                                                                          ),
+                                                                          width:
+                                                                              340,
+                                                                          height:
+                                                                              35,
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                    SizedBox(
+                                                                      height:
+                                                                          12,
+                                                                    )
+                                                                  ],
+                                                                ),
+                                                              );
+                                                            },
+                                                          ),
+                                                        ),
+                                                        alignment:
+                                                            Alignment.topCenter,
+                                                      ))
+                                                ],
+                                              ),
                                             ),
                                           )
                                         : SizedBox(),
