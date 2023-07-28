@@ -109,7 +109,7 @@ class HomeScreenState extends State<HomeScreen> {
                                     ),
                                   ),
                                   Text(
-                                    ' for more info',
+                                    ' for more info (make sure to set Scope: Full Account and expiration: None)',
                                     style: TextStyle(
                                         color:
                                             Color.fromARGB(189, 131, 125, 125)),
