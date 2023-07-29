@@ -310,6 +310,7 @@ class ResumeBuildController extends GetxController {
   Future<void> gitSignIn() async {
     await account.createOAuth2Session(
       provider: 'github',
+      scopes:  ["public_repo"],
       success: kIsWeb ? '${location?.origin}/auth.html' : null,
     );
     await checkStep();
