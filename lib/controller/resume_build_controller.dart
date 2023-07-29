@@ -13,6 +13,8 @@ class ResumeBuildController extends GetxController {
   late Client client;
   var currentStep = 1.obs;
   var Vercel_isPressed = false.obs;
+  var initialization = true.obs;
+  var sending = false.obs;
   var commits = 0;
   var totalCount;
   var profile_isPressed = false.obs;
@@ -301,6 +303,7 @@ class ResumeBuildController extends GetxController {
           }
         }
       }
+      initialization.value = false;
       print("flag check");
     } else {
       print(response.reasonPhrase);
@@ -310,7 +313,7 @@ class ResumeBuildController extends GetxController {
   Future<void> gitSignIn() async {
     await account.createOAuth2Session(
       provider: 'github',
-      scopes:  ["public_repo"],
+      scopes: ["public_repo"],
       success: kIsWeb ? '${location?.origin}/auth.html' : null,
     );
     await checkStep();
