@@ -5,7 +5,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:progress_bar_steppers/steppers.dart';
-import 'package:resumup/routes/app_routes.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'controller/resume_build_controller.dart';
 
@@ -276,6 +275,31 @@ class HomeScreenState extends State<HomeScreen> {
                             color: Colors.orange, size: Get.pixelRatio * 20)),
                   )
                 : SizedBox(),
+          controller.hasDeployed.value
+                ? BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                    child: Center(
+                        child:  AlertDialog(
+                                            elevation: 20,
+                                            title: Text(
+                                              "You have already created a deployment",
+                                              style: TextStyle(
+                                                  color: Color.fromARGB(
+                                                      190, 183, 178, 178)),
+                                            ),
+                                            backgroundColor: Colors.black,
+                                            content: SingleChildScrollView(
+                                              child: Text(
+                                                'one one deployment per user supported as of now',
+                                                style: TextStyle(
+                                                    color: Color.fromARGB(
+                                                        189, 131, 125, 125)),
+                                              ),
+                                            ),
+                                          )),
+                  )
+                : SizedBox(),
+            
           ]),
         ));
   }

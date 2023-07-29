@@ -13,7 +13,7 @@ class ResumeBuildController extends GetxController {
   late Client client;
   var currentStep = 1.obs;
   var Vercel_isPressed = false.obs;
-  var initialization = true.obs;
+  var initialization = false.obs;
   var sending = false.obs;
   var commits = 0;
   var totalCount;
@@ -22,6 +22,7 @@ class ResumeBuildController extends GetxController {
   var github_chart_isPressed = false.obs;
   late Session session;
   var contridata;
+  var status_deploy;
   var pr_issue_num;
   List PushEvents = [];
   final Map record_push = {};
@@ -33,6 +34,8 @@ class ResumeBuildController extends GetxController {
   var push_repo_names = [];
   var git_access_token;
   var UserInfo;
+  var hasDeployed = false.obs;
+  var linkToDeploy;
   var activity;
   var res_get;
   var profile_url;
@@ -51,6 +54,7 @@ class ResumeBuildController extends GetxController {
   TextEditingController linkedIn_unme = TextEditingController();
   late Map<dynamic, dynamic> mapp;
   var map;
+  var headers_proxy = {'Content-Type': 'application/json'};
   void setstatus() {
     map = {
       "widgets": {
@@ -87,14 +91,14 @@ class ResumeBuildController extends GetxController {
         .setSelfSigned(status: true);
     account = Account(client);
     super.onInit();
-    await checkStep();
-  }
+      await checkStep();
+    }
+
 
   Future<void> putToken() async {
-    var headers_put = {'Content-Type': 'application/json'};
     var request_put = http.Request(
         'POST', Uri.parse('https://resumeup-server.onrender.com/putToken'));
-    request_put.headers.addAll(headers_put);
+    request_put.headers.addAll(headers_proxy);
     request_put.body =
         json.encode({"Uid": session.userId, "VercelToken": auth_token});
 
@@ -139,11 +143,9 @@ class ResumeBuildController extends GetxController {
       print(session.userId);
       request_get.body = json.encode({"Uid": session.userId});
 
-      var headers_get = {'Content-Type': 'application/json'};
-      request_get.headers.addAll(headers_get);
+      request_get.headers.addAll(headers_proxy);
 
       http.StreamedResponse response_get = await request_get.send();
-      print("hello");
 
       if (response_get.statusCode == 200) {
         print("hi");
@@ -308,6 +310,37 @@ class ResumeBuildController extends GetxController {
     } else {
       print(response.reasonPhrase);
     }
+  }
+
+  Future<void> deployIt() async {
+    var request_deploy = http.Request(
+        'POST', Uri.parse('https://resumeup-server.onrender.com/deploy'));
+    request_deploy.headers.addAll(headers_proxy);
+    request_deploy.body = json.encode(map);
+    http.StreamedResponse response_deploy = await request_deploy.send();
+    if (response_deploy.statusCode == 200) {
+      status_deploy = await response_deploy.stream.bytesToString();
+      linkToDeploy = status_deploy['link'];
+      status_deploy = status_deploy['status'];
+    } else {
+      print(response_deploy.reasonPhrase);
+    }
+  }
+
+  Future<void> storedeploystatus() async {
+    var request_put = http.Request(
+        'POST', Uri.parse('https://resumeup-server.onrender.com/setStatus'));
+    request_put.headers.addAll(headers_proxy);
+    request_put.body =
+        json.encode({"Uid": session.userId, "Status": "true"});
+
+    http.StreamedResponse response_set = await request_put.send();
+    if (response_set.statusCode == 200) {
+      print("status set");
+    } else {
+      print("status not set");
+    }
+    print("Hello");
   }
 
   Future<void> gitSignIn() async {
