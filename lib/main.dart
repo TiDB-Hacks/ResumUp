@@ -411,8 +411,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                   ),
                                                   GestureDetector(
                                                       onTap: () {
-                                                        launchUrl(controller
-                                                            .linkToDeploy);
+                                                        launchUrl(Uri.parse(controller.linkToDeploy));
                                                       },
                                                       child: Icon(
                                                         EvaIcons.globe,
