@@ -381,7 +381,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                 controller.sending.value = true;
                                 print("yo 2");
                                 await controller.deployIt();
-                                if (controller.status_deploy.value) {
+                                print("yo9");
+                                if (controller.status_deploy) {
+                                  print("yoo90");
                                   // ignore: use_build_context_synchronously
                                   showDialog(
                                       barrierDismissible: true,
@@ -414,7 +416,31 @@ class _MyHomePageState extends State<MyHomePage> {
                                                       },
                                                       child: Icon(
                                                         EvaIcons.globe,
-                                                      ))
+                                                        color: Colors.white,
+                                                      )),
+                                                  Text(
+                                                      " Also please check you github repos to find your protfolio repo or ",    style: TextStyle(
+                                                        color: Color.fromARGB(
+                                                            189,
+                                                            131,
+                                                            125,
+                                                            125)),),
+                                                  GestureDetector(
+                                                      onTap: () {
+                                                        launchUrl(Uri.parse(
+                                                            'https://github.com/${controller.UserInfo['login']}/${controller.dep_resp['repo_name']}'));
+                                                      },
+                                                      child: Text("visit it ",
+                                                          style: TextStyle(
+                                                              color: Colors
+                                                                  .blue))),
+                                                  Text(
+                                                      "And look for the Deployment in your Vercel Dashboard",    style: TextStyle(
+                                                        color: Color.fromARGB(
+                                                            189,
+                                                            131,
+                                                            125,
+                                                            125)),)
                                                 ],
                                               ),
                                             ),

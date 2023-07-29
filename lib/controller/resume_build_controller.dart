@@ -41,6 +41,7 @@ class ResumeBuildController extends GetxController {
   var profile_url;
   var EmailInfo;
   var settings;
+  var dep_resp;
   var pr_issue;
   var projects;
   var headers;
@@ -77,6 +78,7 @@ class ResumeBuildController extends GetxController {
         "vercel_auth_token": auth_token
       }
     };
+    print(map);
   }
 
   final Uri? location = href == null ? null : Uri.parse(href!);
@@ -133,6 +135,7 @@ class ResumeBuildController extends GetxController {
       sessionId: 'current',
     );
     if (session.current == true) {
+      git_access_token = session.providerAccessToken;
       initialization.value = true;
       currentStep.value = 2;
       print(session.providerAccessToken);
@@ -324,10 +327,10 @@ class ResumeBuildController extends GetxController {
     print("Hi 5");
     if (response_deploy.statusCode == 200) {
       print("yoi");
-      status_deploy = await response_deploy.stream.bytesToString();
-      print(status_deploy);
-      linkToDeploy = status_deploy['link'];
-      status_deploy = status_deploy['status'];
+      dep_resp = await response_deploy.stream.bytesToString();
+      dep_resp = jsonDecode(dep_resp);
+      status_deploy = dep_resp["status"];
+      linkToDeploy = dep_resp["link"];
     } else {
       print("yoo");
       print(response_deploy.reasonPhrase);
