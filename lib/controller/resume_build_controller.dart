@@ -47,36 +47,26 @@ class ResumeBuildController extends GetxController {
   TextEditingController github_unme_feild = TextEditingController();
   TextEditingController twitter_unme = TextEditingController();
   TextEditingController linkedIn_unme = TextEditingController();
+  late Map<dynamic, dynamic> mapp;
   var map;
   void setstatus() {
     map = {
-      "widgets": [
-        {
-          "name": "base_info",
-          "data": {
-            "name": name_feild.text,
-            "description": description_feild.text
-          }
+      "widgets": {
+        "base_info": {
+          "name": name_feild.text,
+          "description": description_feild.text
         },
-        profile_isPressed.value
-            ? {
-                "name": "avatar",
-                "data": {"url": profile_url}
-              }
-            : null,
-        github_issues_isPressed.value ? {"name": "issues", "data": {}} : null,
-        github_chart_isPressed.value ? {"name": "chart", "data": {}} : null,
-        {
-          "name": "contactme",
-          "data": {
-            "email": email_feild.text,
-            "github_unme": github_unme_feild.text,
-            "twitter_unme": twitter_unme.text,
-            "linkedIn_unme": linkedIn_unme.text,
-          }
+        "avatar": profile_isPressed.value ? {"url": profile_url} : null,
+        "github_activity": github_issues_isPressed.value ? {} : null,
+        "vercel": Vercel_isPressed.value ? {} : null,
+        "contactme": {
+          "email_address": email_feild.text,
+          "github_username": github_unme_feild.text,
+          "twitter_username": twitter_unme.text,
+          "linkedin_username": linkedIn_unme.text,
         },
-        Vercel_isPressed.value ? {"name": "vercel", "data": {}} : null,
-      ],
+        "github_chart": github_chart_isPressed.value ? {} : null,
+      },
       "connections": {
         "github_access_token": git_access_token,
         "vercel_auth_token": auth_token
