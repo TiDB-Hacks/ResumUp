@@ -15,17 +15,15 @@ import 'home_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(Sizer(builder: (context, orientation, deviceType) {
-    return GetMaterialApp(
-      getPages: AppPages.pages,
-      initialBinding: Resume_Build_Bindings(),
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: HomeScreen(),
-    );
-  }));
+  runApp(GetMaterialApp(
+    getPages: AppPages.pages,
+    initialBinding: Resume_Build_Bindings(),
+    theme: ThemeData(
+      colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      useMaterial3: true,
+    ),
+    home: HomeScreen(),
+  ));
 }
 
 class MyHomePage extends StatefulWidget {
@@ -46,12 +44,13 @@ class _MyHomePageState extends State<MyHomePage> {
           Align(
             alignment: Alignment.topLeft,
             child: Padding(
-              padding:
-                  EdgeInsets.symmetric(horizontal: 1.38.w, vertical: 2.43.h),
+              padding: EdgeInsets.symmetric(
+                  horizontal: 1.38 / 100 * Get.width,
+                  vertical: 2.43 / 100 * Get.height),
               child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(30)),
                 child: Container(
-                  width: 20.83.w,
+                  width: 20.83 / 100 * Get.width,
                   decoration: const BoxDecoration(
                       gradient: LinearGradient(colors: [
                     Color.fromARGB(207, 216, 134, 11),
@@ -60,18 +59,19 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: SafeArea(
                     child: Padding(
                       padding: EdgeInsets.symmetric(
-                          horizontal: 0.69.w, vertical: 1.21.h),
+                          horizontal: 0.69 / 100 * Get.width,
+                          vertical: 1.21 / 100 * Get.height),
                       child: Obx(
                         () => Column(
                           children: <Widget>[
                             SizedBox(
-                              height: 0.6.h,
+                              height: 0.6 / 100 * Get.height,
                             ),
                             Card(
                               color: Colors.black,
                               child: SizedBox(
                                 width: double.infinity,
-                                height: 3.65.h,
+                                height: 3.65 / 100 * Get.height,
                                 child: Center(
                                     child: Text(
                                   "Pick your Widgets",
@@ -80,20 +80,20 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                             ),
                             SizedBox(
-                              height: 1.21.h,
+                              height: 1.21 / 100 * Get.height,
                             ),
                             Divider(
-                              indent: 1.041.w,
-                              endIndent: 1.041.w,
-                              thickness: 0.24.h,
+                              indent: 1.041 / 100 * Get.width,
+                              endIndent: 1.041 / 100 * Get.width,
+                              thickness: 0.24 / 100 * Get.height,
                             ),
                             SizedBox(
-                              height: 1.21.h,
+                              height: 1.21 / 100 * Get.height,
                             ),
                             Row(
                               children: [
                                 SizedBox(
-                                  height: 27.04.h,
+                                  height: 27.04 / 100 * Get.height,
                                   child: Column(
                                     children: [
                                       Container(
@@ -120,19 +120,22 @@ class _MyHomePageState extends State<MyHomePage> {
                                                       .Vercel_isPressed.value;
                                             },
                                             child: SizedBox(
-                                                height: 11.57.h,
-                                                width: 6.94.w,
+                                                height:
+                                                    11.57 / 100 * Get.height,
+                                                width: 6.94 / 100 * Get.width,
                                                 child: Center(
                                                     child: Text(
                                                   'Vercel',
                                                   style: TextStyle(
-                                                      fontSize: 1.33.h),
+                                                      fontSize: 1.33 /
+                                                          100 *
+                                                          Get.height),
                                                 ))),
                                           ),
                                         ),
                                       ),
                                       SizedBox(
-                                        height: 0.97.h,
+                                        height: 0.97 / 100 * Get.height,
                                       ),
                                       Material(
                                         borderRadius: BorderRadius.circular(90),
@@ -154,8 +157,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                           },
                                           child: Padding(
                                             padding: EdgeInsets.symmetric(
-                                                vertical: 0.3.h,
-                                                horizontal: 0.347.w),
+                                                vertical:
+                                                    0.3 / 100 * Get.height,
+                                                horizontal:
+                                                    0.347 / 100 * Get.width),
                                             child: Ink(
                                               decoration: BoxDecoration(
                                                   borderRadius:
@@ -170,21 +175,31 @@ class _MyHomePageState extends State<MyHomePage> {
                                                       ])),
                                               child: Padding(
                                                 padding: EdgeInsets.symmetric(
-                                                    horizontal: 0.347.w,
-                                                    vertical: 0.6.h),
+                                                    horizontal:
+                                                        0.347 / 100 * Get.width,
+                                                    vertical:
+                                                        0.6 / 100 * Get.height),
                                                 child: CircleAvatar(
                                                   backgroundColor:
                                                       Color.fromARGB(
                                                           170, 150, 3, 163),
-                                                  radius: 2.74.h + 1.5.w,
+                                                  radius:
+                                                      2.74 / 100 * Get.height +
+                                                          1.5 / 100 * Get.width,
                                                   child: SizedBox(
-                                                      height: 11.57.h,
-                                                      width: 6.94.w,
+                                                      height: 11.57 /
+                                                          100 *
+                                                          Get.height,
+                                                      width: 6.94 /
+                                                          100 *
+                                                          Get.width,
                                                       child: Center(
                                                           child: Text(
                                                         "Image Icon",
                                                         style: TextStyle(
-                                                            fontSize: 1.46.h,
+                                                            fontSize: 1.46 /
+                                                                100 *
+                                                                Get.height,
                                                             color:
                                                                 Colors.white),
                                                       ))),
@@ -197,7 +212,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(width: 0.69.w),
+                                SizedBox(width: 0.69 / 100 * Get.width),
                                 Material(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
@@ -218,7 +233,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                     },
                                     child: Padding(
                                       padding: EdgeInsets.symmetric(
-                                          horizontal: 0.41.w, vertical: 0.73.h),
+                                          horizontal: 0.41 / 100 * Get.width,
+                                          vertical: 0.73 / 100 * Get.height),
                                       child: Ink(
                                         decoration: BoxDecoration(
                                             borderRadius:
@@ -233,13 +249,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                                       255, 17, 135, 21)
                                                 ])),
                                         child: SizedBox(
-                                            height: 25.57.h,
-                                            width: 9.72.w,
+                                            height: 25.57 / 100 * Get.height,
+                                            width: 9.72 / 100 * Get.width,
                                             child: Center(
                                               child: Text(
                                                 "Github Activity",
                                                 style: TextStyle(
-                                                    fontSize: 12,
+                                                    fontSize:
+                                                        1.67 / 100 * Get.height,
                                                     fontFamily: 'Poppins',
                                                     color: Colors.white),
                                               ),
@@ -251,7 +268,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               ],
                             ),
                             SizedBox(
-                              height: 6.09.h,
+                              height: 6.09 / 100 * Get.height,
                             ),
                             Material(
                               borderRadius:
@@ -271,7 +288,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                     BorderRadius.all(Radius.circular(10)),
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(
-                                      horizontal: 0.55.w, vertical: 0.97.h),
+                                      horizontal: 0.55 / 100 * Get.width,
+                                      vertical: 0.97 / 100 * Get.height),
                                   child: Ink(
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.all(
@@ -283,8 +301,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                               Color.fromARGB(255, 57, 158, 60),
                                               Color.fromARGB(255, 12, 91, 15)
                                             ])),
-                                    height: 17.05.h,
-                                    width: 18.75.w,
+                                    height: 17.05 / 100 * Get.height,
+                                    width: 18.75 / 100 * Get.width,
                                     child: Center(
                                       child: Text(
                                         'GitHub Chart',
@@ -307,9 +325,9 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 2.43.h),
+            padding: EdgeInsets.symmetric(vertical: 2.43 / 100 * Get.height),
             child: SizedBox(
-              width: 75.4.w,
+              width: 75.4 / 100 * Get.width,
               child: Align(
                 alignment: Alignment.topCenter,
                 child: Column(
@@ -321,7 +339,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             style: TextStyle(
                                 color: Colors.grey,
                                 fontFamily: 'Nunito',
-                                fontSize: 2.43.h,
+                                fontSize: 2.43 / 100 * Get.height,
                                 fontStyle: FontStyle.italic,
                                 fontWeight: FontWeight.w100)),
                         InkWell(
@@ -339,8 +357,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                   Color.fromARGB(255, 225, 158, 58)
                                 ])),
                             child: SizedBox(
-                              height: 3.65.h,
-                              width: 5.55.w,
+                              height: 3.65 / 100 * Get.height,
+                              width: 5.55 / 100 * Get.width,
                               child: Center(
                                 child: Text(
                                   "Deploy",
@@ -353,7 +371,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ],
                     ),
                     SizedBox(
-                      height: 1.827.h,
+                      height: 1.827 / 100 * Get.height,
                     ),
                     DottedBorder(
                       borderType: BorderType.RRect,
@@ -361,23 +379,25 @@ class _MyHomePageState extends State<MyHomePage> {
                       dashPattern: [6, 3, 6, 3],
                       color: Colors.amber,
                       padding: EdgeInsets.symmetric(
-                          vertical: 0.73.h, horizontal: 0.4166.w),
+                          vertical: 0.73 / 100 * Get.height,
+                          horizontal: 0.4166 / 100 * Get.width),
                       child: ClipRRect(
                         borderRadius: BorderRadius.all(Radius.circular(12)),
                         child: Container(
-                          height: 87.2.h,
-                          width: 76.388888.w,
+                          height: 87.2 / 100 * Get.height,
+                          width: 76.388888 / 100 * Get.width,
                           child: Padding(
                             padding: EdgeInsets.symmetric(
-                                vertical: 2.43.h, horizontal: 1.38.w),
+                                vertical: 2.43 / 100 * Get.height,
+                                horizontal: 1.38 / 100 * Get.width),
                             child: Column(children: [
                               SizedBox(
-                                height: 4.85.h,
+                                height: 4.85 / 100 * Get.height,
                               ),
                               Row(
                                 children: [
                                   SizedBox(
-                                    width: 12.18.h,
+                                    width: 12.18 / 100 * Get.height,
                                   ),
                                   Obx(
                                     () => controller.profile_isPressed.value
@@ -396,11 +416,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                               padding: EdgeInsets.all(5),
                                               child: CircleAvatar(
                                                 backgroundColor: Colors.black,
-                                                radius: 2.36.w + 4.14.h,
+                                                radius: 2.36 / 100 * Get.width +
+                                                    4.14 / 100 * Get.height,
                                                 child: ClipRRect(
                                                   borderRadius:
                                                       BorderRadius.circular(
-                                                          12.18.h + 6.94.w),
+                                                          12.18 /
+                                                                  100 *
+                                                                  Get.height +
+                                                              6.94 /
+                                                                  100 *
+                                                                  Get.width),
                                                   child: Image.network(
                                                       controller.profile_url
                                                           .toString()),
@@ -411,11 +437,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                         : SizedBox(),
                                   ),
                                   SizedBox(
-                                    width: 1.38.w,
+                                    width: 1.38 / 100 * Get.width,
                                   ),
                                   Container(
-                                    width: 34.72.w,
-                                    height: 15.83.h,
+                                    width: 34.72 / 100 * Get.width,
+                                    height: 15.83 / 100 * Get.height,
                                     decoration: BoxDecoration(
                                         border: Border.all(
                                             style: BorderStyle.solid,
@@ -425,25 +451,33 @@ class _MyHomePageState extends State<MyHomePage> {
                                             Radius.circular(20))),
                                     child: Padding(
                                         padding: EdgeInsets.symmetric(
-                                            horizontal: 1.0416666.w,
-                                            vertical: 1.218.h),
+                                            horizontal:
+                                                1.0416666 / 100 * Get.width,
+                                            vertical: 1.218 / 100 * Get.height),
                                         child: Column(children: [
                                           TextField(
                                             controller: controller.name_feild,
                                             style: TextStyle(
-                                                fontSize: 1.43.h + 0.83.w,
+                                                fontSize:
+                                                    1.43 / 100 * Get.height +
+                                                        0.83 / 100 * Get.width,
                                                 fontWeight: FontWeight.w200,
                                                 color: Colors.white),
                                             decoration: InputDecoration(
                                                 hintText: "What's Your Name",
                                                 hintStyle: TextStyle(
-                                                    fontSize: 1.43.h + 0.83.w,
+                                                    fontSize: 1.43 /
+                                                            100 *
+                                                            Get.height +
+                                                        0.83 / 100 * Get.width,
                                                     color: Color.fromARGB(
                                                         146, 150, 137, 137)),
                                                 border: InputBorder.none),
                                             cursorOpacityAnimates: true,
-                                            cursorWidth: 0.138.w,
-                                            cursorHeight: 2.679.h,
+                                            cursorWidth:
+                                                0.138 / 100 * Get.width,
+                                            cursorHeight:
+                                                2.679 / 100 * Get.height,
                                             cursorRadius: Radius.circular(20),
                                             cursorColor: Color.fromARGB(
                                                 0, 195, 187, 187),
@@ -453,20 +487,24 @@ class _MyHomePageState extends State<MyHomePage> {
                                                 controller.description_feild,
                                             maxLines: 2,
                                             style: TextStyle(
-                                                fontSize: 1.8.h,
+                                                fontSize:
+                                                    1.8 / 100 * Get.height,
                                                 color: Color.fromARGB(
                                                     171, 217, 213, 213)),
                                             decoration: InputDecoration(
                                                 hintText: "More about ya",
                                                 hintStyle: TextStyle(
-                                                    fontSize: 1.8.h,
+                                                    fontSize:
+                                                        1.8 / 100 * Get.height,
                                                     color: Color.fromARGB(
                                                         109, 150, 137, 137)),
                                                 isDense: true,
                                                 border: InputBorder.none),
                                             cursorOpacityAnimates: true,
-                                            cursorWidth: 0.138.w,
-                                            cursorHeight: 1.948.h,
+                                            cursorWidth:
+                                                0.138 / 100 * Get.width,
+                                            cursorHeight:
+                                                1.948 / 100 * Get.height,
                                             cursorRadius: Radius.circular(20),
                                             cursorColor: Color.fromARGB(
                                                 0, 195, 187, 187),
@@ -476,19 +514,20 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ],
                               ),
                               SizedBox(
-                                height: 4.85.h,
+                                height: 4.85 / 100 * Get.height,
                               ),
                               Row(
                                 children: [
                                   SizedBox(
-                                    width: 0.347.w,
+                                    width: 0.347 / 100 * Get.width,
                                   ),
                                   Obx(
                                     () =>
                                         controller.github_issues_isPressed.value
                                             ? Container(
-                                                height: 25.57.h,
-                                                width: 22.22.w,
+                                                height:
+                                                    25.57 / 100 * Get.height,
+                                                width: 22.22 / 100 * Get.width,
                                                 decoration: BoxDecoration(
                                                     border: Border.all(
                                                       color:
@@ -511,8 +550,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                                         ])),
                                                 child: Padding(
                                                   padding: EdgeInsets.symmetric(
-                                                      horizontal: 0.694.w,
-                                                      vertical: 1.21.h),
+                                                      horizontal: 0.694 /
+                                                          100 *
+                                                          Get.width,
+                                                      vertical: 1.21 /
+                                                          100 *
+                                                          Get.height),
                                                   child: Column(
                                                     children: [
                                                       Align(
@@ -526,13 +569,18 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                 color: Colors
                                                                     .white),
                                                           )),
+                                                      //start
                                                       SizedBox(
-                                                        height: 8,
+                                                        height: 1.11 /
+                                                            100 *
+                                                            Get.height,
                                                       ),
                                                       Padding(
                                                           padding:
                                                               EdgeInsets.only(
-                                                                  left: 10),
+                                                                  left: 0.76 /
+                                                                      100 *
+                                                                      Get.width),
                                                           child: Row(
                                                             children: [
                                                               CircleAvatar(
@@ -546,10 +594,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                   child: Icon(
                                                                     EvaIcons
                                                                         .upload_outline,
-                                                                    size: 11,
+                                                                    size: 1.53 /
+                                                                        100 *
+                                                                        Get.height,
                                                                   )),
                                                               SizedBox(
-                                                                width: 5,
+                                                                width: 0.38 /
+                                                                    100 *
+                                                                    Get.width,
                                                               ),
                                                               Text(
                                                                   'Created ${controller.commits} commits in ${controller.record_push.length} Public ${(controller.record_push.length == 1) ? "Repo" : "Repos"}',
@@ -561,17 +613,25 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w200,
-                                                                      fontSize:
-                                                                          12)),
+                                                                      fontSize: 1.67 /
+                                                                          100 *
+                                                                          Get.height)),
                                                             ],
                                                           )),
-                                                      SizedBox(height: 2),
+                                                      SizedBox(
+                                                          height: 0.27 /
+                                                              100 *
+                                                              Get.height),
                                                       Padding(
                                                           padding:
                                                               EdgeInsets.only(
-                                                                  left: 40),
+                                                                  left: 3 /
+                                                                      100 *
+                                                                      Get.height),
                                                           child: Container(
-                                                            height: 30,
+                                                            height: 4.17 /
+                                                                100 *
+                                                                Get.height,
                                                             child: ListView
                                                                 .builder(
                                                               itemCount:
@@ -594,10 +654,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                               color: Color.fromARGB(228, 244, 241, 241),
                                                                               fontFamily: 'Space',
                                                                               fontWeight: FontWeight.w200,
-                                                                              fontSize: 10)),
+                                                                              fontSize: 1.4 / 100 * Get.height)),
                                                                     ),
                                                                     SizedBox(
-                                                                      height: 3,
+                                                                      height: 0.417 /
+                                                                          100 *
+                                                                          Get.height,
                                                                     )
                                                                   ],
                                                                 );
@@ -605,12 +667,16 @@ class _MyHomePageState extends State<MyHomePage> {
                                                             ),
                                                           )),
                                                       SizedBox(
-                                                        height: 12,
+                                                        height: 1.67 /
+                                                            100 *
+                                                            Get.height,
                                                       ),
                                                       Padding(
                                                           padding:
                                                               EdgeInsets.only(
-                                                                  left: 10),
+                                                                  left: 0.76 /
+                                                                      100 *
+                                                                      Get.width),
                                                           child: Row(
                                                             children: [
                                                               CircleAvatar(
@@ -624,10 +690,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                   child: Icon(
                                                                     EvaIcons
                                                                         .book_outline,
-                                                                    size: 11,
+                                                                    size: 1.53 /
+                                                                        100 *
+                                                                        Get.height,
                                                                   )),
                                                               SizedBox(
-                                                                width: 5,
+                                                                width: 0.38 /
+                                                                    100 *
+                                                                    Get.width,
                                                               ),
                                                               Text(
                                                                   'Created ${controller.CreateRepos.length} new Public ${(controller.CreateRepos.length == 1) ? "Repo" : "Repos"}',
@@ -639,17 +709,25 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w200,
-                                                                      fontSize:
-                                                                          12)),
+                                                                      fontSize: 1.67 /
+                                                                          100 *
+                                                                          Get.height)),
                                                             ],
                                                           )),
-                                                      SizedBox(height: 2),
+                                                      SizedBox(
+                                                          height: 0.27 /
+                                                              100 *
+                                                              Get.height),
                                                       Padding(
                                                           padding:
                                                               EdgeInsets.only(
-                                                                  left: 40),
+                                                                  left: 3.065 /
+                                                                      100 *
+                                                                      Get.width),
                                                           child: Container(
-                                                            height: 25,
+                                                            height: 3.48 /
+                                                                100 *
+                                                                Get.height,
                                                             child: ListView
                                                                 .builder(
                                                               itemCount:
@@ -672,10 +750,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                               color: Color.fromARGB(228, 244, 241, 241),
                                                                               fontFamily: 'Space',
                                                                               fontWeight: FontWeight.w200,
-                                                                              fontSize: 10)),
+                                                                              fontSize: 1.39 / 100 * Get.height)),
                                                                     ),
                                                                     SizedBox(
-                                                                      height: 3,
+                                                                      height: 0.417 /
+                                                                          100 *
+                                                                          Get.height,
                                                                     )
                                                                   ],
                                                                 );
@@ -685,7 +765,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                                       Padding(
                                                           padding:
                                                               EdgeInsets.only(
-                                                                  left: 10),
+                                                                  left: 0.76 /
+                                                                      100 *
+                                                                      Get.width),
                                                           child: Row(
                                                             children: [
                                                               CircleAvatar(
@@ -699,10 +781,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                   child: Icon(
                                                                     Icons
                                                                         .merge_outlined,
-                                                                    size: 11,
+                                                                    size: 1.53 /
+                                                                        100 *
+                                                                        Get.height,
                                                                   )),
                                                               SizedBox(
-                                                                width: 5,
+                                                                width: 0.38 /
+                                                                    100 *
+                                                                    Get.width,
                                                               ),
                                                               Text(
                                                                   'Interacted with ${controller.pr_issue_num} Issues/PRs',
@@ -714,8 +800,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w200,
-                                                                      fontSize:
-                                                                          12)),
+                                                                      fontSize: 1.67 /
+                                                                          100 *
+                                                                          Get.height)),
                                                             ],
                                                           )),
                                                     ],
@@ -725,13 +812,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                             : SizedBox(),
                                   ),
                                   SizedBox(
-                                    width: 2.083.w,
+                                    width: 2.083 / 100 * Get.width,
                                   ),
                                   Obx(
                                     () => controller.Vercel_isPressed.value
                                         ? Container(
-                                            height: 25.57.h,
-                                            width: 22.22.w,
+                                            height: 25.57 / 100 * Get.height,
+                                            width: 22.22 / 100 * Get.width,
                                             decoration: BoxDecoration(
                                                 border: Border.all(
                                                   color: Color.fromARGB(
@@ -747,7 +834,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                                           255, 30, 167, 133),
                                                     ])),
                                             child: Padding(
-                                              padding: EdgeInsets.all(10),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal:
+                                                      0.766 / 100 * Get.width,
+                                                  vertical:
+                                                      1.4 / 100 * Get.height),
                                               child: Column(
                                                 children: [
                                                   Align(
@@ -763,12 +854,20 @@ class _MyHomePageState extends State<MyHomePage> {
                                                       )),
                                                   Padding(
                                                       padding: EdgeInsets.only(
-                                                          left: 5,
-                                                          right: 5,
-                                                          top: 8),
+                                                          left: 0.38 /
+                                                              100 *
+                                                              Get.width,
+                                                          right: 0.38 /
+                                                              100 *
+                                                              Get.width,
+                                                          top: 1.11 /
+                                                              100 *
+                                                              Get.height),
                                                       child: Align(
                                                         child: Container(
-                                                          height: 130,
+                                                          height: 18.1 /
+                                                              100 *
+                                                              Get.height,
                                                           child:
                                                               ListView.builder(
                                                             itemCount:
@@ -782,8 +881,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                                               return Padding(
                                                                 padding: EdgeInsets
                                                                     .symmetric(
-                                                                        horizontal:
-                                                                            10),
+                                                                        horizontal: 0.76 /
+                                                                            100 *
+                                                                            Get.width),
                                                                 child: Column(
                                                                   children: [
                                                                     Column(
@@ -802,7 +902,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                           child:
                                                                               Padding(
                                                                             padding:
-                                                                                EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                                                                                EdgeInsets.symmetric(horizontal: 0.76 / 100 * Get.width, vertical: 0.69 / 100 * Get.height),
                                                                             child:
                                                                                 Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                                                                               Text(
@@ -814,7 +914,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                                   InkWell(
                                                                                     borderRadius: BorderRadius.circular(20),
                                                                                     onTap: () {
-                                                                                      print("uuuuuuuuuuuuuuuu");
                                                                                       var uri = 'https://${controller.projects[index]['link']['type']}.com/${controller.projects[index]['link']['org']}/${controller.projects[index]['link']['repo']}';
                                                                                       print(uri);
                                                                                       launchUrl(Uri.parse(uri));
@@ -823,7 +922,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                                       backgroundColor: Color.fromARGB(56, 238, 235, 235),
                                                                                       child: Icon(
                                                                                         EvaIcons.github,
-                                                                                        size: 16,
+                                                                                        size: 2.22 / 100 * Get.height,
                                                                                         color: Color.fromARGB(210, 242, 242, 242),
                                                                                       ),
                                                                                     ),
@@ -841,7 +940,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                                       backgroundColor: Color.fromARGB(56, 238, 235, 235),
                                                                                       child: Icon(
                                                                                         EvaIcons.globe,
-                                                                                        size: 16,
+                                                                                        size: 2.22 / 100 * Get.height,
                                                                                         color: Color.fromARGB(203, 255, 254, 254),
                                                                                       ),
                                                                                     ),
@@ -850,16 +949,19 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                               )
                                                                             ]),
                                                                           ),
-                                                                          width:
-                                                                              340,
-                                                                          height:
-                                                                              35,
+                                                                          width: 26.05 /
+                                                                              100 *
+                                                                              Get.width,
+                                                                          height: 4.87 /
+                                                                              100 *
+                                                                              Get.height,
                                                                         ),
                                                                       ],
                                                                     ),
                                                                     SizedBox(
-                                                                      height:
-                                                                          12,
+                                                                      height: 1.67 /
+                                                                          100 *
+                                                                          Get.height,
                                                                     )
                                                                   ],
                                                                 ),
@@ -877,11 +979,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                         : SizedBox(),
                                   ),
                                   SizedBox(
-                                    width: 2.083.w,
+                                    width: 2.083 / 100 * Get.width,
                                   ),
                                   Container(
-                                    height: 25.57.h,
-                                    width: 22.22.w,
+                                    height: 25.57 / 100 * Get.height,
+                                    width: 22.22 / 100 * Get.width,
                                     decoration: BoxDecoration(
                                         border: Border.all(
                                           color:
@@ -905,24 +1007,24 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     color: Colors.white),
                                               )),
                                           SizedBox(
-                                            height: 1.46.h,
+                                            height: 1.46 / 100 * Get.height,
                                           ),
                                           Row(
                                             children: [
                                               SizedBox(
-                                                width: 2.43.w,
+                                                width: 2.43 / 100 * Get.width,
                                               ),
                                               Icon(
                                                 Icons.email_rounded,
                                                 color: Color.fromARGB(
                                                     140, 255, 255, 255),
-                                                size: 2.1924.h,
+                                                size: 2.1924 / 100 * Get.height,
                                               ),
                                               SizedBox(
-                                                width: 0.55.w,
+                                                width: 0.55 / 100 * Get.width,
                                               ),
                                               SizedBox(
-                                                width: 15.97.w,
+                                                width: 15.97 / 100 * Get.width,
                                                 child: TextField(
                                                   controller:
                                                       controller.email_feild,
@@ -930,13 +1032,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                                       fontFamily: 'Poppins',
                                                       fontWeight:
                                                           FontWeight.w200,
-                                                      fontSize: 1.584.h,
+                                                      fontSize: 1.584 /
+                                                          100 *
+                                                          Get.height,
                                                       color: Color.fromARGB(
                                                           223, 237, 232, 232)),
                                                   decoration: InputDecoration(
                                                       hintText: "Email",
                                                       hintStyle: TextStyle(
-                                                          fontSize: 1.584.h,
+                                                          fontSize: 1.584 /
+                                                              100 *
+                                                              Get.height,
                                                           color: Color.fromARGB(
                                                               167,
                                                               199,
@@ -945,8 +1051,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                                       isDense: true,
                                                       border: InputBorder.none),
                                                   cursorOpacityAnimates: true,
-                                                  cursorWidth: 0.138.w,
-                                                  cursorHeight: 1.58.h,
+                                                  cursorWidth:
+                                                      0.138 / 100 * Get.width,
+                                                  cursorHeight:
+                                                      1.58 / 100 * Get.height,
                                                   cursorRadius:
                                                       Radius.circular(20),
                                                   cursorColor: Color.fromARGB(
@@ -956,24 +1064,24 @@ class _MyHomePageState extends State<MyHomePage> {
                                             ],
                                           ),
                                           SizedBox(
-                                            height: 0.73.h,
+                                            height: 0.73 / 100 * Get.height,
                                           ),
                                           Row(
                                             children: [
                                               SizedBox(
-                                                width: 2.43.w,
+                                                width: 2.43 / 100 * Get.width,
                                               ),
                                               Icon(
                                                 FontAwesomeIcons.github,
                                                 color: Color.fromARGB(
                                                     140, 255, 255, 255),
-                                                size: 2.1924.h,
+                                                size: 2.1924 / 100 * Get.height,
                                               ),
                                               SizedBox(
-                                                width: 0.55.w,
+                                                width: 0.55 / 100 * Get.width,
                                               ),
                                               SizedBox(
-                                                width: 15.97.w,
+                                                width: 15.97 / 100 * Get.width,
                                                 child: TextField(
                                                   controller: controller
                                                       .github_unme_feild,
@@ -981,13 +1089,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                                       fontFamily: 'Poppins',
                                                       fontWeight:
                                                           FontWeight.w200,
-                                                      fontSize: 1.584.h,
+                                                      fontSize: 1.584 /
+                                                          100 *
+                                                          Get.height,
                                                       color: Color.fromARGB(
                                                           223, 237, 232, 232)),
                                                   decoration: InputDecoration(
                                                       hintText: "Github",
                                                       hintStyle: TextStyle(
-                                                          fontSize: 1.584.h,
+                                                          fontSize: 1.584 /
+                                                              100 *
+                                                              Get.height,
                                                           color: Color.fromARGB(
                                                               167,
                                                               199,
@@ -996,8 +1108,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                                       isDense: true,
                                                       border: InputBorder.none),
                                                   cursorOpacityAnimates: true,
-                                                  cursorWidth: 0.138.w,
-                                                  cursorHeight: 1.58.h,
+                                                  cursorWidth:
+                                                      0.138 / 100 * Get.width,
+                                                  cursorHeight:
+                                                      1.58 / 100 * Get.height,
                                                   cursorRadius:
                                                       Radius.circular(20),
                                                   cursorColor: Color.fromARGB(
@@ -1007,24 +1121,24 @@ class _MyHomePageState extends State<MyHomePage> {
                                             ],
                                           ),
                                           SizedBox(
-                                            height: 0.73.h,
+                                            height: 0.73 / 100 * Get.height,
                                           ),
                                           Row(
                                             children: [
                                               SizedBox(
-                                                width: 2.43.w,
+                                                width: 2.43 / 100 * Get.width,
                                               ),
                                               Icon(
                                                 FontAwesomeIcons.twitter,
                                                 color: Color.fromARGB(
                                                     140, 255, 255, 255),
-                                                size: 2.1924.h,
+                                                size: 2.1924 / 100 * Get.height,
                                               ),
                                               SizedBox(
-                                                width: 0.55.w,
+                                                width: 0.55 / 100 * Get.width,
                                               ),
                                               SizedBox(
-                                                width: 15.97.w,
+                                                width: 15.97 / 100 * Get.width,
                                                 child: TextField(
                                                   controller:
                                                       controller.twitter_unme,
@@ -1032,13 +1146,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                                       fontFamily: 'Poppins',
                                                       fontWeight:
                                                           FontWeight.w200,
-                                                      fontSize: 1.584.h,
+                                                      fontSize: 1.584 /
+                                                          100 *
+                                                          Get.height,
                                                       color: Color.fromARGB(
                                                           223, 237, 232, 232)),
                                                   decoration: InputDecoration(
                                                       hintText: "Twitter",
                                                       hintStyle: TextStyle(
-                                                          fontSize: 1.584.h,
+                                                          fontSize: 1.584 /
+                                                              100 *
+                                                              Get.height,
                                                           color: Color.fromARGB(
                                                               167,
                                                               199,
@@ -1047,8 +1165,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                                       isDense: true,
                                                       border: InputBorder.none),
                                                   cursorOpacityAnimates: true,
-                                                  cursorWidth: 0.138.w,
-                                                  cursorHeight: 1.58.h,
+                                                  cursorWidth:
+                                                      0.138 / 100 * Get.width,
+                                                  cursorHeight:
+                                                      1.58 / 100 * Get.height,
                                                   cursorRadius:
                                                       Radius.circular(20),
                                                   cursorColor: Color.fromARGB(
@@ -1058,24 +1178,24 @@ class _MyHomePageState extends State<MyHomePage> {
                                             ],
                                           ),
                                           SizedBox(
-                                            height: 0.73.h,
+                                            height: 0.73 / 100 * Get.height,
                                           ),
                                           Row(
                                             children: [
                                               SizedBox(
-                                                width: 2.43.w,
+                                                width: 2.43 / 100 * Get.width,
                                               ),
                                               Icon(
                                                 FontAwesomeIcons.linkedin,
                                                 color: Color.fromARGB(
                                                     140, 255, 255, 255),
-                                                size: 2.1924.h,
+                                                size: 2.1924 / 100 * Get.height,
                                               ),
                                               SizedBox(
-                                                width: 0.55.w,
+                                                width: 0.55 / 100 * Get.width,
                                               ),
                                               SizedBox(
-                                                width: 15.97.w,
+                                                width: 15.97 / 100 * Get.width,
                                                 child: TextField(
                                                   controller:
                                                       controller.linkedIn_unme,
@@ -1083,13 +1203,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                                       fontFamily: 'Poppins',
                                                       fontWeight:
                                                           FontWeight.w200,
-                                                      fontSize: 1.584.h,
+                                                      fontSize: 1.584 /
+                                                          100 *
+                                                          Get.height,
                                                       color: Color.fromARGB(
                                                           223, 237, 232, 232)),
                                                   decoration: InputDecoration(
                                                       hintText: "Linkedin",
                                                       hintStyle: TextStyle(
-                                                          fontSize: 1.584.h,
+                                                          fontSize: 1.584 /
+                                                              100 *
+                                                              Get.height,
                                                           color: Color.fromARGB(
                                                               167,
                                                               199,
@@ -1098,8 +1222,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                                       isDense: true,
                                                       border: InputBorder.none),
                                                   cursorOpacityAnimates: true,
-                                                  cursorWidth: 0.138.w,
-                                                  cursorHeight: 1.58.h,
+                                                  cursorWidth:
+                                                      0.138 / 100 * Get.width,
+                                                  cursorHeight:
+                                                      1.58 / 100 * Get.height,
                                                   cursorRadius:
                                                       Radius.circular(20),
                                                   cursorColor: Color.fromARGB(
@@ -1115,13 +1241,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ],
                               ),
                               SizedBox(
-                                height: 4.5.h,
+                                height: 4.5 / 100 * Get.height,
                               ),
                               Obx(
                                 () => controller.github_chart_isPressed.value
                                     ? Container(
-                                        height: 24.h,
-                                        width: 83.33.w,
+                                        height: 24 / 100 * Get.height,
+                                        width: 83.33 / 100 * Get.width,
                                         decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(20),
@@ -1133,7 +1259,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                             ])),
                                         child: Padding(
                                           padding: EdgeInsets.only(
-                                              left: 10, right: 20, bottom: 6),
+                                              left: 0.76 / 100 * Get.width,
+                                              right: 1.53 / 100 * Get.width,
+                                              bottom: 0.83 / 100 * Get.height),
                                           child: HeatMap(
                                             colorMode: ColorMode.opacity,
                                             colorsets: {
