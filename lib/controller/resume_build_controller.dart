@@ -52,7 +52,6 @@ class ResumeBuildController extends GetxController {
   TextEditingController github_unme_feild = TextEditingController();
   TextEditingController twitter_unme = TextEditingController();
   TextEditingController linkedIn_unme = TextEditingController();
-  late Map<dynamic, dynamic> mapp;
   var map;
   var headers_proxy = {'Content-Type': 'application/json'};
   void setstatus() {
@@ -91,9 +90,8 @@ class ResumeBuildController extends GetxController {
         .setSelfSigned(status: true);
     account = Account(client);
     super.onInit();
-      await checkStep();
-    }
-
+    await checkStep();
+  }
 
   Future<void> putToken() async {
     var request_put = http.Request(
@@ -135,6 +133,7 @@ class ResumeBuildController extends GetxController {
       sessionId: 'current',
     );
     if (session.current == true) {
+      initialization.value = true;
       currentStep.value = 2;
       print(session.providerAccessToken);
 
@@ -313,27 +312,35 @@ class ResumeBuildController extends GetxController {
   }
 
   Future<void> deployIt() async {
+    print("Hi");
     var request_deploy = http.Request(
         'POST', Uri.parse('https://resumeup-server.onrender.com/deploy'));
+    print("Hi 2");
     request_deploy.headers.addAll(headers_proxy);
+    print("Hi 3");
     request_deploy.body = json.encode(map);
+    print("Hi 4");
     http.StreamedResponse response_deploy = await request_deploy.send();
+    print("Hi 5");
     if (response_deploy.statusCode == 200) {
+      print("yoi");
       status_deploy = await response_deploy.stream.bytesToString();
+      print(status_deploy);
       linkToDeploy = status_deploy['link'];
       status_deploy = status_deploy['status'];
     } else {
+      print("yoo");
       print(response_deploy.reasonPhrase);
     }
   }
 
   Future<void> storedeploystatus() async {
+    print("yo");
     var request_put = http.Request(
         'POST', Uri.parse('https://resumeup-server.onrender.com/setStatus'));
     request_put.headers.addAll(headers_proxy);
-    request_put.body =
-        json.encode({"Uid": session.userId, "Status": "true"});
-
+    request_put.body = json.encode({"Uid": session.userId, "Status": "true"});
+    print("yoiiii");
     http.StreamedResponse response_set = await request_put.send();
     if (response_set.statusCode == 200) {
       print("status set");

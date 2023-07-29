@@ -377,7 +377,9 @@ class _MyHomePageState extends State<MyHomePage> {
                               splashColor: Colors.amber,
                               onTap: () async {
                                 controller.setstatus();
+                                print("Yo");
                                 controller.sending.value = true;
+                                print("yo 2");
                                 await controller.deployIt();
                                 if (controller.status_deploy.value) {
                                   // ignore: use_build_context_synchronously
