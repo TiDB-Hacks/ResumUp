@@ -50,12 +50,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 alignment: Alignment.topLeft,
                 child: Padding(
                   padding: EdgeInsets.symmetric(
-                      horizontal: 1.38 / 100 * Get.width,
-                      vertical: 2.43 / 100 * Get.height),
+                      horizontal: 1.38 / 100 * MediaQuery.of(context).size.width,
+                      vertical: 2.43 / 100 * MediaQuery.of(context).size.height),
                   child: ClipRRect(
                     borderRadius: BorderRadius.all(Radius.circular(30)),
                     child: Container(
-                      width: 20.83 / 100 * Get.width,
+                      width: 20.83 / 100 * MediaQuery.of(context).size.width,
                       decoration: const BoxDecoration(
                           gradient: LinearGradient(colors: [
                         Color.fromARGB(207, 216, 134, 11),
@@ -64,19 +64,19 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: SafeArea(
                         child: Padding(
                           padding: EdgeInsets.symmetric(
-                              horizontal: 0.69 / 100 * Get.width,
-                              vertical: 1.21 / 100 * Get.height),
+                              horizontal: 0.69 / 100 * MediaQuery.of(context).size.width,
+                              vertical: 1.21 / 100 * MediaQuery.of(context).size.height),
                           child: Obx(
                             () => Column(
                               children: <Widget>[
                                 SizedBox(
-                                  height: 0.6 / 100 * Get.height,
+                                  height: 0.6 / 100 * MediaQuery.of(context).size.height,
                                 ),
                                 Card(
                                   color: Colors.black,
                                   child: SizedBox(
                                     width: double.infinity,
-                                    height: 3.65 / 100 * Get.height,
+                                    height: 3.65 / 100 * MediaQuery.of(context).size.height,
                                     child: Center(
                                         child: Text(
                                       "Pick your Widgets",
@@ -85,20 +85,20 @@ class _MyHomePageState extends State<MyHomePage> {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 1.21 / 100 * Get.height,
+                                  height: 1.21 / 100 * MediaQuery.of(context).size.height,
                                 ),
                                 Divider(
-                                  indent: 1.041 / 100 * Get.width,
-                                  endIndent: 1.041 / 100 * Get.width,
-                                  thickness: 0.24 / 100 * Get.height,
+                                  indent: 1.041 / 100 * MediaQuery.of(context).size.width,
+                                  endIndent: 1.041 / 100 * MediaQuery.of(context).size.width,
+                                  thickness: 0.24 / 100 * MediaQuery.of(context).size.height,
                                 ),
                                 SizedBox(
-                                  height: 1.21 / 100 * Get.height,
+                                  height: 1.21 / 100 * MediaQuery.of(context).size.height,
                                 ),
                                 Row(
                                   children: [
                                     SizedBox(
-                                      height: 27.04 / 100 * Get.height,
+                                      height: 27.04 / 100 * MediaQuery.of(context).size.height,
                                       child: Column(
                                         children: [
                                           Container(
@@ -128,22 +128,22 @@ class _MyHomePageState extends State<MyHomePage> {
                                                 child: SizedBox(
                                                     height: 11.57 /
                                                         100 *
-                                                        Get.height,
+                                                        MediaQuery.of(context).size.height,
                                                     width:
-                                                        6.94 / 100 * Get.width,
+                                                        6.94 / 100 * MediaQuery.of(context).size.width,
                                                     child: Center(
                                                         child: Text(
                                                       'Vercel',
                                                       style: TextStyle(
                                                           fontSize: 1.33 /
                                                               100 *
-                                                              Get.height),
+                                                              MediaQuery.of(context).size.height),
                                                     ))),
                                               ),
                                             ),
                                           ),
                                           SizedBox(
-                                            height: 0.97 / 100 * Get.height,
+                                            height: 0.97 / 100 * MediaQuery.of(context).size.height,
                                           ),
                                           Material(
                                             borderRadius:
@@ -170,10 +170,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                               child: Padding(
                                                 padding: EdgeInsets.symmetric(
                                                     vertical:
-                                                        0.3 / 100 * Get.height,
+                                                        0.3 / 100 * MediaQuery.of(context).size.height,
                                                     horizontal: 0.347 /
                                                         100 *
-                                                        Get.width),
+                                                        MediaQuery.of(context).size.width),
                                                 child: Ink(
                                                   decoration: BoxDecoration(
                                                       borderRadius:
@@ -192,32 +192,32 @@ class _MyHomePageState extends State<MyHomePage> {
                                                         EdgeInsets.symmetric(
                                                             horizontal: 0.347 /
                                                                 100 *
-                                                                Get.width,
+                                                                MediaQuery.of(context).size.width,
                                                             vertical: 0.6 /
                                                                 100 *
-                                                                Get.height),
+                                                                MediaQuery.of(context).size.height),
                                                     child: CircleAvatar(
                                                       backgroundColor:
                                                           Color.fromARGB(
                                                               170, 150, 3, 163),
                                                       radius: 2.74 /
                                                               100 *
-                                                              Get.height +
-                                                          1.5 / 100 * Get.width,
+                                                              MediaQuery.of(context).size.height +
+                                                          1.5 / 100 * MediaQuery.of(context).size.width,
                                                       child: SizedBox(
                                                           height: 11.57 /
                                                               100 *
-                                                              Get.height,
+                                                              MediaQuery.of(context).size.height,
                                                           width: 6.94 /
                                                               100 *
-                                                              Get.width,
+                                                              MediaQuery.of(context).size.width,
                                                           child: Center(
                                                               child: Text(
                                                             "Image Icon",
                                                             style: TextStyle(
                                                                 fontSize: 1.46 /
                                                                     100 *
-                                                                    Get.height,
+                                                                    MediaQuery.of(context).size.height,
                                                                 color: Colors
                                                                     .white),
                                                           ))),
@@ -230,7 +230,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         ],
                                       ),
                                     ),
-                                    SizedBox(width: 0.69 / 100 * Get.width),
+                                    SizedBox(width: 0.69 / 100 * MediaQuery.of(context).size.width),
                                     Material(
                                       borderRadius:
                                           BorderRadius.all(Radius.circular(10)),
@@ -255,9 +255,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Padding(
                                           padding: EdgeInsets.symmetric(
                                               horizontal:
-                                                  0.41 / 100 * Get.width,
+                                                  0.41 / 100 * MediaQuery.of(context).size.width,
                                               vertical:
-                                                  0.73 / 100 * Get.height),
+                                                  0.73 / 100 * MediaQuery.of(context).size.height),
                                           child: Ink(
                                             decoration: BoxDecoration(
                                                 borderRadius:
@@ -273,15 +273,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     ])),
                                             child: SizedBox(
                                                 height:
-                                                    25.57 / 100 * Get.height,
-                                                width: 9.72 / 100 * Get.width,
+                                                    25.57 / 100 * MediaQuery.of(context).size.height,
+                                                width: 9.72 / 100 * MediaQuery.of(context).size.width,
                                                 child: Center(
                                                   child: Text(
                                                     "Github Activity",
                                                     style: TextStyle(
                                                         fontSize: 1.67 /
                                                             100 *
-                                                            Get.height,
+                                                            MediaQuery.of(context).size.height,
                                                         fontFamily: 'Poppins',
                                                         color: Colors.white),
                                                   ),
@@ -293,7 +293,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   ],
                                 ),
                                 SizedBox(
-                                  height: 6.09 / 100 * Get.height,
+                                  height: 6.09 / 100 * MediaQuery.of(context).size.height,
                                 ),
                                 Material(
                                   borderRadius:
@@ -314,8 +314,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                         BorderRadius.all(Radius.circular(10)),
                                     child: Padding(
                                       padding: EdgeInsets.symmetric(
-                                          horizontal: 0.55 / 100 * Get.width,
-                                          vertical: 0.97 / 100 * Get.height),
+                                          horizontal: 0.55 / 100 * MediaQuery.of(context).size.width,
+                                          vertical: 0.97 / 100 * MediaQuery.of(context).size.height),
                                       child: Ink(
                                         decoration: BoxDecoration(
                                             borderRadius: BorderRadius.all(
@@ -329,8 +329,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                                   Color.fromARGB(
                                                       255, 12, 91, 15)
                                                 ])),
-                                        height: 17.05 / 100 * Get.height,
-                                        width: 18.75 / 100 * Get.width,
+                                        height: 17.05 / 100 * MediaQuery.of(context).size.height,
+                                        width: 18.75 / 100 * MediaQuery.of(context).size.width,
                                         child: Center(
                                           child: Text(
                                             'GitHub Chart',
@@ -354,9 +354,9 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Padding(
                 padding:
-                    EdgeInsets.symmetric(vertical: 2.43 / 100 * Get.height),
+                    EdgeInsets.symmetric(vertical: 2.43 / 100 * MediaQuery.of(context).size.height),
                 child: SizedBox(
-                  width: 75.4 / 100 * Get.width,
+                  width: 75.4 / 100 * MediaQuery.of(context).size.width,
                   child: Align(
                     alignment: Alignment.topCenter,
                     child: Column(
@@ -368,7 +368,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 style: TextStyle(
                                     color: Colors.grey,
                                     fontFamily: 'Nunito',
-                                    fontSize: 2.43 / 100 * Get.height,
+                                    fontSize: 2.43 / 100 * MediaQuery.of(context).size.height,
                                     fontStyle: FontStyle.italic,
                                     fontWeight: FontWeight.w100)),
                             InkWell(
@@ -377,13 +377,10 @@ class _MyHomePageState extends State<MyHomePage> {
                               splashColor: Colors.amber,
                               onTap: () async {
                                 controller.setstatus();
-                                print("Yo");
                                 controller.sending.value = true;
-                                print("yo 2");
                                 await controller.deployIt();
-                                print("yo9");
                                 if (controller.status_deploy) {
-                                  print("yoo90");
+                                  controller.storedeploystatus();
                                   // ignore: use_build_context_synchronously
                                   showDialog(
                                       barrierDismissible: true,
@@ -411,19 +408,23 @@ class _MyHomePageState extends State<MyHomePage> {
                                                   ),
                                                   GestureDetector(
                                                       onTap: () {
-                                                        launchUrl(Uri.parse(controller.linkToDeploy));
+                                                        launchUrl(Uri.parse(
+                                                            controller
+                                                                .linkToDeploy));
                                                       },
                                                       child: Icon(
                                                         EvaIcons.globe,
                                                         color: Colors.white,
                                                       )),
                                                   Text(
-                                                      " Also please check you github repos to find your protfolio repo or ",    style: TextStyle(
+                                                    " Also please check you github repos to find your protfolio repo or ",
+                                                    style: TextStyle(
                                                         color: Color.fromARGB(
                                                             189,
                                                             131,
                                                             125,
-                                                            125)),),
+                                                            125)),
+                                                  ),
                                                   GestureDetector(
                                                       onTap: () {
                                                         launchUrl(Uri.parse(
@@ -434,12 +435,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                                               color: Colors
                                                                   .blue))),
                                                   Text(
-                                                      "And look for the Deployment in your Vercel Dashboard",    style: TextStyle(
+                                                    "And look for the Deployment in your Vercel Dashboard",
+                                                    style: TextStyle(
                                                         color: Color.fromARGB(
                                                             189,
                                                             131,
                                                             125,
-                                                            125)),)
+                                                            125)),
+                                                  )
                                                 ],
                                               ),
                                             ),
@@ -477,8 +480,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                       Color.fromARGB(255, 225, 158, 58)
                                     ])),
                                 child: SizedBox(
-                                  height: 3.65 / 100 * Get.height,
-                                  width: 5.55 / 100 * Get.width,
+                                  height: 3.65 / 100 * MediaQuery.of(context).size.height,
+                                  width: 5.55 / 100 * MediaQuery.of(context).size.width,
                                   child: Center(
                                     child: Text(
                                       "Deploy",
@@ -491,7 +494,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         SizedBox(
-                          height: 1.827 / 100 * Get.height,
+                          height: 1.827 / 100 * MediaQuery.of(context).size.height,
                         ),
                         DottedBorder(
                           borderType: BorderType.RRect,
@@ -499,25 +502,25 @@ class _MyHomePageState extends State<MyHomePage> {
                           dashPattern: [6, 3, 6, 3],
                           color: Colors.amber,
                           padding: EdgeInsets.symmetric(
-                              vertical: 0.73 / 100 * Get.height,
-                              horizontal: 0.4166 / 100 * Get.width),
+                              vertical: 0.73 / 100 * MediaQuery.of(context).size.height,
+                              horizontal: 0.4166 / 100 * MediaQuery.of(context).size.width),
                           child: ClipRRect(
                             borderRadius: BorderRadius.all(Radius.circular(12)),
                             child: Container(
-                              height: 87.2 / 100 * Get.height,
-                              width: 76.388888 / 100 * Get.width,
+                              height: 87.2 / 100 * MediaQuery.of(context).size.height,
+                              width: 76.388888 / 100 * MediaQuery.of(context).size.width,
                               child: Padding(
                                 padding: EdgeInsets.symmetric(
-                                    vertical: 2.43 / 100 * Get.height,
-                                    horizontal: 1.38 / 100 * Get.width),
+                                    vertical: 2.43 / 100 * MediaQuery.of(context).size.height,
+                                    horizontal: 1.38 / 100 * MediaQuery.of(context).size.width),
                                 child: Column(children: [
                                   SizedBox(
-                                    height: 4.85 / 100 * Get.height,
+                                    height: 4.85 / 100 * MediaQuery.of(context).size.height,
                                   ),
                                   Row(
                                     children: [
                                       SizedBox(
-                                        width: 12.18 / 100 * Get.height,
+                                        width: 12.18 / 100 * MediaQuery.of(context).size.height,
                                       ),
                                       Obx(
                                         () => controller.profile_isPressed.value
@@ -541,16 +544,16 @@ class _MyHomePageState extends State<MyHomePage> {
                                                         Colors.black,
                                                     radius: 2.36 /
                                                             100 *
-                                                            Get.width +
-                                                        4.14 / 100 * Get.height,
+                                                            MediaQuery.of(context).size.width +
+                                                        4.14 / 100 * MediaQuery.of(context).size.height,
                                                     child: ClipRRect(
                                                       borderRadius: BorderRadius
                                                           .circular(12.18 /
                                                                   100 *
-                                                                  Get.height +
+                                                                  MediaQuery.of(context).size.height +
                                                               6.94 /
                                                                   100 *
-                                                                  Get.width),
+                                                                  MediaQuery.of(context).size.width),
                                                       child: Image.network(
                                                           controller.profile_url
                                                               .toString()),
@@ -561,11 +564,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                             : SizedBox(),
                                       ),
                                       SizedBox(
-                                        width: 1.38 / 100 * Get.width,
+                                        width: 1.38 / 100 * MediaQuery.of(context).size.width,
                                       ),
                                       Container(
-                                        width: 34.72 / 100 * Get.width,
-                                        height: 15.83 / 100 * Get.height,
+                                        width: 34.72 / 100 * MediaQuery.of(context).size.width,
+                                        height: 15.83 / 100 * MediaQuery.of(context).size.height,
                                         decoration: BoxDecoration(
                                             border: Border.all(
                                                 style: BorderStyle.solid,
@@ -576,9 +579,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Padding(
                                             padding: EdgeInsets.symmetric(
                                                 horizontal:
-                                                    1.0416666 / 100 * Get.width,
+                                                    1.0416666 / 100 * MediaQuery.of(context).size.width,
                                                 vertical:
-                                                    1.218 / 100 * Get.height),
+                                                    1.218 / 100 * MediaQuery.of(context).size.height),
                                             child: Column(children: [
                                               TextField(
                                                 controller:
@@ -586,8 +589,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                                 style: TextStyle(
                                                     fontSize: 1.43 /
                                                             100 *
-                                                            Get.height +
-                                                        0.83 / 100 * Get.width,
+                                                            MediaQuery.of(context).size.height +
+                                                        0.83 / 100 * MediaQuery.of(context).size.width,
                                                     fontWeight: FontWeight.w200,
                                                     color: Colors.white),
                                                 decoration: InputDecoration(
@@ -596,10 +599,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     hintStyle: TextStyle(
                                                         fontSize: 1.43 /
                                                                 100 *
-                                                                Get.height +
+                                                                MediaQuery.of(context).size.height +
                                                             0.83 /
                                                                 100 *
-                                                                Get.width,
+                                                                MediaQuery.of(context).size.width,
                                                         color: Color.fromARGB(
                                                             146,
                                                             150,
@@ -608,9 +611,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     border: InputBorder.none),
                                                 cursorOpacityAnimates: true,
                                                 cursorWidth:
-                                                    0.138 / 100 * Get.width,
+                                                    0.138 / 100 * MediaQuery.of(context).size.width,
                                                 cursorHeight:
-                                                    2.679 / 100 * Get.height,
+                                                    2.679 / 100 * MediaQuery.of(context).size.height,
                                                 cursorRadius:
                                                     Radius.circular(20),
                                                 cursorColor: Color.fromARGB(
@@ -622,7 +625,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                 maxLines: 2,
                                                 style: TextStyle(
                                                     fontSize:
-                                                        1.8 / 100 * Get.height,
+                                                        1.8 / 100 * MediaQuery.of(context).size.height,
                                                     color: Color.fromARGB(
                                                         171, 217, 213, 213)),
                                                 decoration: InputDecoration(
@@ -630,7 +633,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     hintStyle: TextStyle(
                                                         fontSize: 1.8 /
                                                             100 *
-                                                            Get.height,
+                                                            MediaQuery.of(context).size.height,
                                                         color: Color.fromARGB(
                                                             109,
                                                             150,
@@ -640,9 +643,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     border: InputBorder.none),
                                                 cursorOpacityAnimates: true,
                                                 cursorWidth:
-                                                    0.138 / 100 * Get.width,
+                                                    0.138 / 100 * MediaQuery.of(context).size.width,
                                                 cursorHeight:
-                                                    1.948 / 100 * Get.height,
+                                                    1.948 / 100 * MediaQuery.of(context).size.height,
                                                 cursorRadius:
                                                     Radius.circular(20),
                                                 cursorColor: Color.fromARGB(
@@ -653,20 +656,20 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ],
                                   ),
                                   SizedBox(
-                                    height: 4.85 / 100 * Get.height,
+                                    height: 4.85 / 100 * MediaQuery.of(context).size.height,
                                   ),
                                   Row(
                                     children: [
                                       SizedBox(
-                                        width: 0.347 / 100 * Get.width,
+                                        width: 0.347 / 100 * MediaQuery.of(context).size.width,
                                       ),
                                       Obx(
                                         () => controller
                                                 .github_issues_isPressed.value
                                             ? Container(
                                                 height:
-                                                    25.57 / 100 * Get.height,
-                                                width: 22.22 / 100 * Get.width,
+                                                    25.57 / 100 * MediaQuery.of(context).size.height,
+                                                width: 22.22 / 100 * MediaQuery.of(context).size.width,
                                                 decoration: BoxDecoration(
                                                     border: Border.all(
                                                       color:
@@ -691,10 +694,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                                   padding: EdgeInsets.symmetric(
                                                       horizontal: 0.694 /
                                                           100 *
-                                                          Get.width,
+                                                          MediaQuery.of(context).size.width,
                                                       vertical: 1.21 /
                                                           100 *
-                                                          Get.height),
+                                                          MediaQuery.of(context).size.height),
                                                   child: Column(
                                                     children: [
                                                       Align(
@@ -712,14 +715,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                                       SizedBox(
                                                         height: 1.11 /
                                                             100 *
-                                                            Get.height,
+                                                            MediaQuery.of(context).size.height,
                                                       ),
                                                       Padding(
                                                           padding:
                                                               EdgeInsets.only(
                                                                   left: 0.76 /
                                                                       100 *
-                                                                      Get.width),
+                                                                      MediaQuery.of(context).size.width),
                                                           child: Row(
                                                             children: [
                                                               CircleAvatar(
@@ -735,12 +738,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                         .upload_outline,
                                                                     size: 1.53 /
                                                                         100 *
-                                                                        Get.height,
+                                                                        MediaQuery.of(context).size.height,
                                                                   )),
                                                               SizedBox(
                                                                 width: 0.38 /
                                                                     100 *
-                                                                    Get.width,
+                                                                    MediaQuery.of(context).size.width,
                                                               ),
                                                               Text(
                                                                   'Created ${controller.commits} commits in ${controller.record_push.length} Public ${(controller.record_push.length == 1) ? "Repo" : "Repos"}',
@@ -754,23 +757,23 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                               .w200,
                                                                       fontSize: 1.67 /
                                                                           100 *
-                                                                          Get.height)),
+                                                                          MediaQuery.of(context).size.height)),
                                                             ],
                                                           )),
                                                       SizedBox(
                                                           height: 0.27 /
                                                               100 *
-                                                              Get.height),
+                                                              MediaQuery.of(context).size.height),
                                                       Padding(
                                                           padding:
                                                               EdgeInsets.only(
                                                                   left: 3 /
                                                                       100 *
-                                                                      Get.height),
+                                                                      MediaQuery.of(context).size.height),
                                                           child: Container(
                                                             height: 4.17 /
                                                                 100 *
-                                                                Get.height,
+                                                                MediaQuery.of(context).size.height,
                                                             child: ListView
                                                                 .builder(
                                                               itemCount:
@@ -793,12 +796,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                               color: Color.fromARGB(228, 244, 241, 241),
                                                                               fontFamily: 'Space',
                                                                               fontWeight: FontWeight.w200,
-                                                                              fontSize: 1.4 / 100 * Get.height)),
+                                                                              fontSize: 1.4 / 100 * MediaQuery.of(context).size.height)),
                                                                     ),
                                                                     SizedBox(
                                                                       height: 0.417 /
                                                                           100 *
-                                                                          Get.height,
+                                                                          MediaQuery.of(context).size.height,
                                                                     )
                                                                   ],
                                                                 );
@@ -808,14 +811,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                                       SizedBox(
                                                         height: 1.67 /
                                                             100 *
-                                                            Get.height,
+                                                            MediaQuery.of(context).size.height,
                                                       ),
                                                       Padding(
                                                           padding:
                                                               EdgeInsets.only(
                                                                   left: 0.76 /
                                                                       100 *
-                                                                      Get.width),
+                                                                      MediaQuery.of(context).size.width),
                                                           child: Row(
                                                             children: [
                                                               CircleAvatar(
@@ -831,12 +834,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                         .book_outline,
                                                                     size: 1.53 /
                                                                         100 *
-                                                                        Get.height,
+                                                                        MediaQuery.of(context).size.height,
                                                                   )),
                                                               SizedBox(
                                                                 width: 0.38 /
                                                                     100 *
-                                                                    Get.width,
+                                                                    MediaQuery.of(context).size.width,
                                                               ),
                                                               Text(
                                                                   'Created ${controller.CreateRepos.length} new Public ${(controller.CreateRepos.length == 1) ? "Repo" : "Repos"}',
@@ -850,23 +853,23 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                               .w200,
                                                                       fontSize: 1.67 /
                                                                           100 *
-                                                                          Get.height)),
+                                                                          MediaQuery.of(context).size.height)),
                                                             ],
                                                           )),
                                                       SizedBox(
                                                           height: 0.27 /
                                                               100 *
-                                                              Get.height),
+                                                              MediaQuery.of(context).size.height),
                                                       Padding(
                                                           padding:
                                                               EdgeInsets.only(
                                                                   left: 3.065 /
                                                                       100 *
-                                                                      Get.width),
+                                                                      MediaQuery.of(context).size.width),
                                                           child: Container(
                                                             height: 3.48 /
                                                                 100 *
-                                                                Get.height,
+                                                                MediaQuery.of(context).size.height,
                                                             child: ListView
                                                                 .builder(
                                                               itemCount:
@@ -889,12 +892,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                               color: Color.fromARGB(228, 244, 241, 241),
                                                                               fontFamily: 'Space',
                                                                               fontWeight: FontWeight.w200,
-                                                                              fontSize: 1.39 / 100 * Get.height)),
+                                                                              fontSize: 1.39 / 100 * MediaQuery.of(context).size.height)),
                                                                     ),
                                                                     SizedBox(
                                                                       height: 0.417 /
                                                                           100 *
-                                                                          Get.height,
+                                                                          MediaQuery.of(context).size.height,
                                                                     )
                                                                   ],
                                                                 );
@@ -906,7 +909,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                               EdgeInsets.only(
                                                                   left: 0.76 /
                                                                       100 *
-                                                                      Get.width),
+                                                                      MediaQuery.of(context).size.width),
                                                           child: Row(
                                                             children: [
                                                               CircleAvatar(
@@ -922,12 +925,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                         .merge_outlined,
                                                                     size: 1.53 /
                                                                         100 *
-                                                                        Get.height,
+                                                                        MediaQuery.of(context).size.height,
                                                                   )),
                                                               SizedBox(
                                                                 width: 0.38 /
                                                                     100 *
-                                                                    Get.width,
+                                                                    MediaQuery.of(context).size.width,
                                                               ),
                                                               Text(
                                                                   'Interacted with ${controller.pr_issue_num} Issues/PRs',
@@ -941,7 +944,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                               .w200,
                                                                       fontSize: 1.67 /
                                                                           100 *
-                                                                          Get.height)),
+                                                                          MediaQuery.of(context).size.height)),
                                                             ],
                                                           )),
                                                     ],
@@ -951,14 +954,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                             : SizedBox(),
                                       ),
                                       SizedBox(
-                                        width: 2.083 / 100 * Get.width,
+                                        width: 2.083 / 100 * MediaQuery.of(context).size.width,
                                       ),
                                       Obx(
                                         () => controller.Vercel_isPressed.value
                                             ? Container(
                                                 height:
-                                                    25.57 / 100 * Get.height,
-                                                width: 22.22 / 100 * Get.width,
+                                                    25.57 / 100 * MediaQuery.of(context).size.height,
+                                                width: 22.22 / 100 * MediaQuery.of(context).size.width,
                                                 decoration: BoxDecoration(
                                                     border: Border.all(
                                                       color: Color.fromARGB(
@@ -979,10 +982,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                                   padding: EdgeInsets.symmetric(
                                                       horizontal: 0.766 /
                                                           100 *
-                                                          Get.width,
+                                                          MediaQuery.of(context).size.width,
                                                       vertical: 1.4 /
                                                           100 *
-                                                          Get.height),
+                                                          MediaQuery.of(context).size.height),
                                                   child: Column(
                                                     children: [
                                                       Align(
@@ -1001,18 +1004,18 @@ class _MyHomePageState extends State<MyHomePage> {
                                                               EdgeInsets.only(
                                                                   left: 0.38 /
                                                                       100 *
-                                                                      Get.width,
+                                                                      MediaQuery.of(context).size.width,
                                                                   right: 0.38 /
                                                                       100 *
-                                                                      Get.width,
+                                                                      MediaQuery.of(context).size.width,
                                                                   top: 1.11 /
                                                                       100 *
-                                                                      Get.height),
+                                                                      MediaQuery.of(context).size.height),
                                                           child: Align(
                                                             child: Container(
                                                               height: 18.1 /
                                                                   100 *
-                                                                  Get.height,
+                                                                  MediaQuery.of(context).size.height,
                                                               child: ListView
                                                                   .builder(
                                                                 itemCount:
@@ -1028,7 +1031,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                     padding: EdgeInsets.symmetric(
                                                                         horizontal: 0.76 /
                                                                             100 *
-                                                                            Get.width),
+                                                                            MediaQuery.of(context).size.width),
                                                                     child:
                                                                         Column(
                                                                       children: [
@@ -1040,7 +1043,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                                 color: Color.fromARGB(88, 249, 245, 245),
                                                                               ),
                                                                               child: Padding(
-                                                                                padding: EdgeInsets.symmetric(horizontal: 0.76 / 100 * Get.width, vertical: 0.69 / 100 * Get.height),
+                                                                                padding: EdgeInsets.symmetric(horizontal: 0.76 / 100 * MediaQuery.of(context).size.width, vertical: 0.69 / 100 * MediaQuery.of(context).size.height),
                                                                                 child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                                                                                   Text(
                                                                                     controller.projects[index]['name'],
@@ -1059,7 +1062,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                                           backgroundColor: Color.fromARGB(56, 238, 235, 235),
                                                                                           child: Icon(
                                                                                             EvaIcons.github,
-                                                                                            size: 2.22 / 100 * Get.height,
+                                                                                            size: 2.22 / 100 * MediaQuery.of(context).size.height,
                                                                                             color: Color.fromARGB(210, 242, 242, 242),
                                                                                           ),
                                                                                         ),
@@ -1077,7 +1080,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                                           backgroundColor: Color.fromARGB(56, 238, 235, 235),
                                                                                           child: Icon(
                                                                                             EvaIcons.globe,
-                                                                                            size: 2.22 / 100 * Get.height,
+                                                                                            size: 2.22 / 100 * MediaQuery.of(context).size.height,
                                                                                             color: Color.fromARGB(203, 255, 254, 254),
                                                                                           ),
                                                                                         ),
@@ -1086,15 +1089,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                                   )
                                                                                 ]),
                                                                               ),
-                                                                              width: 26.05 / 100 * Get.width,
-                                                                              height: 4.87 / 100 * Get.height,
+                                                                              width: 26.05 / 100 * MediaQuery.of(context).size.width,
+                                                                              height: 4.87 / 100 * MediaQuery.of(context).size.height,
                                                                             ),
                                                                           ],
                                                                         ),
                                                                         SizedBox(
                                                                           height: 1.67 /
                                                                               100 *
-                                                                              Get.height,
+                                                                              MediaQuery.of(context).size.height,
                                                                         )
                                                                       ],
                                                                     ),
@@ -1112,11 +1115,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                             : SizedBox(),
                                       ),
                                       SizedBox(
-                                        width: 2.083 / 100 * Get.width,
+                                        width: 2.083 / 100 * MediaQuery.of(context).size.width,
                                       ),
                                       Container(
-                                        height: 25.57 / 100 * Get.height,
-                                        width: 22.22 / 100 * Get.width,
+                                        height: 25.57 / 100 * MediaQuery.of(context).size.height,
+                                        width: 22.22 / 100 * MediaQuery.of(context).size.width,
                                         decoration: BoxDecoration(
                                             border: Border.all(
                                               color: Color.fromARGB(
@@ -1143,13 +1146,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                                         color: Colors.white),
                                                   )),
                                               SizedBox(
-                                                height: 1.46 / 100 * Get.height,
+                                                height: 1.46 / 100 * MediaQuery.of(context).size.height,
                                               ),
                                               Row(
                                                 children: [
                                                   SizedBox(
                                                     width:
-                                                        2.43 / 100 * Get.width,
+                                                        2.43 / 100 * MediaQuery.of(context).size.width,
                                                   ),
                                                   Icon(
                                                     Icons.email_rounded,
@@ -1157,15 +1160,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                                         140, 255, 255, 255),
                                                     size: 2.1924 /
                                                         100 *
-                                                        Get.height,
+                                                        MediaQuery.of(context).size.height,
                                                   ),
                                                   SizedBox(
                                                     width:
-                                                        0.55 / 100 * Get.width,
+                                                        0.55 / 100 * MediaQuery.of(context).size.width,
                                                   ),
                                                   SizedBox(
                                                     width:
-                                                        15.97 / 100 * Get.width,
+                                                        15.97 / 100 * MediaQuery.of(context).size.width,
                                                     child: TextField(
                                                       controller: controller
                                                           .email_feild,
@@ -1175,7 +1178,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                               FontWeight.w200,
                                                           fontSize: 1.584 /
                                                               100 *
-                                                              Get.height,
+                                                              MediaQuery.of(context).size.height,
                                                           color: Color.fromARGB(
                                                               223,
                                                               237,
@@ -1186,7 +1189,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                           hintStyle: TextStyle(
                                                               fontSize: 1.584 /
                                                                   100 *
-                                                                  Get.height,
+                                                                  MediaQuery.of(context).size.height,
                                                               color: Color
                                                                   .fromARGB(
                                                                       167,
@@ -1200,10 +1203,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                                           true,
                                                       cursorWidth: 0.138 /
                                                           100 *
-                                                          Get.width,
+                                                          MediaQuery.of(context).size.width,
                                                       cursorHeight: 1.58 /
                                                           100 *
-                                                          Get.height,
+                                                          MediaQuery.of(context).size.height,
                                                       cursorRadius:
                                                           Radius.circular(20),
                                                       cursorColor:
@@ -1214,13 +1217,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                                 ],
                                               ),
                                               SizedBox(
-                                                height: 0.73 / 100 * Get.height,
+                                                height: 0.73 / 100 * MediaQuery.of(context).size.height,
                                               ),
                                               Row(
                                                 children: [
                                                   SizedBox(
                                                     width:
-                                                        2.43 / 100 * Get.width,
+                                                        2.43 / 100 * MediaQuery.of(context).size.width,
                                                   ),
                                                   Icon(
                                                     FontAwesomeIcons.github,
@@ -1228,15 +1231,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                                         140, 255, 255, 255),
                                                     size: 2.1924 /
                                                         100 *
-                                                        Get.height,
+                                                        MediaQuery.of(context).size.height,
                                                   ),
                                                   SizedBox(
                                                     width:
-                                                        0.55 / 100 * Get.width,
+                                                        0.55 / 100 * MediaQuery.of(context).size.width,
                                                   ),
                                                   SizedBox(
                                                     width:
-                                                        15.97 / 100 * Get.width,
+                                                        15.97 / 100 * MediaQuery.of(context).size.width,
                                                     child: TextField(
                                                       controller: controller
                                                           .github_unme_feild,
@@ -1246,7 +1249,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                               FontWeight.w200,
                                                           fontSize: 1.584 /
                                                               100 *
-                                                              Get.height,
+                                                              MediaQuery.of(context).size.height,
                                                           color: Color.fromARGB(
                                                               223,
                                                               237,
@@ -1257,7 +1260,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                           hintStyle: TextStyle(
                                                               fontSize: 1.584 /
                                                                   100 *
-                                                                  Get.height,
+                                                                  MediaQuery.of(context).size.height,
                                                               color: Color
                                                                   .fromARGB(
                                                                       167,
@@ -1271,10 +1274,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                                           true,
                                                       cursorWidth: 0.138 /
                                                           100 *
-                                                          Get.width,
+                                                          MediaQuery.of(context).size.width,
                                                       cursorHeight: 1.58 /
                                                           100 *
-                                                          Get.height,
+                                                          MediaQuery.of(context).size.height,
                                                       cursorRadius:
                                                           Radius.circular(20),
                                                       cursorColor:
@@ -1285,13 +1288,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                                 ],
                                               ),
                                               SizedBox(
-                                                height: 0.73 / 100 * Get.height,
+                                                height: 0.73 / 100 * MediaQuery.of(context).size.height,
                                               ),
                                               Row(
                                                 children: [
                                                   SizedBox(
                                                     width:
-                                                        2.43 / 100 * Get.width,
+                                                        2.43 / 100 * MediaQuery.of(context).size.width,
                                                   ),
                                                   Icon(
                                                     FontAwesomeIcons.twitter,
@@ -1299,15 +1302,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                                         140, 255, 255, 255),
                                                     size: 2.1924 /
                                                         100 *
-                                                        Get.height,
+                                                        MediaQuery.of(context).size.height,
                                                   ),
                                                   SizedBox(
                                                     width:
-                                                        0.55 / 100 * Get.width,
+                                                        0.55 / 100 * MediaQuery.of(context).size.width,
                                                   ),
                                                   SizedBox(
                                                     width:
-                                                        15.97 / 100 * Get.width,
+                                                        15.97 / 100 * MediaQuery.of(context).size.width,
                                                     child: TextField(
                                                       controller: controller
                                                           .twitter_unme,
@@ -1317,7 +1320,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                               FontWeight.w200,
                                                           fontSize: 1.584 /
                                                               100 *
-                                                              Get.height,
+                                                              MediaQuery.of(context).size.height,
                                                           color: Color.fromARGB(
                                                               223,
                                                               237,
@@ -1328,7 +1331,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                           hintStyle: TextStyle(
                                                               fontSize: 1.584 /
                                                                   100 *
-                                                                  Get.height,
+                                                                  MediaQuery.of(context).size.height,
                                                               color: Color
                                                                   .fromARGB(
                                                                       167,
@@ -1342,10 +1345,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                                           true,
                                                       cursorWidth: 0.138 /
                                                           100 *
-                                                          Get.width,
+                                                          MediaQuery.of(context).size.width,
                                                       cursorHeight: 1.58 /
                                                           100 *
-                                                          Get.height,
+                                                          MediaQuery.of(context).size.height,
                                                       cursorRadius:
                                                           Radius.circular(20),
                                                       cursorColor:
@@ -1356,13 +1359,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                                 ],
                                               ),
                                               SizedBox(
-                                                height: 0.73 / 100 * Get.height,
+                                                height: 0.73 / 100 * MediaQuery.of(context).size.height,
                                               ),
                                               Row(
                                                 children: [
                                                   SizedBox(
                                                     width:
-                                                        2.43 / 100 * Get.width,
+                                                        2.43 / 100 * MediaQuery.of(context).size.width,
                                                   ),
                                                   Icon(
                                                     FontAwesomeIcons.linkedin,
@@ -1370,15 +1373,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                                         140, 255, 255, 255),
                                                     size: 2.1924 /
                                                         100 *
-                                                        Get.height,
+                                                        MediaQuery.of(context).size.height,
                                                   ),
                                                   SizedBox(
                                                     width:
-                                                        0.55 / 100 * Get.width,
+                                                        0.55 / 100 * MediaQuery.of(context).size.width,
                                                   ),
                                                   SizedBox(
                                                     width:
-                                                        15.97 / 100 * Get.width,
+                                                        15.97 / 100 * MediaQuery.of(context).size.width,
                                                     child: TextField(
                                                       controller: controller
                                                           .linkedIn_unme,
@@ -1388,7 +1391,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                               FontWeight.w200,
                                                           fontSize: 1.584 /
                                                               100 *
-                                                              Get.height,
+                                                              MediaQuery.of(context).size.height,
                                                           color: Color.fromARGB(
                                                               223,
                                                               237,
@@ -1399,7 +1402,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                           hintStyle: TextStyle(
                                                               fontSize: 1.584 /
                                                                   100 *
-                                                                  Get.height,
+                                                                  MediaQuery.of(context).size.height,
                                                               color: Color
                                                                   .fromARGB(
                                                                       167,
@@ -1413,10 +1416,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                                           true,
                                                       cursorWidth: 0.138 /
                                                           100 *
-                                                          Get.width,
+                                                          MediaQuery.of(context).size.width,
                                                       cursorHeight: 1.58 /
                                                           100 *
-                                                          Get.height,
+                                                          MediaQuery.of(context).size.height,
                                                       cursorRadius:
                                                           Radius.circular(20),
                                                       cursorColor:
@@ -1433,14 +1436,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ],
                                   ),
                                   SizedBox(
-                                    height: 4.5 / 100 * Get.height,
+                                    height: 4.5 / 100 * MediaQuery.of(context).size.height,
                                   ),
                                   Obx(
                                     () => controller
                                             .github_chart_isPressed.value
                                         ? Container(
-                                            height: 24 / 100 * Get.height,
-                                            width: 83.33 / 100 * Get.width,
+                                            height: 24 / 100 * MediaQuery.of(context).size.height,
+                                            width: 83.33 / 100 * MediaQuery.of(context).size.width,
                                             decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(20),
@@ -1455,10 +1458,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     ])),
                                             child: Padding(
                                               padding: EdgeInsets.only(
-                                                  left: 0.76 / 100 * Get.width,
-                                                  right: 1.53 / 100 * Get.width,
+                                                  left: 0.76 / 100 * MediaQuery.of(context).size.width,
+                                                  right: 1.53 / 100 * MediaQuery.of(context).size.width,
                                                   bottom:
-                                                      0.83 / 100 * Get.height),
+                                                      0.83 / 100 * MediaQuery.of(context).size.height),
                                               child: HeatMap(
                                                 colorMode: ColorMode.opacity,
                                                 colorsets: {

@@ -290,7 +290,7 @@ class HomeScreenState extends State<HomeScreen> {
                                             backgroundColor: Colors.black,
                                             content: SingleChildScrollView(
                                               child: Text(
-                                                'one one deployment per user supported as of now',
+                                                'One deployment per user supported as of now',
                                                 style: TextStyle(
                                                     color: Color.fromARGB(
                                                         189, 131, 125, 125)),

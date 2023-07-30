@@ -139,81 +139,92 @@ class ResumeBuildController extends GetxController {
       initialization.value = true;
       currentStep.value = 2;
       print(session.providerAccessToken);
-
-      var request_get = http.Request(
-          'POST', Uri.parse('https://resumeup-server.onrender.com/getToken'));
+      var request_get_status = http.Request(
+          'POST', Uri.parse('https://resumeup-server.onrender.com/getStatus'));
       print(session.userId);
-      request_get.body = json.encode({"Uid": session.userId});
+      request_get_status.body = json.encode({"Uid": session.userId});
+      request_get_status.headers.addAll(headers_proxy);
+      http.StreamedResponse response_get_status =
+          await request_get_status.send();
+      if (response_get_status.statusCode == 200) {
+        hasDeployed.value = true;
+      } else {
+        var request_get = http.Request(
+            'POST', Uri.parse('https://resumeup-server.onrender.com/getToken'));
+        print(session.userId);
+        request_get.body = json.encode({"Uid": session.userId});
 
-      request_get.headers.addAll(headers_proxy);
+        request_get.headers.addAll(headers_proxy);
 
-      http.StreamedResponse response_get = await request_get.send();
+        http.StreamedResponse response_get = await request_get.send();
 
-      if (response_get.statusCode == 200) {
-        print("hi");
-        res_get = await response_get.stream.bytesToString();
-        res_get = jsonDecode(res_get);
-        auth_token = res_get['VercelToken'];
-        headers_projects = {'Authorization': 'Bearer ${auth_token}'};
+        if (response_get.statusCode == 200) {
+          print("hi");
+          res_get = await response_get.stream.bytesToString();
+          res_get = jsonDecode(res_get);
+          auth_token = res_get['VercelToken'];
+          headers_projects = {'Authorization': 'Bearer ${auth_token}'};
 
-        var request_projects = http.Request(
-            'GET', Uri.parse('https://api.vercel.com/v9/projects'));
-        request_projects.headers.addAll(headers_projects);
+          var request_projects = http.Request(
+              'GET', Uri.parse('https://api.vercel.com/v9/projects'));
+          request_projects.headers.addAll(headers_projects);
 
-        http.StreamedResponse response_projects = await request_projects.send();
+          http.StreamedResponse response_projects =
+              await request_projects.send();
 
-        if (response_projects.statusCode == 200) {
-          projects = await response_projects.stream.bytesToString();
-          projects = jsonDecode(projects);
-          projects = projects["projects"];
-          print("Hoya");
+          if (response_projects.statusCode == 200) {
+            projects = await response_projects.stream.bytesToString();
+            projects = jsonDecode(projects);
+            projects = projects["projects"];
+            print("Hoya");
+          } else {
+            print(response_projects.reasonPhrase);
+          }
+
+          Get.offNamed(AppRoutes.profileBuild);
         } else {
-          print(response_projects.reasonPhrase);
+          print(response_get.reasonPhrase);
         }
 
-        Get.offNamed(AppRoutes.profileBuild);
-      } else {
-        print(response_get.reasonPhrase);
+        headers = {
+          'Accept': 'application/vnd.github+json',
+          'Authorization': 'Bearer ${session.providerAccessToken}',
+          'X-GitHub-Api-Version': '2022-11-28'
+        };
+
+        var request =
+            http.Request('GET', Uri.parse('https://api.github.com/user'));
+        request.headers.addAll(headers);
+
+        http.StreamedResponse response = await request.send();
+
+        if (response.statusCode == 200) {
+          UserInfo = await response.stream.bytesToString();
+          UserInfo = jsonDecode(UserInfo);
+
+          profile_url = UserInfo['avatar_url'].toString();
+          name_feild.text = UserInfo['name'];
+          github_unme_feild.text = UserInfo['login'];
+          description_feild.text = UserInfo['bio'];
+        } else {
+          print(response.reasonPhrase);
+        }
+        var request_email = http.Request(
+            'GET', Uri.parse('https://api.github.com/user/emails'));
+        request_email.headers.addAll(headers);
+
+        http.StreamedResponse response_emails = await request_email.send();
+
+        if (response_emails.statusCode == 200) {
+          EmailInfo = await response_emails.stream.bytesToString();
+          EmailInfo = jsonDecode(EmailInfo);
+          email_feild.text = EmailInfo[0]["email"];
+        } else {
+          print(response_emails.reasonPhrase);
+        }
+        await getGithubActivity();
+        await getGithubMap();
       }
-
-      headers = {
-        'Accept': 'application/vnd.github+json',
-        'Authorization': 'Bearer ${session.providerAccessToken}',
-        'X-GitHub-Api-Version': '2022-11-28'
-      };
-
-      var request =
-          http.Request('GET', Uri.parse('https://api.github.com/user'));
-      request.headers.addAll(headers);
-
-      http.StreamedResponse response = await request.send();
-
-      if (response.statusCode == 200) {
-        UserInfo = await response.stream.bytesToString();
-        UserInfo = jsonDecode(UserInfo);
-
-        profile_url = UserInfo['avatar_url'].toString();
-        name_feild.text = UserInfo['name'];
-        github_unme_feild.text = UserInfo['login'];
-        description_feild.text = UserInfo['bio'];
-      } else {
-        print(response.reasonPhrase);
-      }
-      var request_email =
-          http.Request('GET', Uri.parse('https://api.github.com/user/emails'));
-      request_email.headers.addAll(headers);
-
-      http.StreamedResponse response_emails = await request_email.send();
-
-      if (response_emails.statusCode == 200) {
-        EmailInfo = await response_emails.stream.bytesToString();
-        EmailInfo = jsonDecode(EmailInfo);
-        email_feild.text = EmailInfo[0]["email"];
-      } else {
-        print(response_emails.reasonPhrase);
-      }
-      await getGithubActivity();
-      await getGithubMap();
     }
   }
 
