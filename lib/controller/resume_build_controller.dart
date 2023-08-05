@@ -83,6 +83,8 @@ class ResumeBuildController extends GetxController {
 
   final Uri? location = href == null ? null : Uri.parse(href!);
   late Account account;
+
+  // onInit()
   @override
   void onInit() async {
     client = Client();
@@ -94,6 +96,7 @@ class ResumeBuildController extends GetxController {
     super.onInit();
     await checkStep();
   }
+  // ----------------------------------
 
   Future<void> putToken() async {
     var request_put = http.Request(
@@ -131,23 +134,29 @@ class ResumeBuildController extends GetxController {
   }
 
   Future<void> checkStep() async {
+          initialization.value = true;
     session = await account.getSession(
       sessionId: 'current',
     );
-    if (session.current == true) {
+    if (session.current) {
       git_access_token = session.providerAccessToken;
-      initialization.value = true;
       currentStep.value = 2;
       print(session.providerAccessToken);
+
       var request_get_status = http.Request(
           'POST', Uri.parse('https://resumeup-server.onrender.com/getStatus'));
       print(session.userId);
+
       request_get_status.body = json.encode({"Uid": session.userId});
+
       request_get_status.headers.addAll(headers_proxy);
+
       http.StreamedResponse response_get_status =
           await request_get_status.send();
+          
       if (response_get_status.statusCode == 200) {
         hasDeployed.value = true;
+        initialization.value = false;
       } else {
         var request_get = http.Request(
             'POST', Uri.parse('https://resumeup-server.onrender.com/getToken'));
@@ -164,7 +173,7 @@ class ResumeBuildController extends GetxController {
           res_get = jsonDecode(res_get);
           auth_token = res_get['VercelToken'];
           headers_projects = {'Authorization': 'Bearer ${auth_token}'};
-
+          Get.offNamed(AppRoutes.profileBuild);
           var request_projects = http.Request(
               'GET', Uri.parse('https://api.vercel.com/v9/projects'));
           request_projects.headers.addAll(headers_projects);
@@ -178,10 +187,9 @@ class ResumeBuildController extends GetxController {
             projects = projects["projects"];
             print("Hoya");
           } else {
+            initialization.value = false;
             print(response_projects.reasonPhrase);
           }
-
-          Get.offNamed(AppRoutes.profileBuild);
         } else {
           print(response_get.reasonPhrase);
         }
@@ -318,7 +326,6 @@ class ResumeBuildController extends GetxController {
           }
         }
       }
-      initialization.value = false;
       print("flag check");
     } else {
       print(response.reasonPhrase);
