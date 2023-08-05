@@ -135,9 +135,16 @@ class ResumeBuildController extends GetxController {
 
   Future<void> checkStep() async {
     initialization.value = true;
-    session = await account.getSession(
-      sessionId: 'current',
-    );
+    try {
+      session = await account.getSession(
+        sessionId: 'current',
+      );
+    } catch (err) {
+      initialization.value = false;
+      print("U need to Sign In");
+      return;
+    }
+
     if (session.current) {
       git_access_token = session.providerAccessToken;
       currentStep.value = 2;
@@ -154,12 +161,9 @@ class ResumeBuildController extends GetxController {
       print("Sent check deployed");
 
       if (response_get_status.statusCode == 200) {
-
         hasDeployed.value = true;
         initialization.value = false;
-
       } else {
-        
         var request_get = http.Request(
             'POST', Uri.parse('https://resumeup-server.onrender.com/getToken'));
         print(session.userId);
@@ -170,7 +174,6 @@ class ResumeBuildController extends GetxController {
         print("Get Token Sent");
 
         if (response_get.statusCode == 200) {
-
           Get.offNamed(AppRoutes.profileBuild);
           initialization.value = false;
 
@@ -199,7 +202,9 @@ class ResumeBuildController extends GetxController {
             print(response_projects.reasonPhrase);
           }
         } else {
+                 initialization.value = false;
           print("You need to give us the Token");
+   
         }
 
         headers = {
@@ -245,8 +250,6 @@ class ResumeBuildController extends GetxController {
         await getGithubMap();
         print("Got Maps");
       }
-    }else{
-          initialization.value = false;
     }
   }
 
@@ -277,7 +280,6 @@ class ResumeBuildController extends GetxController {
           CreateRepos.add(activity[i]['repo']['name']);
         }
       }
-      print("Hey there");
       push_repo_names = push_repo_names.toSet().toList();
       for (int l = 0; l < PushRepos.length; l++) {
         var key = PushRepos[l].keys.toList();
@@ -381,7 +383,7 @@ class ResumeBuildController extends GetxController {
   }
 
   Future<void> gitSignIn() async {
-    account = await account.createOAuth2Session(
+    await account.createOAuth2Session(
       provider: 'github',
       scopes: ["public_repo"],
       success: kIsWeb ? '${location?.origin}/auth.html' : null,
