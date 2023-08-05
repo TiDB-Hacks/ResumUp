@@ -245,6 +245,8 @@ class ResumeBuildController extends GetxController {
         await getGithubMap();
         print("Got Maps");
       }
+    }else{
+          initialization.value = false;
     }
   }
 
