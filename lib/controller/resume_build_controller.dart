@@ -94,7 +94,6 @@ class ResumeBuildController extends GetxController {
         .setSelfSigned(status: true);
     account = Account(client);
     super.onInit();
-    await checkStep();
   }
   // ----------------------------------
 
@@ -141,12 +140,14 @@ class ResumeBuildController extends GetxController {
       );
     } catch (err) {
       initialization.value = false;
+      currentStep.value = 1;
       print("U need to Sign In");
       return;
     }
 
     if (session.current) {
       git_access_token = session.providerAccessToken;
+      print(git_access_token);
       currentStep.value = 2;
 
       var request_get_status = http.Request(
@@ -166,7 +167,6 @@ class ResumeBuildController extends GetxController {
       } else {
         var request_get = http.Request(
             'POST', Uri.parse('https://resumeup-server.onrender.com/getToken'));
-        print(session.userId);
         request_get.body = json.encode({"Uid": session.userId});
         request_get.headers.addAll(headers_proxy);
 
@@ -202,14 +202,13 @@ class ResumeBuildController extends GetxController {
             print(response_projects.reasonPhrase);
           }
         } else {
-                 initialization.value = false;
+          initialization.value = false;
           print("You need to give us the Token");
-   
         }
 
         headers = {
           'Accept': 'application/vnd.github+json',
-          'Authorization': 'Bearer ${session.providerAccessToken}',
+          'Authorization': 'Bearer ${git_access_token}',
           'X-GitHub-Api-Version': '2022-11-28'
         };
 

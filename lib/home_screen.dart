@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -21,6 +20,7 @@ class HomeScreenState extends State<HomeScreen> {
   var controller = Get.find<ResumeBuildController>();
   @override
   void initState() {
+    controller.checkStep();
     stepsData = [
       StepperData(
         label: 'Step 1',
@@ -47,13 +47,14 @@ class HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               style: ElevatedButton.styleFrom(
+                  disabledBackgroundColor: Color.fromARGB(255, 20, 160, 160),
                   fixedSize: Size(200, 32),
-                  backgroundColor: (controller.currentStep.value == 1)
-                      ? Color.fromARGB(255, 26, 235, 235)
-                      : Color.fromARGB(255, 20, 160, 160)),
-              onPressed: () async {
-                await controller.gitSignIn();
-              },
+                  backgroundColor: Color.fromARGB(255, 26, 235, 235)),
+              onPressed: controller.currentStep.value == 1
+                  ? () async {
+                      await controller.gitSignIn();
+                    }
+                  : null,
             ),
           ),
         ),
@@ -71,95 +72,100 @@ class HomeScreenState extends State<HomeScreen> {
                     fontFamily: 'Ubuntu'),
               ),
               style: ElevatedButton.styleFrom(
+                  disabledBackgroundColor: Color.fromARGB(255, 20, 160, 160),
                   fixedSize: Size(230, 32),
-                  backgroundColor: (controller.currentStep.value == 1)
-                      ? Color.fromARGB(255, 20, 160, 160)
-                      : Color.fromARGB(255, 26, 235, 235)),
-              onPressed: () {
-                showDialog(
-                    barrierDismissible: true,
-                    context: context,
-                    builder: (_) => AlertDialog(
-                          elevation: 20,
-                          title: Text(
-                            "Vercel Auth-Token",
-                            style: TextStyle(
-                                color: Color.fromARGB(190, 183, 178, 178)),
-                          ),
-                          backgroundColor: Colors.black,
-                          content: SingleChildScrollView(
-                              child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    'Please provide your vercel auth token, refer ',
-                                    style: TextStyle(
-                                        color:
-                                            Color.fromARGB(189, 131, 125, 125)),
-                                  ),
-                                  InkWell(
-                                    onTap: () async {
-                                      await launchUrl(Uri.parse(
-                                          'https://vercel.com/docs/rest-api#creating-an-access-token:~:text=Creating%20an%20Access%20Token'));
-                                    },
-                                    child: Text(
-                                      'here',
-                                      style: TextStyle(
-                                          color: Color.fromARGB(
-                                              192, 33, 149, 243)),
+                  backgroundColor: Color.fromARGB(255, 26, 235, 235)),
+              onPressed: controller.currentStep.value == 2
+                  ? () {
+                      showDialog(
+                          barrierDismissible: true,
+                          context: context,
+                          builder: (_) => AlertDialog(
+                                elevation: 20,
+                                title: Text(
+                                  "Vercel Auth-Token",
+                                  style: TextStyle(
+                                      color:
+                                          Color.fromARGB(190, 183, 178, 178)),
+                                ),
+                                backgroundColor: Colors.black,
+                                content: SingleChildScrollView(
+                                    child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Please provide your vercel auth token, refer ',
+                                          style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  189, 131, 125, 125)),
+                                        ),
+                                        InkWell(
+                                          onTap: () async {
+                                            await launchUrl(Uri.parse(
+                                                'https://vercel.com/docs/rest-api#creating-an-access-token:~:text=Creating%20an%20Access%20Token'));
+                                          },
+                                          child: Text(
+                                            'here',
+                                            style: TextStyle(
+                                                color: Color.fromARGB(
+                                                    192, 33, 149, 243)),
+                                          ),
+                                        ),
+                                        Text(
+                                          ' for more info (make sure to set Scope: Full Account and expiration: None)',
+                                          style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  189, 131, 125, 125)),
+                                        ),
+                                      ],
                                     ),
-                                  ),
-                                  Text(
-                                    ' for more info (make sure to set Scope: Full Account and expiration: None)',
-                                    style: TextStyle(
-                                        color:
-                                            Color.fromARGB(189, 131, 125, 125)),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 40,
-                              ),
-                              TextField(
-                                controller:
-                                    controller.auth_token_feild_controller,
-                                style: TextStyle(
-                                    color: Color.fromARGB(255, 72, 68, 68)),
-                                cursorRadius: Radius.circular(20),
-                                cursorColor: Color.fromARGB(95, 88, 87, 87),
-                                decoration: InputDecoration(
-                                    enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                    SizedBox(
+                                      height: 40,
+                                    ),
+                                    TextField(
+                                      controller: controller
+                                          .auth_token_feild_controller,
+                                      style: TextStyle(
+                                          color:
+                                              Color.fromARGB(255, 72, 68, 68)),
+                                      cursorRadius: Radius.circular(20),
+                                      cursorColor:
+                                          Color.fromARGB(95, 88, 87, 87),
+                                      decoration: InputDecoration(
+                                          enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: Color.fromARGB(
+                                                      135, 50, 49, 49))),
+                                          border: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: Color.fromARGB(
+                                                      72, 72, 65, 65))),
+                                          hintText: 'Enter Auth Token',
+                                          hintStyle: TextStyle(
                                             color: Color.fromARGB(
-                                                135, 50, 49, 49))),
-                                    border: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Color.fromARGB(
-                                                72, 72, 65, 65))),
-                                    hintText: 'Enter Auth Token',
-                                    hintStyle: TextStyle(
-                                      color: Color.fromARGB(135, 118, 116, 116),
-                                    )),
-                                obscureText: true,
-                              ),
-                              SizedBox(
-                                height: 40,
-                              ),
-                              ElevatedButton(
-                                  onPressed: () async {
-                                    controller.currentStep.value = 3;
-                                    controller.auth_token = controller
-                                        .auth_token_feild_controller.text;
-                                    print(controller.auth_token);
-                                    Navigator.pop(context);
-                                    await controller.putToken();
-                                  },
-                                  child: Text('Submit'))
-                            ],
-                          )),
-                        ));
-              },
+                                                135, 118, 116, 116),
+                                          )),
+                                      obscureText: true,
+                                    ),
+                                    SizedBox(
+                                      height: 40,
+                                    ),
+                                    ElevatedButton(
+                                        onPressed: () async {
+                                          controller.currentStep.value = 3;
+                                          controller.auth_token = controller
+                                              .auth_token_feild_controller.text;
+                                          print(controller.auth_token);
+                                          Navigator.pop(context);
+                                          await controller.putToken();
+                                        },
+                                        child: Text('Submit'))
+                                  ],
+                                )),
+                              ));
+                    }
+                  : null,
             ),
           ),
         ),
@@ -275,31 +281,28 @@ class HomeScreenState extends State<HomeScreen> {
                             color: Colors.orange, size: Get.pixelRatio * 20)),
                   )
                 : SizedBox(),
-          controller.hasDeployed.value
+            controller.hasDeployed.value
                 ? BackdropFilter(
                     filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                     child: Center(
-                        child:  AlertDialog(
-                                            elevation: 20,
-                                            title: Text(
-                                              "You have already created a deployment",
-                                              style: TextStyle(
-                                                  color: Color.fromARGB(
-                                                      190, 183, 178, 178)),
-                                            ),
-                                            backgroundColor: Colors.black,
-                                            content: SingleChildScrollView(
-                                              child: Text(
-                                                'One deployment per user supported as of now',
-                                                style: TextStyle(
-                                                    color: Color.fromARGB(
-                                                        189, 131, 125, 125)),
-                                              ),
-                                            ),
-                                          )),
+                        child: AlertDialog(
+                      elevation: 20,
+                      title: Text(
+                        "You have already created a deployment",
+                        style: TextStyle(
+                            color: Color.fromARGB(190, 183, 178, 178)),
+                      ),
+                      backgroundColor: Colors.black,
+                      content: SingleChildScrollView(
+                        child: Text(
+                          'One deployment per user supported as of now',
+                          style: TextStyle(
+                              color: Color.fromARGB(189, 131, 125, 125)),
+                        ),
+                      ),
+                    )),
                   )
                 : SizedBox(),
-            
           ]),
         ));
   }
