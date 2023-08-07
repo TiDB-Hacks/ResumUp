@@ -522,7 +522,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   onTap: () async {
                                     controller.setstatus();
                                     controller.sending.value = true;
-                                    // await controller.deployIt();
+                                    await controller.deployIt();
                                     // // if (controller.status_deploy) {
                                     //   controller.storedeploystatus();
                                       // ignore: use_build_context_synchronously
