@@ -62,7 +62,7 @@ class HomeScreenState extends State<HomeScreen> {
       StepperData(
         label: 'Step 2',
         child: Padding(
-          padding: EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
           child: Obx(
             () => ElevatedButton(
               child: Text(
@@ -154,11 +154,16 @@ class HomeScreenState extends State<HomeScreen> {
                                     ElevatedButton(
                                         onPressed: () async {
                                           controller.currentStep.value = 3;
+                                          Navigator.pop(context);
                                           controller.auth_token = controller
                                               .auth_token_feild_controller.text;
+                                          controller.initialization.value =
+                                              true;
                                           print(controller.auth_token);
-                                          Navigator.pop(context);
+
                                           await controller.putToken();
+                                          controller.initialization.value =
+                                              false;
                                         },
                                         child: Text('Submit'))
                                   ],

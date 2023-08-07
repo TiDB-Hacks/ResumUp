@@ -1,9 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'dart:ui';
 import 'package:dotted_border/dotted_border.dart';
-import 'package:flutter_heatmap_calendar/flutter_heatmap_calendar.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -13,6 +11,7 @@ import 'package:resumup/routes/app_pages.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'bindings/resume_build_bindings.dart';
 import 'home_screen.dart';
+
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
