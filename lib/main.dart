@@ -522,9 +522,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                   onTap: () async {
                                     controller.setstatus();
                                     controller.sending.value = true;
-                                    await controller.deployIt();
-                                    if (controller.status_deploy) {
-                                      controller.storedeploystatus();
+                                    // await controller.deployIt();
+                                    // // if (controller.status_deploy) {
+                                    //   controller.storedeploystatus();
                                       // ignore: use_build_context_synchronously
                                       showDialog(
                                           barrierDismissible: true,
@@ -595,33 +595,33 @@ class _MyHomePageState extends State<MyHomePage> {
                                                   ),
                                                 ),
                                               ));
-                                    } else {
-                                      // ignore: use_build_context_synchronously
-                                      showDialog(
-                                          barrierDismissible: true,
-                                          context: context,
-                                          builder: (_) => AlertDialog(
-                                                elevation: 20,
-                                                title: Text(
-                                                  "Apologies Some Error Occured 🙁",
-                                                  style: TextStyle(
-                                                      color: Color.fromARGB(
-                                                          190, 183, 178, 178)),
-                                                ),
-                                                backgroundColor: Colors.black,
-                                                content: SingleChildScrollView(
-                                                  child: Text(
-                                                    'Your Portfolio could not be deployed',
-                                                    style: TextStyle(
-                                                        color: Color.fromARGB(
-                                                            189,
-                                                            131,
-                                                            125,
-                                                            125)),
-                                                  ),
-                                                ),
-                                              ));
-                                    }
+                                    // } else {
+                                    //   // ignore: use_build_context_synchronously
+                                    //   showDialog(
+                                    //       barrierDismissible: true,
+                                    //       context: context,
+                                    //       builder: (_) => AlertDialog(
+                                    //             elevation: 20,
+                                    //             title: Text(
+                                    //               "Apologies Some Error Occured 🙁",
+                                    //               style: TextStyle(
+                                    //                   color: Color.fromARGB(
+                                    //                       190, 183, 178, 178)),
+                                    //             ),
+                                    //             backgroundColor: Colors.black,
+                                    //             content: SingleChildScrollView(
+                                    //               child: Text(
+                                    //                 'Your Portfolio could not be deployed',
+                                    //                 style: TextStyle(
+                                    //                     color: Color.fromARGB(
+                                    //                         189,
+                                    //                         131,
+                                    //                         125,
+                                    //                         125)),
+                                    //               ),
+                                    //             ),
+                                    //           ));
+                                    // }
                                   },
                                   child: Ink(
                                     decoration: BoxDecoration(
