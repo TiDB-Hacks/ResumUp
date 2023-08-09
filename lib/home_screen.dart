@@ -289,7 +289,7 @@ class HomeScreenState extends State<HomeScreen> {
             controller.hasDeployed.value
                 ? BackdropFilter(
                     filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                    child: Center(
+                    child: const  Center(
                         child: AlertDialog(
                       elevation: 20,
                       title: Text(

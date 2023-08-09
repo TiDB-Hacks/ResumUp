@@ -65,16 +65,16 @@ class ResumeBuildController extends GetxController {
           "name": name_feild.text,
           "description": description_feild.text
         },
-        "avatar": profile_isPressed.value ? {"url": profile_url} : null,
-        "github_activity": github_issues_isPressed.value ? {} : null,
-        "vercel": Vercel_isPressed.value ? {} : null,
+        "avatar": profile_isPressed.value ? true : false,
+        "github_activity": github_issues_isPressed.value ? true : false,
+        "vercel": Vercel_isPressed.value ? true : false,
         "contactme": {
           "email_address": email_feild.text,
           "github_username": github_unme_feild.text,
           "twitter_username": twitter_unme.text,
           "linkedin_username": linkedIn_unme.text,
         },
-        "github_chart": github_chart_isPressed.value ? {} : null,
+        "github_chart": github_chart_isPressed.value ? true : false,
       },
       "connections": {
         "github_access_token": git_access_token,
